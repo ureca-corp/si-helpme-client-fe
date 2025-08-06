@@ -102,9 +102,9 @@ export default function ServicesSection() {
             return (
               <Card
                 key={index}
-                className="transform border-0 shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                className="border-0 shadow-md transition-transform delay-100 duration-200"
                 data-aos="fade-up"
-                data-aos-delay={index * 100}
+                data-aos-delay={index * 10}
               >
                 <CardHeader className="pb-4 text-center">
                   <div
@@ -127,7 +127,10 @@ export default function ServicesSection() {
         </div>
 
         {/* 추가 서비스 섹션 */}
-        <div className="mt-16 rounded-2xl bg-white p-8 shadow-lg">
+        <div
+          className="mt-16 rounded-2xl bg-white p-8 shadow-lg"
+          data-aos="fade-up"
+        >
           <h3 className="mb-8 text-center text-2xl font-bold text-gray-800">
             애프터 서비스
           </h3>

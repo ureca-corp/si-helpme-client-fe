@@ -1,15 +1,27 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ChevronDown, ChevronUp } from "lucide-react"
-import { Card, CardContent } from "@/shadcn/components/ui/card"
+import { useState } from "react";
+
+import {
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
+
+import {
+  Card,
+  CardContent,
+} from "@/shadcn/components/ui/card";
 
 export default function FAQSection() {
-  const [openItems, setOpenItems] = useState<number[]>([])
+  const [openItems, setOpenItems] = useState<number[]>([]);
 
   const toggleItem = (index: number) => {
-    setOpenItems((prev) => (prev.includes(index) ? prev.filter((item) => item !== index) : [...prev, index]))
-  }
+    setOpenItems((prev) =>
+      prev.includes(index)
+        ? prev.filter((item) => item !== index)
+        : [...prev, index],
+    );
+  };
 
   const faqs = [
     {
@@ -52,30 +64,36 @@ export default function FAQSection() {
       answer:
         "초기 상담은 무료로 진행됩니다. 전화상담, 온라인 상담, 방문상담 모두 무료이며, 상담 후 사건 수임을 결정하시면 수임료에 대해 안내해드립니다. 부담 없이 언제든지 상담받으실 수 있습니다.",
     },
-  ]
+  ];
 
   return (
-    <section id="faq" className="py-20 bg-white">
+    <section id="faq" className="bg-white py-20">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">자주 묻는 질문</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">개인회생과 파산에 대해 궁금한 점들을 정리했습니다</p>
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+            자주 묻는 질문
+          </h2>
+          <p className="mx-auto max-w-2xl text-lg text-gray-600">
+            개인회생과 파산에 대해 궁금한 점들을 정리했습니다
+          </p>
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="mx-auto max-w-4xl space-y-4">
           {faqs.map((faq, index) => (
             <Card key={index} className="border border-gray-200 shadow-sm">
               <CardContent className="p-0">
                 <button
                   onClick={() => toggleItem(index)}
-                  className="w-full text-left p-6 hover:bg-gray-50 transition-colors duration-200"
+                  className="w-full p-6 text-left transition-colors duration-200 hover:bg-gray-50"
                 >
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-gray-800 pr-4">{faq.question}</h3>
+                    <h3 className="pr-4 text-lg font-semibold text-gray-800">
+                      {faq.question}
+                    </h3>
                     {openItems.includes(index) ? (
-                      <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                      <ChevronUp className="h-5 w-5 flex-shrink-0 text-gray-500" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                      <ChevronDown className="h-5 w-5 flex-shrink-0 text-gray-500" />
                     )}
                   </div>
                 </button>
@@ -83,7 +101,9 @@ export default function FAQSection() {
                 {openItems.includes(index) && (
                   <div className="px-6 pb-6">
                     <div className="border-t border-gray-100 pt-4">
-                      <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                      <p className="leading-relaxed text-gray-600">
+                        {faq.answer}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -92,18 +112,20 @@ export default function FAQSection() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-gray-600 mb-4">더 궁금한 점이 있으시다면 언제든지 문의해주세요</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="mt-12 text-center">
+          <p className="mb-4 text-gray-600">
+            더 궁금한 점이 있으시다면 언제든지 문의해주세요
+          </p>
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <button
               onClick={() => window.open("tel:02-1234-5678")}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+              className="rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-700"
             >
               전화 상담하기
             </button>
             <button
               onClick={() => window.open("https://pf.kakao.com/_example")}
-              className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 px-6 py-3 rounded-lg font-semibold transition-colors"
+              className="rounded-lg bg-yellow-400 px-6 py-3 font-semibold text-gray-800 transition-colors hover:bg-yellow-500"
             >
               카카오톡 상담
             </button>
@@ -111,5 +133,5 @@ export default function FAQSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
