@@ -1,101 +1,50 @@
-import { useEffect, useRef } from "react";
-
-declare global {
-  interface Window {
-    naver: typeof naver;
-    navermap_authFailure?: () => void;
-  }
-}
+import { NaverMap } from "@/apps/ui/domain-components/landing/Location";
+import { MapPin, Train } from "lucide-react";
 
 export const Location2Section = () => {
-  const mapElement = useRef<HTMLDivElement>(null);
-  const mapRef = useRef<naver.maps.Map | null>(null);
-
-  useEffect(() => {
-    const initializeMap = () => {
-      if (!mapElement.current || !window.naver) return;
-
-      const location = new window.naver.maps.LatLng(
-        37.49464594474945,
-        127.0150907325072,
-      );
-
-      const mapOptions: naver.maps.MapOptions = {
-        center: location,
-        zoom: 17,
-        zoomControl: true,
-        zoomControlOptions: {
-          position: window.naver.maps.Position.TOP_RIGHT,
-        },
-      };
-
-      const map = new window.naver.maps.Map(mapElement.current, mapOptions);
-      mapRef.current = map;
-
-      new window.naver.maps.Marker({
-        position: location,
-        map: map,
-      });
-    };
-
-    if (window.naver && window.naver.maps) {
-      initializeMap();
-    } else {
-      const checkNaverMapsLoaded = () => {
-        if (window.naver && window.naver.maps) {
-          initializeMap();
-        } else {
-          setTimeout(checkNaverMapsLoaded, 100);
-        }
-      };
-      checkNaverMapsLoaded();
-    }
-  }, []);
-
-  useEffect(() => {
-    // 인증 실패 핸들러 등록
-    window.navermap_authFailure = () => {
-      console.error(
-        "네이버 지도 API 인증 실패. 네이버 클라우드 플랫폼에서 다음을 확인하세요:\n" +
-          "1. Application > AI NAVER API > Maps에서 Web Service URL에 http://localhost:3000 등록\n" +
-          "2. 프로덕션 배포 시 실제 도메인도 추가 등록 필요",
-      );
-    };
-
-    const script = document.createElement("script");
-    const clientId = process.env.NEXT_PUBLIC_NAVER_MAPS_CLIENT_ID;
-
-    if (!clientId) {
-      console.warn(
-        "NEXT_PUBLIC_NAVER_MAPS_CLIENT_ID 환경변수가 설정되지 않았습니다.",
-      );
-      return;
-    }
-
-    // 신규 Maps API 형식으로 변경 (ncpKeyId 사용)
-    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${clientId}&submodules=geocoder`;
-    script.async = true;
-
-    const existingScript = document.querySelector(
-      `script[src*="oapi.map.naver.com"]`,
-    );
-    if (!existingScript) {
-      document.head.appendChild(script);
-    }
-
-    return () => {
-      if (!existingScript && script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-    };
-  }, []);
+  const DESTINATION_LAT = 37.49464594474945;
+  const DESTINATION_LNG = 127.0150907325072;
 
   return (
-    <div className="flex w-full flex-col items-center justify-center px-6 pb-20">
-      <div
-        ref={mapElement}
-        className="h-80 w-full max-w-[800px] rounded-lg border border-gray-200 shadow-sm md:h-96 lg:h-[500px]"
-      />
-    </div>
+    <section className="w-full bg-gradient-to-b from-white to-gray-50 py-20">
+      <div className="container mx-auto px-6">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+            오시는 길
+          </h2>
+          <p className="mb-12 text-lg text-gray-600">
+            편리한 교통으로 쉽게 찾아오실 수 있습니다
+          </p>
+        </div>
+
+        <div className="mx-auto max-w-5xl">
+          <div className="flex flex-col gap-4 md:flex-row">
+            {/* 주소 */}
+            <div className="flex min-w-0 flex-1 items-center justify-center gap-3">
+              <MapPin className="h-5 w-5 flex-shrink-0 text-blue-600" />
+              <p className="text-base font-medium text-gray-900">
+                서울 서초구 서초중앙로24길 16 KM타워 8층
+              </p>
+            </div>
+
+            {/* 지하철 */}
+            <div className="flex min-w-0 flex-1 items-center justify-center gap-3">
+              <Train className="h-5 w-5 flex-shrink-0 text-green-600" />
+              <div className="text-base font-medium text-gray-900">
+                2/3호선 교대역 4번 출구에서 32m 도보 2분
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 지도 영역 */}
+        <NaverMap
+          lat={DESTINATION_LAT}
+          lng={DESTINATION_LNG}
+          zoom={17}
+          className="mt-4 h-[450px] w-full rounded-lg border border-gray-200 shadow-sm"
+        />
+      </div>
+    </section>
   );
 };
