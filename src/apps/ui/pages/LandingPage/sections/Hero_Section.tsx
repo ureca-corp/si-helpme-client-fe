@@ -3,10 +3,34 @@
 import { Clock4Icon, ScaleIcon, WrenchIcon } from "lucide-react";
 
 import { AuroraBackgroundContainer } from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
+import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { ReliabilityNumberItem } from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
 import { AuroraText } from "@/components/magicui/aurora-text";
-import { NumberTicker } from "@/components/magicui/number-ticker";
+import { TextAnimate } from "@/components/magicui/text-animate";
+import { Button } from "@/shadcn/components/ui/button";
 
 export default function HeroSection() {
+  /**
+   * 신뢰도 지표 아이템 값
+   */
+  const reliabilityNumberItems = [
+    {
+      value: 1000,
+      unit: "건+",
+      description: "성공 사례",
+    },
+    {
+      value: 15,
+      unit: "년+",
+      description: "전문 경력",
+    },
+    {
+      value: 98,
+      unit: "%",
+      description: "고객 만족도",
+    },
+  ];
+
   return (
     <AuroraBackgroundContainer showRadialGradient>
       <section
@@ -14,66 +38,75 @@ export default function HeroSection() {
         //bg-gradient-to-br from-blue-50 via-white to-green-50 py-40
       >
         <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-4xl text-center">
-            {/* 메인 헤딩 */}
-            <div className="mb-8">
-              <h1 className="mb-4 text-4xl font-bold text-gray-800 md:text-6xl">
-                빚에서 벗어나는
-                <br />
-                <AuroraText colors={["#6bff6b", "#19a219"]}>
-                  새로운 시작
-                </AuroraText>
-              </h1>
-              <p className="mb-2 text-xl text-gray-600 md:text-2xl">
-                개인회생 · 파산 전문 법무법인
-              </p>
-              <p className="text-lg text-gray-500">
-                전문변호사와 함께하는 안전하고 확실한 채무해결
-              </p>
-            </div>
-
+          <div className="mx-auto flex max-w-4xl flex-col gap-8 text-center">
+            {/* 서비스 특징 */}
             <div className="mt-10 lg:mt-12">
-              <ul className="text-muted-foreground flex flex-wrap justify-center gap-6 text-sm lg:text-base">
+              <ul className="text-muted-foreground flex flex-wrap justify-center gap-3 text-sm lg:text-base">
                 <li className="flex items-center gap-2.5 whitespace-nowrap">
-                  <Clock4Icon className="size-5 text-blue-600" />
+                  <Clock4Icon className="size-5" />
                   24시간 온라인 상담
                 </li>
+                ·
                 <li className="flex items-center gap-2.5 whitespace-nowrap">
-                  <ScaleIcon className="size-5 text-green-600" />
+                  <ScaleIcon className="size-5" />
                   변호사 직접 상담
                 </li>
+                ·
                 <li className="flex items-center gap-2.5 whitespace-nowrap">
-                  <WrenchIcon className="size-5 text-purple-600" />
+                  <WrenchIcon className="size-5" />
                   신용회복까지 완벽지원
                 </li>
               </ul>
             </div>
 
+            {/* 메인 헤딩 */}
+            <div className="">
+              <h1 className="mb-4 text-4xl font-bold md:text-6xl">
+                <div className="justify-center text-center font-['Pretendard'] text-6xl leading-[60px] font-bold text-black">
+                  빚에서 벗어나는
+                </div>
+                <AuroraText colors={["#6bff6b", "#137a13"]} speed={5}>
+                  새로운 시작
+                </AuroraText>
+              </h1>
+              <div className="flex flex-col">
+                <TextAnimate
+                  animation="slideLeft"
+                  className="font-light text-gray-500"
+                >
+                  개인회생 · 파산 전문 법무법인 변호사와
+                </TextAnimate>
+                <TextAnimate
+                  animation="slideLeft"
+                  delay={0.5}
+                  className="font-light text-gray-500"
+                >
+                  안전하고 확실한 채무 해결과 신용 회복을 함께해요
+                </TextAnimate>
+              </div>
+            </div>
+
+            {/*버튼 영역 */}
+            <div className="flex justify-center gap-4">
+              <Button variant={"outline"} className="rounded-full border px-5">
+                <span className="text-zinc-800">서비스가 궁금해요</span>
+              </Button>
+              <ConsultationButton onClick={() => {}} />
+            </div>
+
             {/* 신뢰도 지표 */}
-            <div className="mt-16 grid grid-cols-2 gap-8 text-center md:grid-cols-3">
-              <div>
-                <NumberTicker
-                  value={1000}
-                  className="mb-2 text-4xl font-bold tracking-tighter whitespace-pre-wrap text-black dark:text-white"
-                />
-                <span className="text-md ml-2 text-black">건+</span>
-                <div className="text-sm text-gray-500">성공 사례</div>
-              </div>
-              <div>
-                <NumberTicker
-                  value={15}
-                  className="mb-2 text-4xl font-bold tracking-tighter whitespace-pre-wrap text-black dark:text-white"
-                />
-                <span className="text-md ml-2 text-black">년+</span>
-                <div className="text-sm text-gray-500">전문 경력</div>
-              </div>
-              <div>
-                <NumberTicker
-                  value={98}
-                  className="mb-2 text-4xl font-bold tracking-tighter whitespace-pre-wrap text-black dark:text-white"
-                />
-                <span className="text-md ml-2 text-black">%</span>
-                <div className="text-sm text-gray-500">고객 만족도</div>
+            <div className="mt-8 flex flex-col gap-8">
+              <div className="h-[1px] w-full" />
+
+              <div className="flex flex-wrap items-center justify-center gap-4 md:justify-between">
+                {reliabilityNumberItems.map((item) => (
+                  <ReliabilityNumberItem
+                    key={item.description}
+                    value={item.value}
+                    unit={item.unit}
+                    description={item.description}
+                  />
+                ))}
               </div>
             </div>
           </div>

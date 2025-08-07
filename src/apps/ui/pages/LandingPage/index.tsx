@@ -1,6 +1,5 @@
 import Header from "@/apps/ui/pages/LandingPage/sections/header";
 import HeroSection from "@/apps/ui/pages/LandingPage/sections/Hero_Section";
-import PricingSection from "@/apps/ui/pages/LandingPage/sections/Pricing_Section";
 import ServicesSection from "@/apps/ui/pages/LandingPage/sections/Services_Section";
 
 import ContactForm from "./sections/contact-form";
@@ -17,14 +16,10 @@ export const LandingPage = () => {
       <Header />
       <HeroSection />
       <ServicesSection />
-      <PricingSection />
-      {/* <FAQSection /> */}
-      <ContactForm />
+      {/* <PricingSection /> */}
       <Faq2Section />
-      {/* <LocationSection /> */}
+      <ContactForm />
       <Location2Section />
-      {/* <Footer /> */}
-      {/* <Footer2Section /> */}
       <Footer3Section />
     </div>
   );

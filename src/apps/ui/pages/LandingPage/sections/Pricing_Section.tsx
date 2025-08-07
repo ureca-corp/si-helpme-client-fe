@@ -126,17 +126,12 @@ export default function PricingSection() {
                   {/* 가격 정보 */}
                   <div className="text-center">
                     <div className="mb-2">
-                      <div className="flex flex-col items-center">
-                        <span className="text-3xl font-bold text-gray-800">
-                          {plan.discountedPrice}
-                        </span>
-                        <span className="mb-1 text-sm text-gray-600">
-                          일시납 시
-                        </span>
-                        <span className="text-lg text-gray-500">
-                          {plan.price}
-                        </span>
-                      </div>
+                      <span className="text-3xl font-bold text-gray-800">
+                        {plan.discountedPrice}
+                      </span>
+                      <span className="ml-2 text-lg text-gray-500 line-through">
+                        {plan.price}
+                      </span>
                     </div>
                     <p className="text-sm text-gray-600">{plan.installment}</p>
                   </div>

@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-import { Menu, Phone, X } from "lucide-react";
-
-import { BrandLogo } from "@/apps/ui/common-components/BrandLogo";
-import { Button } from "@/shadcn/components/ui/button";
+import { BrandLogoWithLabel } from "@/apps/ui/common-components/BrandLogoWithLabel";
+import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,10 +19,7 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* 로고 */}
-          <div className="flex items-center space-x-2">
-            <BrandLogo />
-            <span className="text-xl font-bold text-gray-800">살려줘닷컴</span>
-          </div>
+          <BrandLogoWithLabel />
 
           {/* 데스크톱 네비게이션 */}
           <nav className="hidden items-center space-x-8 md:flex">
@@ -55,26 +50,12 @@ export default function Header() {
           </nav>
 
           {/* CTA 버튼들 */}
-          <div className="hidden items-center space-x-3 md:flex">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => window.open("tel:02-1234-5678")}
-              className="hover:bg-blue-50"
-            >
-              <Phone className="mr-2 h-4 w-4" />
-              바로전화
-            </Button>
-            <Button
-              onClick={() => scrollToSection("contact")}
-              className="bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600"
-            >
-              상담예약
-            </Button>
+          <div className="items-center space-x-3 md:flex">
+            <ConsultationButton onClick={() => scrollToSection("contact")} />
           </div>
 
           {/* 모바일 메뉴 버튼 */}
-          <button
+          {/* <button
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
@@ -83,13 +64,13 @@ export default function Header() {
             ) : (
               <Menu className="h-6 w-6" />
             )}
-          </button>
+          </button> */}
         </div>
 
         {/* 모바일 메뉴 */}
-        {isMenuOpen && (
+        {/* {isMenuOpen && (
           <div className="mt-4 border-t border-gray-200 pb-4 md:hidden">
-            <nav className="mt-4 flex flex-col space-y-4">
+            <div className="mt-4 flex w-full flex-col items-center space-y-4">
               <button
                 onClick={() => scrollToSection("services")}
                 className="text-left text-gray-600 transition-colors hover:text-blue-600"
@@ -114,26 +95,10 @@ export default function Header() {
               >
                 오시는길
               </button>
-              <div className="flex flex-col space-y-2 pt-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => window.open("tel:02-1234-5678")}
-                  className="justify-start"
-                >
-                  <Phone className="mr-2 h-4 w-4" />
-                  바로전화
-                </Button>
-                <Button
-                  onClick={() => scrollToSection("contact")}
-                  className="bg-gradient-to-r from-blue-500 to-green-500"
-                >
-                  상담예약
-                </Button>
-              </div>
-            </nav>
+              <ConsultationButton onClick={() => scrollToSection("contact")} />
+            </div>
           </div>
-        )}
+        )} */}
       </div>
     </header>
   );

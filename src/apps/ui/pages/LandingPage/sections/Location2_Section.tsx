@@ -2,8 +2,8 @@ import { MapPin } from "lucide-react";
 
 export const Location2Section = () => {
   return (
-    <div>
-      <div className="flex h-120 items-center justify-center bg-gray-200">
+    <div className="flex w-full flex-col items-center justify-center px-6 pb-20">
+      <div className="flex h-120 w-full max-w-[800px] items-center justify-center bg-gray-200 md:h-120">
         <div className="text-center text-gray-500">
           <MapPin className="mx-auto mb-4 h-12 w-12" />
           <p>지도 API 연동 영역</p>
