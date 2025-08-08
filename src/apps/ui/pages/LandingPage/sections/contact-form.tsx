@@ -1,52 +1,37 @@
 import type React from "react";
-import { useState } from "react";
 
-import { ContactForms } from "@/apps/ui/domain-components/landing/Contact_Forms";
+import {
+  ContactFinishDialog,
+} from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
+import {
+  ContactForms,
+} from "@/apps/ui/domain-components/landing/Contact_Forms";
+import { useOverlay } from "@toss/use-overlay";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    message: "",
-    availableTimes: [] as string[],
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const timeOptions = [
-    { id: "morning", label: "오전 (9-12시)" },
-    { id: "afternoon", label: "오후 (12-18시)" },
-    { id: "evening", label: "저녁 (18-21시)" },
-    { id: "anytime", label: "언제나 가능" },
-  ];
-
-  const handleTimeChange = (timeId: string, checked: boolean) => {
-    setFormData((prev) => ({
-      ...prev,
-      availableTimes: checked
-        ? [...prev.availableTimes, timeId]
-        : prev.availableTimes.filter((t) => t !== timeId),
-    }));
-  };
+  const overlay = useOverlay();
 
   const handleSubmit = async () => {
-    setIsSubmitting(true);
-
     // 실제 구현에서는 여기에 폼 제출 로직을 추가
     await new Promise((resolve) => setTimeout(resolve, 100));
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    handleOpenDialog();
+  };
+
+  const handleOpenDialog = () => {
+    overlay.open(({ isOpen, close }) => (
+      <ContactFinishDialog open={isOpen} onClose={close} />
+    ));
   };
 
   return (
     <section
       id="contact"
-      className="flex flex-col items-center bg-neutral-50 px-6 pt-20 pb-8"
+      className="flex flex-col items-center bg-neutral-50 px-6 py-20"
     >
-      <div className="flex w-full max-w-[800px] flex-col items-center justify-center">
-        <div className="mb-16 text-center">
-          <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
+      <div className="flex w-full max-w-[800px] flex-col items-center justify-center gap-8">
+        <div className="flex flex-col gap-4 text-center">
+          <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
             상담 신청하기
           </h2>
           <p className="mx-auto max-w-2xl text-lg text-gray-600">

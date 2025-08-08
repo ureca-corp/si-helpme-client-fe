@@ -10,14 +10,11 @@ export const Facility_Desktop = () => {
   const [emblaRef] = useEmblaCarousel(
     {
       loop: true,
-      // align: "start",
-      // slidesToScroll: 1,
-      // containScroll: "trimSnaps",
+      watchDrag: false,
     },
     [
       AutoScroll({
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
+        speed: 1.5,
       }),
     ],
   );
@@ -35,8 +32,9 @@ export const Facility_Desktop = () => {
             >
               <div className="relative overflow-hidden rounded-lg">
                 <ImageZoom>
-                  <div className="aspect-[1.2] w-128 overflow-hidden rounded-lg">
+                  <div className="group relative aspect-[1.2] w-128 overflow-hidden rounded-lg transition-transform duration-800 hover:scale-110">
                     <CustomImage src={src} alt={`Facility ${index + 1}`} />
+                    <div className="pointer-events-none absolute inset-0 rounded-lg bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </div>
                 </ImageZoom>
               </div>

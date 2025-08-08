@@ -1,31 +1,56 @@
 "use client";
 
-import { Clock4Icon, ScaleIcon, WrenchIcon } from "lucide-react";
+import {
+  useEffect,
+  useState,
+} from "react";
 
-import { AuroraBackgroundContainer } from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
-import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
-import { ReliabilityNumberItem } from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
+import {
+  Clock4Icon,
+  ScaleIcon,
+  WrenchIcon,
+} from "lucide-react";
+
+import {
+  AuroraBackgroundContainer,
+} from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
+import {
+  ConsultationButton,
+} from "@/apps/ui/domain-components/landing/ConsultationButton";
+import {
+  ReliabilityNumberItem,
+} from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { Button } from "@/shadcn/components/ui/button";
 
 export default function HeroSection() {
+  const [value1, setValue1] = useState(123);
+  const [value2, setValue2] = useState(0);
+  const [value3, setValue3] = useState(0);
+
+  useEffect(() => {
+    setValue1(1000);
+    setValue2(15);
+    setValue3(98);
+  }, []);
+
   /**
    * 신뢰도 지표 아이템 값
    */
   const reliabilityNumberItems = [
     {
-      value: 1000,
+      value: value1,
       unit: "건+",
       description: "성공 사례",
     },
     {
-      value: 15,
+      value: value2,
       unit: "년+",
       description: "전문 경력",
     },
     {
-      value: 98,
+      value: value3,
       unit: "%",
       description: "고객 만족도",
     },
@@ -34,7 +59,8 @@ export default function HeroSection() {
   return (
     <AuroraBackgroundContainer showRadialGradient>
       <section
-        className="flex min-h-[100vh] flex-col items-center justify-center"
+        id="hero"
+        className="z-1 flex min-h-[100vh] flex-col items-center justify-center"
         //bg-gradient-to-br from-blue-50 via-white to-green-50 py-40
       >
         <div className="container mx-auto px-4">

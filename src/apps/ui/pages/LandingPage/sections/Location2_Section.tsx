@@ -1,12 +1,19 @@
+import {
+  MapPin,
+  Train,
+} from "lucide-react";
+
 import { NaverMap } from "@/apps/ui/domain-components/landing/Location";
-import { MapPin, Train } from "lucide-react";
 
 export const Location2Section = () => {
   const DESTINATION_LAT = 37.49464594474945;
   const DESTINATION_LNG = 127.0150907325072;
 
   return (
-    <section className="w-full bg-gradient-to-b from-white to-gray-50 py-20">
+    <section
+      id="location"
+      className="w-full bg-gradient-to-b from-white to-gray-50 py-20"
+    >
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl">

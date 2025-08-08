@@ -1,4 +1,4 @@
-import { NumberTicker } from "@/components/magicui/number-ticker";
+import NumberFlow from "@number-flow/react";
 
 interface ReliabilityNumberItemProps {
   value: number;
@@ -20,7 +20,7 @@ export const ReliabilityNumberItem = ({
   return (
     <div className="flex flex-col items-center gap-2">
       <div className="flex items-center gap-1">
-        <NumberTicker
+        <NumberFlow
           value={value}
           className="text-4xl font-bold tracking-tighter whitespace-pre-wrap text-black dark:text-white"
         />

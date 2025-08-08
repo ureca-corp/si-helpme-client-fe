@@ -1,7 +1,11 @@
 import { useState } from "react";
 
-import { BrandLogoWithLabel } from "@/apps/ui/common-components/BrandLogoWithLabel";
-import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
+import {
+  BrandLogoWithLabel,
+} from "@/apps/ui/common-components/BrandLogoWithLabel";
+import {
+  ConsultationButton,
+} from "@/apps/ui/domain-components/landing/ConsultationButton";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +23,12 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* 로고 */}
-          <BrandLogoWithLabel />
+          <div
+            className="cursor-pointer"
+            onClick={() => scrollToSection("hero")}
+          >
+            <BrandLogoWithLabel />
+          </div>
 
           {/* 데스크톱 네비게이션 */}
           <nav className="hidden items-center space-x-8 md:flex">
