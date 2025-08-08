@@ -6,6 +6,7 @@ import ContactForm from "./sections/contact-form";
 import { Faq2Section } from "./sections/Faq2_Section";
 import { Footer3Section } from "./sections/Footer3_Section";
 import { Location2Section } from "./sections/Location2_Section";
+import PricingSection from "./sections/Pricing_Section";
 
 /**
  * 랜딩 페이지
@@ -16,7 +17,7 @@ export const LandingPage = () => {
       <Header />
       <HeroSection />
       <ServicesSection />
-      {/* <PricingSection /> */}
+      <PricingSection />
       <Faq2Section />
       <ContactForm />
       <Location2Section />

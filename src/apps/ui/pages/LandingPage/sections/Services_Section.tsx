@@ -11,10 +11,15 @@ import {
   UserStar,
 } from "lucide-react";
 
-import { ServiceMain_Item } from "@/apps/ui/domain-components/landing/ServiceMain_Item";
-import { ServiceSub_Item } from "@/apps/ui/domain-components/landing/ServiceSub_Item";
+import {
+  ServiceMain_Item,
+} from "@/apps/ui/domain-components/landing/ServiceMain_Item";
+import {
+  ServiceSub_Item,
+} from "@/apps/ui/domain-components/landing/ServiceSub_Item";
 
 import { Facility_Desktop } from "./components/Facility_Desktop";
+import { Facility_Mobile } from "./components/Facility_Mobile";
 
 export default function ServicesSection() {
   const subItems = [
@@ -182,8 +187,11 @@ export default function ServicesSection() {
           </div>
         </div>
 
-        <div className="mt-8 flex w-full">
+        <div className="mt-15 hidden w-full lg:flex">
           <Facility_Desktop />
+        </div>
+        <div className="mt-15 flex w-full lg:hidden">
+          <Facility_Mobile />
         </div>
       </div>
     </section>

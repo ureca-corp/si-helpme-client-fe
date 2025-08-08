@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Input } from "@/shadcn/components/ui/input";
+
 import { ConsultationButton } from "../ConsultationButton";
 
 interface ContactFormsProps {
@@ -20,26 +22,25 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
         <div className="justify-center self-stretch font-['Pretendard'] text-sm leading-tight font-normal text-neutral-950">
           성함
         </div>
-        <div className="inline-flex h-9 items-center justify-center gap-2.5 self-stretch overflow-hidden rounded-lg bg-white/0 px-3 py-1 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] outline outline-1 outline-offset-[-1px] outline-neutral-200">
-          <div className="flex-1 justify-center font-['Pretendard'] text-sm leading-tight font-normal text-neutral-500">
+        {/* <div className="flex-1 justify-center font-['Pretendard'] text-sm leading-tight font-normal text-neutral-500">
             성함을 입력해주세요.
-          </div>
-        </div>
+          </div> */}
+        <Input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="성함을 입력해주세요."
+        />
       </div>
       <div className="flex flex-col items-start justify-start gap-3 self-stretch">
         <div className="justify-center self-stretch font-['Pretendard'] text-sm leading-tight font-normal text-neutral-950">
           전화번호
         </div>
         <div className="inline-flex items-center justify-center gap-2 self-stretch">
-          <div className="flex h-9 flex-1 items-center justify-center gap-2.5 overflow-hidden rounded-lg bg-white/0 px-3 py-1 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] outline outline-1 outline-offset-[-1px] outline-neutral-200">
-            <div className="justify-center font-['Pretendard'] text-sm leading-tight font-normal text-neutral-500">
-              010
-            </div>
-          </div>
+          <Input value={"010"} disabled />
           <div className="justify-center font-['Pretendard'] text-sm leading-tight font-normal text-neutral-950">
             -
           </div>
-          <div className="h-9 flex-1 rounded-lg border border-neutral-200 bg-white/0 px-3 py-1 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)]" />
+          <Input value={"1234"} disabled />
           <div className="justify-center font-['Pretendard'] text-sm leading-tight font-normal text-neutral-950">
             -
           </div>

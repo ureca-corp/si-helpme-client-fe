@@ -1,4 +1,4 @@
-import Autoplay from "embla-carousel-autoplay";
+import AutoScroll from "embla-carousel-auto-scroll";
 import useEmblaCarousel from "embla-carousel-react";
 
 import { CustomImage } from "@/apps/ui/common-components/CustomImage";
@@ -15,8 +15,7 @@ export const Facility_Desktop = () => {
       // containScroll: "trimSnaps",
     },
     [
-      Autoplay({
-        delay: 4000,
+      AutoScroll({
         stopOnInteraction: false,
         stopOnMouseEnter: true,
       }),

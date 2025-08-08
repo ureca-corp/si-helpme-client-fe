@@ -87,7 +87,7 @@ export const Faq2Section = () => {
   ];
 
   return (
-    <section className="flex flex-col items-center px-6 py-[100px]">
+    <section id="faq" className="flex flex-col items-center px-6 py-[100px]">
       <div className="flex w-full max-w-[1200px] flex-col">
         <div className="mb-16 text-center">
           <h1 className="mb-4 text-3xl font-semibold md:text-4xl">

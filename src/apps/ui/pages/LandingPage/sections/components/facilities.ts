@@ -3,6 +3,7 @@
  */
 export const facilities = [
   "/사무실 전경.jpg",
+  "/room.jpg",
   "/a1.jpg",
   "/a-2.jpg",
   "/a-3.jpg",
