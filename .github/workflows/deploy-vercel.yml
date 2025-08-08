@@ -25,26 +25,30 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install
 
       - name: Pull Vercel environment (production)
-        run: npx vercel pull --yes --environment=production
+        run: bunx vercel pull --yes --environment=production
 
       - name: Build (Vercel)
-        run: npx vercel build --prod
+        run: bunx vercel build --prod
 
       - name: Deploy to Vercel (Production)
         id: vercel_deploy
         run: |
           set -o pipefail
-          output=$(npx vercel deploy --prebuilt --prod)
+          output=$(bunx vercel deploy --prebuilt --prod)
           echo "$output"
           url=$(echo "$output" | grep -Eo 'https://[a-zA-Z0-9._-]+\.vercel\.app[^ ]*' | tail -n 1 || true)
           echo "url=${url}" >> $GITHUB_OUTPUT
