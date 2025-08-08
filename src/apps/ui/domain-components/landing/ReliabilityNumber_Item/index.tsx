@@ -18,17 +18,17 @@ export const ReliabilityNumberItem = ({
   description,
 }: ReliabilityNumberItemProps) => {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center gap-2 sm:w-[106px] md:w-[150px]">
       <div className="flex items-center gap-1">
         <NumberFlow
           value={value}
-          className="text-4xl font-bold tracking-tighter whitespace-pre-wrap text-black dark:text-white"
+          className="text-2xl font-bold tracking-tighter whitespace-pre-wrap text-black md:text-4xl dark:text-white"
         />
-        <span className="text-4xl font-bold tracking-tighter whitespace-pre-wrap text-black">
+        <span className="text-2xl font-bold tracking-tighter whitespace-pre-wrap text-black md:text-4xl">
           {unit}
         </span>
       </div>
-      <div className="text-sm text-gray-500">{description}</div>
+      <div className="text-sm text-gray-500 md:text-base">{description}</div>
     </div>
   );
 };

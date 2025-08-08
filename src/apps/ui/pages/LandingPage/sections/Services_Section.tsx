@@ -181,7 +181,16 @@ export default function ServicesSection() {
 
             <div className="grid grid-cols-1 gap-4 gap-x-8 gap-y-6 lg:grid-cols-4">
               {subItems.map((it, index) => {
-                return <ServiceSub_Item key={index} {...it} />;
+                return (
+                  <div
+                    key={index}
+                    data-aos="fade-up"
+                    data-aos-delay={index * 10}
+                    className="flex w-full flex-col"
+                  >
+                    <ServiceSub_Item {...it} />
+                  </div>
+                );
               })}
             </div>
           </div>

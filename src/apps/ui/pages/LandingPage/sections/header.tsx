@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import {
   BrandLogoWithLabel,
 } from "@/apps/ui/common-components/BrandLogoWithLabel";
@@ -8,20 +6,17 @@ import {
 } from "@/apps/ui/domain-components/landing/ConsultationButton";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-    setIsMenuOpen(false);
   };
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+    <header className="fixed top-0 right-0 left-0 z-50 flex items-center justify-center border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+      <div className="flex w-full max-w-[1200px] p-6">
+        <div className="flex w-full items-center justify-between">
           {/* 로고 */}
           <div
             className="cursor-pointer"

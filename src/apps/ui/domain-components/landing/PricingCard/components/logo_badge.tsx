@@ -1,7 +1,6 @@
 import { cn } from "@/shadcn/lib/utils";
 
 export const LogoBadge = ({
-  className = "bg-blue-500",
   plan = "basic",
 }: {
   className?: string;

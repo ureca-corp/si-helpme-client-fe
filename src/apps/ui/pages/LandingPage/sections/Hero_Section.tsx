@@ -29,6 +29,13 @@ export default function HeroSection() {
   const [value2, setValue2] = useState(0);
   const [value3, setValue3] = useState(0);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   useEffect(() => {
     setValue1(1000);
     setValue2(15);
@@ -67,18 +74,19 @@ export default function HeroSection() {
           <div className="mx-auto flex max-w-4xl flex-col gap-8 text-center">
             {/* 서비스 특징 */}
             <div className="mt-10 lg:mt-12">
-              <ul className="text-muted-foreground flex flex-wrap justify-center gap-3 text-sm lg:text-base">
-                <li className="flex items-center gap-2.5 whitespace-nowrap">
+              <ul className="text-muted-foreground flex flex-col flex-wrap justify-center gap-3 text-sm sm:flex-row lg:text-base">
+                <li className="flex items-center justify-center gap-2.5 whitespace-nowrap">
                   <Clock4Icon className="size-5" />
                   24시간 온라인 상담
                 </li>
-                ·
-                <li className="flex items-center gap-2.5 whitespace-nowrap">
+                <span className="hidden sm:inline">·</span>
+                <li className="flex items-center justify-center gap-2.5 whitespace-nowrap">
                   <ScaleIcon className="size-5" />
                   변호사 직접 상담
                 </li>
-                ·
-                <li className="flex items-center gap-2.5 whitespace-nowrap">
+                <span className="hidden sm:inline">·</span>
+
+                <li className="flex items-center justify-center gap-2.5 whitespace-nowrap">
                   <WrenchIcon className="size-5" />
                   신용회복까지 완벽지원
                 </li>
@@ -88,7 +96,7 @@ export default function HeroSection() {
             {/* 메인 헤딩 */}
             <div className="">
               <h1 className="mb-4 text-4xl font-bold md:text-6xl">
-                <div className="justify-center text-center font-['Pretendard'] text-6xl leading-[60px] font-bold text-black">
+                <div className="justify-center text-center font-['Pretendard'] text-5xl leading-[60px] font-bold text-black md:text-7xl">
                   빚에서 벗어나는
                 </div>
                 <AuroraText colors={["#6bff6b", "#137a13"]} speed={5}>
@@ -114,17 +122,25 @@ export default function HeroSection() {
 
             {/*버튼 영역 */}
             <div className="flex justify-center gap-4">
-              <Button variant={"outline"} className="rounded-full border px-5">
+              <Button
+                variant={"outline"}
+                className="rounded-full border px-5"
+                onClick={() => scrollToSection("services")}
+              >
                 <span className="text-zinc-800">서비스가 궁금해요</span>
               </Button>
-              <ConsultationButton onClick={() => {}} />
+              <ConsultationButton onClick={() => scrollToSection("contact")} />
             </div>
 
             {/* 신뢰도 지표 */}
             <div className="mt-8 flex flex-col gap-8">
-              <div className="h-[1px] w-full" />
+              <div
+                className="h-px w-full rounded-full bg-gray-200 dark:bg-gray-700"
+                role="separator"
+                aria-orientation="horizontal"
+              />
 
-              <div className="flex flex-wrap items-center justify-center gap-4 md:justify-between">
+              <div className="flex flex-wrap items-center justify-center gap-8">
                 {reliabilityNumberItems.map((item) => (
                   <ReliabilityNumberItem
                     key={item.description}

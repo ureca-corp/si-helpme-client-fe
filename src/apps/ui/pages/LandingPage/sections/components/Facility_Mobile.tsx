@@ -10,22 +10,22 @@ export const Facility_Mobile = () => {
   const [emblaRef] = useEmblaCarousel(
     {
       loop: true,
+      watchDrag: false,
     },
     [
       AutoScroll({
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
+        speed: 1.5,
       }),
     ],
   );
   const [emblaRef2] = useEmblaCarousel(
     {
       loop: true,
+      watchDrag: false,
     },
     [
       AutoScroll({
-        stopOnInteraction: false,
-        stopOnMouseEnter: true,
+        speed: 1.5,
       }),
     ],
   );
