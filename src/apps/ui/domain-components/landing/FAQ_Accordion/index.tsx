@@ -26,7 +26,7 @@ const FaqAccordionTrigger = React.forwardRef<
       ref={ref}
       className={cn(
         "flex flex-1 items-center justify-between rounded-xl px-4 py-4 text-left font-light transition-all duration-200",
-        "hover:bg-gray-50 hover:font-bold hover:text-neutral-500",
+        "hover:bg-gray-50 hover:text-neutral-500",
         "text-neutral-950",
         "data-[state=open]:rounded-full data-[state=open]:border-gray-200 data-[state=open]:bg-gray-100 data-[state=open]:font-bold data-[state=open]:text-neutral-500",
         "[&[data-state=open]>svg]:rotate-180",

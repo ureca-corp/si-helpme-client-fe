@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-import { BrandLogoWithLabel } from "@/apps/ui/common-components/BrandLogoWithLabel";
+import {
+  BrandLogoWithLabel,
+} from "@/apps/ui/common-components/BrandLogoWithLabel";
 
 export const Footer3Section = () => {
   const logoImage = "/법률사무소로고.png";
@@ -18,7 +20,7 @@ export const Footer3Section = () => {
       <div className="flex w-full max-w-[1200px] flex-col items-start justify-start gap-8">
         <div className="flex flex-col items-start justify-between gap-8 self-stretch md:flex-row">
           <div className="flex flex-col items-start justify-start gap-8">
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <Image src={logoImage} alt="logo" width={196} height={128} />
 
               <BrandLogoWithLabel color="white" />
@@ -47,7 +49,7 @@ export const Footer3Section = () => {
             </div>
           </div>
         </div>
-        <div className="h-0 self-stretch outline-1 outline-offset-[-0.50px] outline-white/20"></div>
+        <div className="h-0 self-stretch outline-1 outline-offset-[-0.50px] outline-white/10"></div>
         <div className="flex flex-col items-center justify-center self-stretch">
           <div className="justify-center text-center font-['Pretendard'] text-sm leading-tight font-light text-white/60">
             © 2025 도약법률사무소. All rights reserved. 본 사이트의 모든

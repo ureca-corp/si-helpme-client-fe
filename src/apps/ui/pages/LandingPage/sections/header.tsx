@@ -4,6 +4,7 @@ import {
 import {
   ConsultationButton,
 } from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { Button } from "@/shadcn/components/ui/button";
 
 export default function Header() {
   const scrollToSection = (sectionId: string) => {
@@ -26,31 +27,39 @@ export default function Header() {
           </div>
 
           {/* 데스크톱 네비게이션 */}
-          <nav className="hidden items-center space-x-8 md:flex">
-            <button
+          <nav className="hidden items-center space-x-2 md:flex">
+            <Button
+              variant="ghost"
+              size="lg"
               onClick={() => scrollToSection("services")}
-              className="text-gray-600 transition-colors hover:text-blue-600"
+              className="text-gray-507 font-light transition-colors hover:font-semibold hover:text-gray-900"
             >
               서비스
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
+              size="lg"
               onClick={() => scrollToSection("faq")}
-              className="text-gray-600 transition-colors hover:text-blue-600"
+              className="font-light text-gray-700 transition-colors hover:font-semibold hover:text-gray-900"
             >
               FAQ
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
+              size="lg"
               onClick={() => scrollToSection("contact")}
-              className="text-gray-600 transition-colors hover:text-blue-600"
+              className="text-gray-507 font-light transition-colors hover:font-semibold hover:text-gray-900"
             >
               상담신청
-            </button>
-            <button
+            </Button>
+            <Button
+              variant="ghost"
+              size="lg"
               onClick={() => scrollToSection("location")}
-              className="text-gray-600 transition-colors hover:text-blue-600"
+              className="font-light text-gray-700 transition-colors hover:font-semibold hover:text-gray-900"
             >
               오시는길
-            </button>
+            </Button>
           </nav>
 
           {/* CTA 버튼들 */}

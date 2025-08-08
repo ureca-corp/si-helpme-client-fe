@@ -65,8 +65,8 @@ const renderIcon = (
 ) => {
   const IconComponent = icon;
   return (
-    <div className="flex h-5 w-5 flex-shrink-0 items-center justify-center">
-      <IconComponent className={`h-4 w-4 ${color}`} />
+    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center">
+      <IconComponent className={`h-5 w-5 ${color}`} />
     </div>
   );
 };
@@ -78,7 +78,7 @@ const renderOtherServiceIcon = (
   const IconComponent = icon;
   return (
     <div className="flex h-6 w-6 items-center justify-center">
-      <IconComponent className={`h-4 w-4 ${color}`} />
+      <IconComponent className={`h-5 w-5 ${color}`} />
     </div>
   );
 };
@@ -100,12 +100,14 @@ export default function PricingCard({
     <div className="relative h-full">
       {/* 추천 배지 */}
       {isRecommended && (
-        <div className="absolute left-[50%] z-10 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-start justify-start gap-2.5 rounded-[100px] bg-indigo-50 p-1.5 outline-[3px] outline-offset-[-3px] outline-blue-500">
-          <div
-            className={`px-3 py-2 ${config.badgeColor} inline-flex items-center justify-center gap-2.5 rounded-[100px]`}
-          >
-            <div className="justify-start font-['Pretendard'] text-sm font-bold text-indigo-50">
-              {recommendedText}
+        <div className="badge-wave">
+          <div className="absolute left-[50%] z-10 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-start justify-start gap-2.5 rounded-[100px] bg-indigo-50 p-1.5 outline-[3px] outline-offset-[-3px] outline-blue-500">
+            <div
+              className={`px-3 py-2 ${config.badgeColor} inline-flex items-center justify-center gap-2.5 rounded-[100px]`}
+            >
+              <div className="justify-start font-['Pretendard'] text-sm font-bold text-indigo-50">
+                {recommendedText}
+              </div>
             </div>
           </div>
         </div>
@@ -167,7 +169,7 @@ export default function PricingCard({
           <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
             <div className="inline-flex items-center justify-center gap-2.5 self-stretch">
               <div className="h-0 flex-1 outline-1 outline-offset-[-0.50px] outline-zinc-100"></div>
-              <div className="justify-start font-['Pretendard'] text-xs font-light text-zinc-400">
+              <div className="justify-start font-['Pretendard'] text-xs font-light text-zinc-600">
                 서비스 구성
               </div>
               <div className="h-0 flex-1 outline-1 outline-offset-[-0.50px] outline-zinc-100"></div>
@@ -200,7 +202,7 @@ export default function PricingCard({
             <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
               <div className="inline-flex items-center justify-center gap-2.5 self-stretch">
                 <div className="h-0 flex-1 outline-1 outline-offset-[-0.50px] outline-zinc-100"></div>
-                <div className="justify-start font-['Pretendard'] text-xs font-light text-zinc-400">
+                <div className="justify-start font-['Pretendard'] text-xs font-light text-zinc-600">
                   기타 서비스
                 </div>
                 <div className="h-0 flex-1 outline-1 outline-offset-[-0.50px] outline-zinc-100"></div>
@@ -228,6 +230,39 @@ export default function PricingCard({
           )}
         </div>
       </div>
+      <style jsx>{`
+        @keyframes badgeBounce {
+          0%,
+          20%,
+          53%,
+          80%,
+          100% {
+            transform: translateY(0);
+          }
+          40%,
+          43% {
+            transform: translateY(-8px);
+          }
+          70% {
+            transform: translateY(-4px);
+          }
+          90% {
+            transform: translateY(-2px);
+          }
+        }
+
+        .badge-wave {
+          animation: badgeBounce 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .badge-wave {
+            animation: none;
+          }
+        }
+      `}</style>
     </div>
   );
 }
