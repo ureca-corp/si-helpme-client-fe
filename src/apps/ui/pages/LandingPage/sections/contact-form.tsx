@@ -1,24 +1,13 @@
 import type React from "react";
 
-import {
-  ContactFinishDialog,
-} from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
-import {
-  ContactForms,
-} from "@/apps/ui/domain-components/landing/Contact_Forms";
-import { useOverlay } from "@toss/use-overlay";
+import { ContactFinishDialog } from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
+import { ContactForms } from "@/apps/ui/domain-components/landing/Contact_Forms";
+import { overlay } from "overlay-kit";
 
 export default function ContactForm() {
-  const overlay = useOverlay();
-
   const handleSubmit = async () => {
     // 실제 구현에서는 여기에 폼 제출 로직을 추가
     await new Promise((resolve) => setTimeout(resolve, 100));
-
-    handleOpenDialog();
-  };
-
-  const handleOpenDialog = () => {
     overlay.open(({ isOpen, close }) => (
       <ContactFinishDialog open={isOpen} onClose={close} />
     ));
