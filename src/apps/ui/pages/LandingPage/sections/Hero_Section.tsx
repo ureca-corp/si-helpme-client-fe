@@ -22,7 +22,7 @@ import {
 } from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { TextAnimate } from "@/components/magicui/text-animate";
-import { Button } from "@/shadcn/components/ui/button";
+import { cn } from "@/shadcn/lib/utils";
 
 export default function HeroSection() {
   const [value1, setValue1] = useState(123);
@@ -122,13 +122,23 @@ export default function HeroSection() {
 
             {/*버튼 영역 */}
             <div className="flex justify-center gap-4">
-              <Button
-                variant={"outline"}
-                className="rounded-full border px-5"
+              <button
+                className={cn(
+                  "group flex h-12 w-40 items-center justify-center rounded-lg py-2 font-bold whitespace-nowrap",
+                  "transition-colors duration-500 ease-in-out",
+                  "border border-gray-300 bg-white hover:bg-gray-100",
+                  "cursor-pointer",
+                )}
                 onClick={() => scrollToSection("services")}
               >
-                <span className="text-zinc-800">서비스가 궁금해요</span>
-              </Button>
+                <span
+                  className={cn(
+                    "font-normal text-black transition-colors duration-100 ease-in-out",
+                  )}
+                >
+                  서비스가 궁금해요
+                </span>
+              </button>
               <ConsultationButton onClick={() => scrollToSection("contact")} />
             </div>
 

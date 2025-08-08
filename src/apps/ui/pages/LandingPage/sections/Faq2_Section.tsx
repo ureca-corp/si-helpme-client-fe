@@ -102,7 +102,6 @@ export const Faq2Section = () => {
           <div className="hidden aspect-[1.4] h-full w-full overflow-hidden rounded-lg md:flex md:aspect-[0.8] md:h-142 md:w-[40%]">
             <div className="relative h-full w-full">
               <CustomImage src={image} alt="이미지" objectFit="cover" />
-              <div className="pointer-events-none absolute inset-0 bg-black/40" />
             </div>
           </div>
           <FaqAccordion type="multiple" className="w-full md:w-[60%]">
