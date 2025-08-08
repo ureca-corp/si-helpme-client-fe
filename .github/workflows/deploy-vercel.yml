@@ -39,16 +39,16 @@ jobs:
         run: bun install
 
       - name: Pull Vercel environment (production)
-        run: bunx vercel pull --yes --environment=production
+        run: bunx vercel pull --yes --environment=production --token=${VERCEL_TOKEN}
 
       - name: Build (Vercel)
-        run: bunx vercel build --prod
+        run: bunx vercel build --prod --token=${VERCEL_TOKEN}
 
       - name: Deploy to Vercel (Production)
         id: vercel_deploy
         run: |
           set -o pipefail
-          output=$(bunx vercel deploy --prebuilt --prod)
+          output=$(bunx vercel deploy --prebuilt --prod --token=${VERCEL_TOKEN})
           echo "$output"
           url=$(echo "$output" | grep -Eo 'https://[a-zA-Z0-9._-]+\.vercel\.app[^ ]*' | tail -n 1 || true)
           echo "url=${url}" >> $GITHUB_OUTPUT
