@@ -5,3 +5,7 @@ declare module "@vercel/analytics/react" {
 declare module "@vercel/speed-insights/react" {
   export const SpeedInsights: React.ComponentType<Record<string, never>>;
 }
+
+declare module "@vercel/speed-insights/next" {
+  export const SpeedInsights: React.ComponentType<Record<string, never>>;
+}
