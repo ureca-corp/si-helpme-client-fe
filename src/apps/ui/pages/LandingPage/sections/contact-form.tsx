@@ -21,7 +21,7 @@ export default function ContactForm() {
   return (
     <section
       id="contact"
-      className="flex flex-col items-center bg-neutral-50 px-6 py-20"
+      className="flex flex-col items-center bg-neutral-50 px-6 py-24"
     >
       <div className="flex w-full max-w-[800px] flex-col items-center justify-center gap-8">
         <div className="flex flex-col gap-4 text-center">

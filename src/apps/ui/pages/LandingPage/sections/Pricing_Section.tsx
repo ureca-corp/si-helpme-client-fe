@@ -6,7 +6,6 @@ import {
   Bell,
   CirclePause,
   CirclePlus,
-  Clock,
   DollarSign,
   Gavel,
   Info,
@@ -18,33 +17,40 @@ import {
   UserStar,
 } from "lucide-react";
 
-import { LogoSVG } from "@/apps/ui/common-components/BrandLogo";
+import { PlanType } from "@/apps/domain/plan/type";
+import { BrandLogo } from "@/apps/ui/common-components/BrandLogo";
 import PricingCard from "@/apps/ui/domain-components/landing/PricingCard";
 import {
   LogoBadge,
 } from "@/apps/ui/domain-components/landing/PricingCard/components/logo_badge";
+import { PricingTabs } from "@/apps/ui/domain-components/landing/PricingTabs";
 import NumberFlow from "@number-flow/react";
 
 export default function PricingSection() {
-  const [paymentType, setPaymentType] = useState<"lump" | "installment">(
-    "installment",
-  );
+  const [isLump, setIsLump] = useState(false);
+
+  const scrollToSection = () => {
+    const element = document.getElementById("contact");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const pricingPlans = [
     {
-      plan: "basic" as const,
+      plan: PlanType.BASIC,
       title: (
         <div className="flex items-center gap-2">
-          <LogoSVG className="h-5 w-auto" color="#00c950" />
+          <BrandLogo className="h-5 w-auto" color="#00c950" />
           <LogoBadge plan="basic" />
         </div>
       ),
-      price: <NumberFlow value={paymentType === "lump" ? 148 : 23} />,
+      price: <NumberFlow value={isLump ? 148 : 23} />,
       description:
         "서류를 직접 발급하실 수 있고, 비용 절감을 우선적으로 생각하시는 분들께 추천드립니다.",
       services: [
         {
-          icon: Clock,
+          icon: AlarmClockCheck,
           title: "3일 내 접수 완료",
         },
         {
@@ -88,14 +94,14 @@ export default function PricingSection() {
       ],
     },
     {
-      plan: "standard" as const,
+      plan: PlanType.STANDARD,
       title: (
         <div className="flex items-center gap-2">
-          <LogoSVG className="h-5 w-auto" />
+          <BrandLogo className="h-5 w-auto" />
           <LogoBadge plan="standard" />
         </div>
       ),
-      price: <NumberFlow value={paymentType === "lump" ? 195 : 30} />,
+      price: <NumberFlow value={isLump ? 195 : 30} />,
       description:
         "채무 조정 경험이 없고, 서류 발급부터 이후 절차까지 도움이 필요하신 분들께 추천드립니다.",
       services: [
@@ -119,16 +125,17 @@ export default function PricingSection() {
         },
       ],
       isRecommended: true,
+      recommendedText: "변호사님 추천",
     },
     {
-      plan: "pro" as const,
+      plan: PlanType.PRO,
       title: (
         <div className="flex items-center gap-2">
-          <LogoSVG className="h-5 w-auto" color="#000000" />
+          <BrandLogo className="h-5 w-auto" color="#000000" />
           <LogoBadge plan="pro" />
         </div>
       ),
-      price: <NumberFlow value={paymentType === "lump" ? 255 : 39} />,
+      price: <NumberFlow value={isLump ? 255 : 39} />,
       description:
         "스탠다드 서비스 이외에, 전문 변호사의 추가적인 도움이 필요하신 분들께 추천드립니다.",
       services: [
@@ -174,7 +181,7 @@ export default function PricingSection() {
 
   return (
     <section id="pricing" className="relative">
-      <div className="mx-auto w-full max-w-[1200px] px-4 py-20">
+      <div className="mx-auto w-full max-w-[1200px] px-4 py-24">
         <div className="inline-flex w-full max-w-[1200px] flex-col items-center justify-start gap-16">
           <div className="flex flex-col items-center justify-start gap-4 self-stretch">
             <div className="justify-center self-stretch text-center font-['Pretendard'] text-3xl leading-tight font-bold text-zinc-800 md:text-4xl md:leading-[63px] lg:text-5xl">
@@ -185,47 +192,23 @@ export default function PricingSection() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-start gap-20 self-stretch">
-            <div className="inline-flex items-start justify-start rounded-[100px] bg-zinc-200/60 p-1">
-              <button
-                onClick={() => setPaymentType("lump")}
-                className={`flex items-center justify-center rounded-[100px] px-4 py-2 transition-colors ${
-                  paymentType === "lump" ? "bg-white" : ""
-                }`}
-              >
-                <div className="justify-center text-center font-['Pretendard'] text-sm text-black">
-                  일시납
-                </div>
-              </button>
-              <button
-                onClick={() => setPaymentType("installment")}
-                className={`flex items-center justify-center gap-2 rounded-[100px] px-4 py-2 transition-colors ${
-                  paymentType === "installment" ? "bg-white" : ""
-                }`}
-              >
-                <div className="justify-center text-center font-['Pretendard'] text-sm text-black">
-                  분납
-                </div>
-                <div className="flex items-center justify-center rounded-[100px] bg-zinc-100 px-1.5 py-0.5">
-                  <div className="justify-center text-center font-['Pretendard'] text-[10px] font-light text-stone-500">
-                    최대 7개월
-                  </div>
-                </div>
-              </button>
-            </div>
+          <PricingTabs isLump={isLump} setIsLump={setIsLump} />
 
+          <div className="flex flex-col items-center justify-start gap-20 self-stretch">
             <div className="flex flex-col gap-8 self-stretch lg:grid lg:grid-cols-3 lg:items-stretch">
               {pricingPlans.map((plan, index) => (
                 <PricingCard
                   key={index}
                   plan={plan.plan}
                   title={plan.title}
-                  payType={paymentType}
+                  isLump={isLump}
                   price={plan.price}
                   description={plan.description}
                   services={plan.services}
                   otherServices={plan.otherServices}
                   isRecommended={plan.isRecommended}
+                  recommendedText={plan.recommendedText}
+                  onClick={scrollToSection}
                 />
               ))}
             </div>

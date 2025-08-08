@@ -12,7 +12,7 @@ export const Location2Section = () => {
   return (
     <section
       id="location"
-      className="w-full bg-gradient-to-b from-white to-gray-50 py-20"
+      className="flex w-full flex-col items-center bg-gradient-to-b from-white to-gray-50 py-24"
     >
       <div className="container mx-auto px-6">
         <div className="mx-auto max-w-3xl text-center">

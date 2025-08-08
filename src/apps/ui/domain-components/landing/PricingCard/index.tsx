@@ -1,5 +1,6 @@
 import React, { ReactNode } from "react";
 
+import { PlanType } from "@/apps/domain/plan/type";
 import { Button } from "@/shadcn/components/ui/button";
 
 interface ServiceItem {
@@ -9,21 +10,21 @@ interface ServiceItem {
 }
 
 interface PricingCardProps {
-  plan: "basic" | "standard" | "pro";
+  plan: PlanType;
   title: ReactNode;
-  payType?: "lump" | "installment";
+  isLump?: boolean;
   price: ReactNode;
   description: string;
   services: ServiceItem[];
   otherServices?: ServiceItem[];
   isRecommended?: boolean;
   recommendedText?: string;
+  onClick?: () => void;
 }
 
-/// TODO: 플랜 enum으로 대응
-const getPlanConfig = (plan: "basic" | "standard" | "pro") => {
+const getPlanConfig = (plan: PlanType) => {
   switch (plan) {
-    case "basic":
+    case PlanType.BASIC:
       return {
         color: "emerald",
         borderColor: "outline-emerald-300",
@@ -34,7 +35,7 @@ const getPlanConfig = (plan: "basic" | "standard" | "pro") => {
         titleColor: "text-black",
         priceColor: "text-black",
       };
-    case "standard":
+    case PlanType.STANDARD:
       return {
         color: "blue",
         borderColor: "outline-blue-500/60",
@@ -45,13 +46,13 @@ const getPlanConfig = (plan: "basic" | "standard" | "pro") => {
         titleColor: "text-black",
         priceColor: "text-black",
       };
-    case "pro":
+    case PlanType.PRO:
       return {
         color: "black",
-        borderColor: "outline-stone-500",
+        borderColor: "outline-black/50",
         bgColor: "bg-white",
         buttonColor: "bg-black text-white border border-zinc-100",
-        iconColor: "text-black",
+        iconColor: "text-black/70",
         badgeColor: "bg-black",
         titleColor: "text-black",
         priceColor: "text-black",
@@ -59,40 +60,17 @@ const getPlanConfig = (plan: "basic" | "standard" | "pro") => {
   }
 };
 
-const renderIcon = (
-  icon: React.ComponentType<{ className?: string }>,
-  color: string,
-) => {
-  const IconComponent = icon;
-  return (
-    <div className="flex h-6 w-6 flex-shrink-0 items-center justify-center">
-      <IconComponent className={`h-5 w-5 ${color}`} />
-    </div>
-  );
-};
-
-const renderOtherServiceIcon = (
-  icon: React.ComponentType<{ className?: string }>,
-  color: string,
-) => {
-  const IconComponent = icon;
-  return (
-    <div className="flex h-6 w-6 items-center justify-center">
-      <IconComponent className={`h-5 w-5 ${color}`} />
-    </div>
-  );
-};
-
 export default function PricingCard({
   plan,
   title,
-  payType,
+  isLump,
   price,
   description,
   services,
   otherServices,
   isRecommended = false,
   recommendedText = "변호사님 추천",
+  onClick,
 }: PricingCardProps) {
   const config = getPlanConfig(plan);
 
@@ -101,7 +79,9 @@ export default function PricingCard({
       {/* 추천 배지 */}
       {isRecommended && (
         <div className="badge-wave">
-          <div className="absolute left-[50%] z-10 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-start justify-start gap-2.5 rounded-[100px] bg-indigo-50 p-1.5 outline-[3px] outline-offset-[-3px] outline-blue-500">
+          <div
+            className={`absolute left-[50%] z-10 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-start justify-start gap-2.5 rounded-[100px] bg-indigo-50 p-1.5 outline-[3px] outline-offset-[-3px] outline-blue-500`}
+          >
             <div
               className={`px-3 py-2 ${config.badgeColor} inline-flex items-center justify-center gap-2.5 rounded-[100px]`}
             >
@@ -136,7 +116,7 @@ export default function PricingCard({
                 <span
                   className={`${config.priceColor} font-['Pretendard'] text-lg font-light md:text-xl lg:text-2xl`}
                 >
-                  만원{payType === "installment" ? "/월" : ""}
+                  만원{isLump ? "" : "/월"}
                 </span>
 
                 <span
@@ -156,6 +136,7 @@ export default function PricingCard({
             </div>
             <Button
               className={`inline-flex items-center justify-center gap-2 self-stretch rounded-md px-4 py-2 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] ${config.buttonColor} hover:${config.buttonColor}`}
+              onClick={onClick}
             >
               <div className="justify-center text-center font-['Pretendard'] text-sm leading-tight font-normal">
                 상담 신청하기
@@ -219,7 +200,7 @@ export default function PricingCard({
                     key={serviceIndex}
                     className="flex min-w-[120px] flex-col items-center justify-center gap-2"
                   >
-                    {renderOtherServiceIcon(service.icon, config.iconColor)}
+                    {renderIcon(service.icon, config.iconColor)}
                     <div className="justify-start text-center font-['Pretendard'] text-xs font-normal text-stone-500">
                       {service.title}
                     </div>
@@ -266,3 +247,16 @@ export default function PricingCard({
     </div>
   );
 }
+
+// 아이콘 렌더링
+const renderIcon = (
+  icon: React.ComponentType<{ className?: string }>,
+  color: string,
+) => {
+  const IconComponent = icon;
+  return (
+    <div className="flex h-6 w-6 items-center justify-center">
+      <IconComponent className={`h-5 w-5 ${color}`} />
+    </div>
+  );
+};
