@@ -17,14 +17,12 @@ import {
   UserStar,
 } from "lucide-react";
 
+import { PLAN_PRICE_INFO } from "@/apps/domain/plan/price";
 import { PlanType } from "@/apps/domain/plan/type";
-import { BrandLogo } from "@/apps/ui/common-components/BrandLogo";
-import PricingCard from "@/apps/ui/domain-components/landing/PricingCard";
-import {
-  LogoBadge,
-} from "@/apps/ui/domain-components/landing/PricingCard/components/logo_badge";
+import PricingCard, {
+  PricingCardModel,
+} from "@/apps/ui/domain-components/landing/PricingCard";
 import { PricingTabs } from "@/apps/ui/domain-components/landing/PricingTabs";
-import NumberFlow from "@number-flow/react";
 
 export default function PricingSection() {
   const [isLump, setIsLump] = useState(false);
@@ -36,16 +34,14 @@ export default function PricingSection() {
     }
   };
 
-  const pricingPlans = [
+  const pricingPlans: PricingCardModel[] = [
     {
       plan: PlanType.BASIC,
-      title: (
-        <div className="flex items-center gap-2">
-          <BrandLogo className="h-5 w-auto" color="#00c950" />
-          <LogoBadge plan="basic" />
-        </div>
-      ),
-      price: <NumberFlow value={isLump ? 148 : 23} />,
+
+      totalPrice: !isLump
+        ? PLAN_PRICE_INFO.basic.installment
+        : PLAN_PRICE_INFO.basic.lump,
+
       description:
         "서류를 직접 발급하실 수 있고, 비용 절감을 우선적으로 생각하시는 분들께 추천드립니다.",
       services: [
@@ -95,13 +91,11 @@ export default function PricingSection() {
     },
     {
       plan: PlanType.STANDARD,
-      title: (
-        <div className="flex items-center gap-2">
-          <BrandLogo className="h-5 w-auto" />
-          <LogoBadge plan="standard" />
-        </div>
-      ),
-      price: <NumberFlow value={isLump ? 195 : 30} />,
+
+      totalPrice: !isLump
+        ? PLAN_PRICE_INFO.standard.installment
+        : PLAN_PRICE_INFO.standard.lump,
+
       description:
         "채무 조정 경험이 없고, 서류 발급부터 이후 절차까지 도움이 필요하신 분들께 추천드립니다.",
       services: [
@@ -129,13 +123,11 @@ export default function PricingSection() {
     },
     {
       plan: PlanType.PRO,
-      title: (
-        <div className="flex items-center gap-2">
-          <BrandLogo className="h-5 w-auto" color="#000000" />
-          <LogoBadge plan="pro" />
-        </div>
-      ),
-      price: <NumberFlow value={isLump ? 255 : 39} />,
+
+      totalPrice: !isLump
+        ? PLAN_PRICE_INFO.pro.installment
+        : PLAN_PRICE_INFO.pro.lump,
+
       description:
         "스탠다드 서비스 이외에, 전문 변호사의 추가적인 도움이 필요하신 분들께 추천드립니다.",
       services: [
@@ -199,15 +191,8 @@ export default function PricingSection() {
               {pricingPlans.map((plan, index) => (
                 <PricingCard
                   key={index}
-                  plan={plan.plan}
-                  title={plan.title}
                   isLump={isLump}
-                  price={plan.price}
-                  description={plan.description}
-                  services={plan.services}
-                  otherServices={plan.otherServices}
-                  isRecommended={plan.isRecommended}
-                  recommendedText={plan.recommendedText}
+                  model={plan}
                   onClick={scrollToSection}
                 />
               ))}

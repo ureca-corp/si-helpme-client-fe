@@ -1,7 +1,4 @@
-import {
-  useRef,
-  useState,
-} from "react";
+import { useRef, useState } from "react";
 
 import { Checkbox } from "@/shadcn/components/ui/checkbox";
 import { Input } from "@/shadcn/components/ui/input";
@@ -33,6 +30,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
   const handlePhoneChange = (
     value: string,
     setter: (value: string) => void,
+    prevRef?: React.RefObject<HTMLInputElement | null>,
     nextRef?: React.RefObject<HTMLInputElement | null>,
     maxLength: number = 4,
   ) => {
@@ -46,6 +44,10 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
       // 다음 필드로 자동 이동
       if (numericValue.length === maxLength && nextRef?.current) {
         nextRef.current.focus();
+      }
+
+      if (!value) {
+        prevRef?.current?.focus();
       }
     }
   };
@@ -81,7 +83,13 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
               ref={phone1Ref}
               value={phone1}
               onChange={(e) =>
-                handlePhoneChange(e.target.value, setPhone1, phone2Ref, 3)
+                handlePhoneChange(
+                  e.target.value,
+                  setPhone1,
+                  undefined,
+                  phone2Ref,
+                  3,
+                )
               }
               maxLength={3}
               className="text-center"
@@ -93,7 +101,13 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
               ref={phone2Ref}
               value={phone2}
               onChange={(e) =>
-                handlePhoneChange(e.target.value, setPhone2, phone3Ref, 4)
+                handlePhoneChange(
+                  e.target.value,
+                  setPhone2,
+                  phone1Ref,
+                  phone3Ref,
+                  4,
+                )
               }
               maxLength={4}
               className="text-center"
@@ -105,7 +119,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
               ref={phone3Ref}
               value={phone3}
               onChange={(e) =>
-                handlePhoneChange(e.target.value, setPhone3, phone3Ref, 4)
+                handlePhoneChange(e.target.value, setPhone3, phone2Ref)
               }
               placeholder=""
               maxLength={4}

@@ -1,8 +1,6 @@
 import Image from "next/image";
 
-import {
-  BrandLogoWithLabel,
-} from "@/apps/ui/common-components/BrandLogoWithLabel";
+import { BrandLogo2 } from "@/apps/ui/common-components/BrandLogo2";
 
 export const Footer3Section = () => {
   const logoImage = "/법률사무소로고.png";
@@ -23,7 +21,8 @@ export const Footer3Section = () => {
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <Image src={logoImage} alt="logo" width={196} height={128} />
 
-              <BrandLogoWithLabel color="white" />
+              {/* <BrandLogoWithLabel color="white" /> */}
+              <BrandLogo2 color="#FFFFFF" />
             </div>
             <div className="justify-center font-['Pretendard'] text-sm leading-tight font-light text-white/60">
               대표변호사: {ceoName}

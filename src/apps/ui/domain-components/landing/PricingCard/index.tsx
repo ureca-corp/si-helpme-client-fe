@@ -1,7 +1,11 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
 import { PlanType } from "@/apps/domain/plan/type";
 import { Button } from "@/shadcn/components/ui/button";
+
+import { RecommendBadge } from "./components/Recommend_Badge";
+import { RenderPrice } from "./components/Render_Price";
+import { RenderPricingCard_Title } from "./components/Render_Title";
 
 interface ServiceItem {
   icon: React.ComponentType<{ className?: string }>;
@@ -9,88 +13,48 @@ interface ServiceItem {
   description?: string;
 }
 
-interface PricingCardProps {
+export type PricingCardModel = {
   plan: PlanType;
-  title: ReactNode;
-  isLump?: boolean;
-  price: ReactNode;
+  totalPrice: number;
   description: string;
   services: ServiceItem[];
   otherServices?: ServiceItem[];
   isRecommended?: boolean;
   recommendedText?: string;
+};
+
+interface PricingCardProps {
+  isLump?: boolean;
+  model: PricingCardModel;
   onClick?: () => void;
 }
 
-const getPlanConfig = (plan: PlanType) => {
-  switch (plan) {
-    case PlanType.BASIC:
-      return {
-        color: "emerald",
-        borderColor: "outline-emerald-300",
-        bgColor: "bg-white",
-        buttonColor: "bg-white text-black border border-zinc-100",
-        iconColor: "text-green-500",
-        badgeColor: "bg-green-500",
-        titleColor: "text-black",
-        priceColor: "text-black",
-      };
-    case PlanType.STANDARD:
-      return {
-        color: "blue",
-        borderColor: "outline-blue-500/60",
-        bgColor: "bg-gradient-to-b from-indigo-50 to-white",
-        buttonColor: "bg-blue-500 text-white",
-        iconColor: "text-blue-500",
-        badgeColor: "bg-blue-500",
-        titleColor: "text-black",
-        priceColor: "text-black",
-      };
-    case PlanType.PRO:
-      return {
-        color: "black",
-        borderColor: "outline-black/50",
-        bgColor: "bg-white",
-        buttonColor: "bg-black text-white border border-zinc-100",
-        iconColor: "text-black/70",
-        badgeColor: "bg-black",
-        titleColor: "text-black",
-        priceColor: "text-black",
-      };
-  }
-};
-
 export default function PricingCard({
-  plan,
-  title,
-  isLump,
-  price,
-  description,
-  services,
-  otherServices,
-  isRecommended = false,
-  recommendedText = "변호사님 추천",
+  isLump = false,
+  model,
   onClick,
 }: PricingCardProps) {
+  const initialRecommendText = "변호사님 추천";
+
+  const {
+    plan,
+    totalPrice,
+    description,
+    services,
+    otherServices,
+    isRecommended,
+    recommendedText,
+  } = model;
   const config = getPlanConfig(plan);
 
   return (
     <div className="relative h-full">
       {/* 추천 배지 */}
       {isRecommended && (
-        <div className="badge-wave">
-          <div
-            className={`absolute left-[50%] z-10 flex -translate-x-1/2 -translate-y-1/2 transform flex-col items-start justify-start gap-2.5 rounded-[100px] bg-indigo-50 p-1.5 outline-[3px] outline-offset-[-3px] outline-blue-500`}
-          >
-            <div
-              className={`px-3 py-2 ${config.badgeColor} inline-flex items-center justify-center gap-2.5 rounded-[100px]`}
-            >
-              <div className="justify-start font-['Pretendard'] text-sm font-bold text-indigo-50">
-                {recommendedText}
-              </div>
-            </div>
-          </div>
-        </div>
+        <RecommendBadge
+          recommendedText={recommendedText ?? initialRecommendText}
+          badgeColor={config.badgeColor}
+        />
       )}
 
       {/* 카드 컨테이너 */}
@@ -99,34 +63,12 @@ export default function PricingCard({
       >
         {/* 헤더 섹션 */}
         <div className="flex flex-col items-start justify-start gap-6 self-stretch md:gap-7 lg:gap-8">
-          <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
-            {/* 플랜 로고 */}
-            <div className="inline-flex items-end justify-start gap-2">
-              {title}
-            </div>
+          <div className="flex flex-col items-start justify-start gap-2">
+            {/* 플랜 타이틀 */}
+            <RenderPricingCard_Title plan={plan} />
 
             {/* 가격 */}
-            <div className="inline-flex items-baseline justify-start gap-2">
-              <div
-                className={`justify-center text-center ${config.priceColor} font-['Pretendard'] text-3xl font-bold md:text-4xl lg:text-5xl`}
-              >
-                {price}
-              </div>
-              <div className="justify-center text-center">
-                <span
-                  className={`${config.priceColor} font-['Pretendard'] text-lg font-light md:text-xl lg:text-2xl`}
-                >
-                  만원{isLump ? "" : "/월"}
-                </span>
-
-                <span
-                  className={`${config.priceColor} font-['Pretendard'] text-xs font-light`}
-                >
-                  {" "}
-                  (부가세 별도)
-                </span>
-              </div>
-            </div>
+            <RenderPrice isLump={isLump} totalPrice={totalPrice} />
           </div>
 
           {/* 설명 및 버튼 */}
@@ -211,39 +153,6 @@ export default function PricingCard({
           )}
         </div>
       </div>
-      <style jsx>{`
-        @keyframes badgeBounce {
-          0%,
-          20%,
-          53%,
-          80%,
-          100% {
-            transform: translateY(0);
-          }
-          40%,
-          43% {
-            transform: translateY(-8px);
-          }
-          70% {
-            transform: translateY(-4px);
-          }
-          90% {
-            transform: translateY(-2px);
-          }
-        }
-
-        .badge-wave {
-          animation: badgeBounce 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-          transform-origin: 50% 50%;
-          will-change: transform;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .badge-wave {
-            animation: none;
-          }
-        }
-      `}</style>
     </div>
   );
 }
@@ -259,4 +168,42 @@ const renderIcon = (
       <IconComponent className={`h-5 w-5 ${color}`} />
     </div>
   );
+};
+
+const getPlanConfig = (plan: PlanType) => {
+  switch (plan) {
+    case PlanType.BASIC:
+      return {
+        color: "emerald",
+        borderColor: "outline-emerald-300",
+        bgColor: "bg-white",
+        buttonColor: "bg-white text-black border border-zinc-100",
+        iconColor: "text-green-500",
+        badgeColor: "bg-green-500",
+        titleColor: "text-black",
+        priceColor: "text-black",
+      };
+    case PlanType.STANDARD:
+      return {
+        color: "blue",
+        borderColor: "outline-blue-500/60",
+        bgColor: "bg-gradient-to-b from-indigo-50 to-white",
+        buttonColor: "bg-blue-500 text-white",
+        iconColor: "text-blue-500",
+        badgeColor: "bg-blue-500",
+        titleColor: "text-black",
+        priceColor: "text-black",
+      };
+    case PlanType.PRO:
+      return {
+        color: "black",
+        borderColor: "outline-black/50",
+        bgColor: "bg-white",
+        buttonColor: "bg-black text-white border border-zinc-100",
+        iconColor: "text-black/70",
+        badgeColor: "bg-black",
+        titleColor: "text-black",
+        priceColor: "text-black",
+      };
+  }
 };

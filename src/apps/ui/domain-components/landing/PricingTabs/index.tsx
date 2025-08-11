@@ -15,7 +15,7 @@ export const PricingTabs = ({
       <span className="text-sm text-stone-500">
         {"납부 방식을 선택해주세요"}
       </span>
-      <div className="inline-flex items-center justify-start rounded-[100px] bg-zinc-200/60 p-1 shadow-xl">
+      <div className="inline-flex items-center justify-start gap-2 rounded-[100px] bg-zinc-200/60 p-1 shadow-xl">
         <button
           type="button"
           onClick={() => setIsLump(true)}
