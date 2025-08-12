@@ -1,4 +1,6 @@
-import { ServiceMainItem } from "@/apps/ui/domain-components/landing/Service_Main_Item";
+import {
+  ServiceMainItem,
+} from "@/apps/ui/domain-components/landing/Service_Main_Item";
 
 export const Services2Section = () => {
   const items = [
@@ -70,7 +72,7 @@ export const Services2Section = () => {
   ];
 
   return (
-    <div className="flex w-full justify-center">
+    <div className="flex w-full justify-center px-4">
       <div className="grid max-w-[1200px] grid-cols-4 gap-4 max-lg:grid-cols-2">
         {items.map((i, index) => (
           <div
