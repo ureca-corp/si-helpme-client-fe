@@ -1,5 +1,6 @@
-import { Landmark } from "lucide-react";
+import clsx from "clsx";
 
+import { BrandIcon } from "../BrandIcon";
 import { BrandLogo2 } from "../BrandLogo2";
 
 /**
@@ -11,17 +12,20 @@ export const BrandLogoWithLabel = ({
   color?: "blue" | "white";
 }) => {
   return (
-    <div className="flex items-center">
+    <div className="flex h-full w-full items-center gap-2">
       <div
-        className={`flex h-8 w-8 items-center justify-center rounded-lg p-1 ${
-          color === "blue" ? "bg-blue-500 text-white" : "bg-white text-black"
-        }`}
+        className={clsx(
+          "flex aspect-square h-auto w-8 items-center justify-center max-md:w-4",
+          color === "blue"
+            ? "bg-blue-500 text-white"
+            : "bg-white text-gray-900",
+        )}
       >
-        <Landmark />
+        <BrandIcon />
       </div>
 
       <BrandLogo2
-        className="scale-85"
+        className="h-full w-auto max-md:w-20"
         color={color === "blue" ? "#2C81FE" : "#fff"}
       />
     </div>

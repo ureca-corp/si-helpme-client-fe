@@ -1,208 +1,117 @@
 import {
-  Clock,
-  CreditCard,
-  FileCheck,
-  FileSliders,
-  Gavel,
-  Headset,
-  Landmark,
-  ListCheck,
-  Sprout,
-  UserStar,
-} from "lucide-react";
+  ServiceMainItem,
+} from "@/apps/ui/domain-components/landing/Service_Main_Item";
 
-import {
-  ServiceMain_Item,
-} from "@/apps/ui/domain-components/landing/ServiceMain_Item";
-import {
-  ServiceSub_Item,
-} from "@/apps/ui/domain-components/landing/ServiceSub_Item";
+import { RenderJudgments } from "./components/Judgment";
 
-import { Facility_Desktop } from "./components/Facility_Desktop";
-import { Facility_Mobile } from "./components/Facility_Mobile";
-
-export default function ServicesSection() {
-  const subItems = [
+export const ServicesSection = () => {
+  const items = [
     {
-      icon: <FileCheck />,
-      title: "서류발급 대행",
-    },
-    {
-      icon: <FileSliders />,
+      src: "/a-main.jpg",
       title: "전문변호사 사건관리",
+      desc: "회생 파산 전문변호사가 직접사건을 관리하여 최적의 결과 도출",
     },
     {
-      icon: <FileSliders />,
-      title: "인가 결정 이후 관리",
+      src: "/a1.jpg",
+      title: "수임료 개혁",
+      desc: "업계의 고비용 수임료를 낮추고 분납시스템을 운영",
     },
     {
-      icon: <Sprout />,
-      title: "신용 회복 지원",
+      src: "/a-2.jpg",
+      title: "서류발급 및 정리대행",
+      desc: "복잡한 서류발급부터 정리까지 모든 과정을 대행",
     },
     {
-      icon: <Clock />,
+      src: "/a-3.jpg",
       title: "빠른 접수",
+      desc: "살려줘닷컴의 자동화 기술로 빠른접수 가능(1일~3일이내)",
     },
     {
-      icon: <Gavel />,
+      src: "/b-1.jpg",
       title: "신속한 결정",
+      desc: "효율적인 프로세스를 통해 빠른 법원결정을 이끌어냅니다.",
     },
     {
-      icon: <CreditCard />,
-      title: "수임료 분납",
+      src: "/b-2.jpg",
+      title: "채권추심 관리",
+      desc: "담당자를 배정하여 추심대응방법 지원",
     },
     {
-      icon: <Headset />,
-      title: "비대면 온라인 진행",
+      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "추심대리인 선임",
+      desc: "채권추심 대응을 위한 전문 추심대리인 선임 서비스 제공",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "사건관리 전담팀 배정",
+      desc: "전담매니저가 모든 절차를 지원",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "실시간 알림",
+      desc: "알림을 통해 실시간 사건 진행 현황 확인 가능",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "비대면 진행",
+      desc: "전국 어디에서도 비대면 상담 및 진행 가능",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "채무조회 서비스",
+      desc: "정확한 채무조회를 통해 모든 채무를 찾아 드립니다.",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "인가결정 이후 관리",
+      desc: "인가결정 이후 ~ 면책결정까지 지속적인 관리와 지원 제공",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: "신용회복 지원",
+      desc: "면책결정 이후 신용회복을 위한 체계적인 지원 프로그램 제공",
     },
   ];
 
   return (
-    <section
-      id="services"
-      className="flex flex-col items-center overflow-hidden bg-neutral-100 py-24"
+    <div
+      id={"services"}
+      className="flex w-full flex-col items-center justify-center gap-16 bg-gradient-to-b from-gray-100 to-white px-4 py-24"
     >
-      <div className="flex w-full flex-col items-center">
-        <div className="flex w-full flex-col items-center px-6">
-          <div className="mb-16 max-w-[1200px] text-center">
-            <h2 className="mb-4 text-3xl font-bold text-gray-800 md:text-4xl">
-              전문 서비스
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              개인회생과 파산 전 과정에서 필요한 모든 서비스를 전문적으로
-              제공합니다.
-            </p>
-          </div>
-
-          <div className="flex max-w-[1200px] flex-col gap-6">
-            <div className="flex flex-col gap-8 lg:flex-row">
-              <div className="flex-1" data-aos="fade-up">
-                <ServiceMain_Item
-                  icon={<ListCheck />}
-                  title="채무조회 서비스"
-                  description={
-                    <>
-                      <span className="font-['Pretendard'] text-base leading-normal font-light text-neutral-600">
-                        내가 현재 어떤 채무(빚)가 있는지, 혹은 상대방이 어떤
-                        채무를 지고 있는지 정확히 파악하는 것이 중요합니다.
-                        <br />
-                        <br />
-                        채무조회 서비스는{" "}
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-normal text-black">
-                        신용정보, 금융기관 자료
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-light text-neutral-600">
-                        {" "}
-                        등을 바탕으로{" "}
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-normal text-black">
-                        전체 채무 현황을 한눈에 정리
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-light text-neutral-600">
-                        해 드립니다.
-                        <br />
-                        이를 통해 상환 계획을 세우거나, 채권추심 전략을 수립할
-                        때 꼭 필요한 정보를 제공합니다.
-                        <br />
-                        <br />
-                        복잡한 금융 상황도 쉽게 이해할 수 있도록 도와드립니다.
-                      </span>
-                    </>
-                  }
-                />
-              </div>
-
-              <div className="flex-1" data-aos="fade-up" data-aos-delay={100}>
-                <ServiceMain_Item
-                  icon={<UserStar />}
-                  title="추심대리인 선임 서비스"
-                  description={
-                    <>
-                      <span className="font-['Pretendard'] text-base leading-normal font-light text-neutral-600">
-                        채권추심이 복잡하거나, 여러 건을 동시에 진행해야 할 때,
-                        또는 해외에 있는 채무자에게 추심을 해야 할 때는 전문
-                        추심대리인의 도움이 필요할 수 있습니다.
-                        <br />
-                        <br />
-                        추심대리인 선임 서비스는 검증된 전문가를 연결해
-                        드려,{" "}
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-normal text-black">
-                        변호사와 협력하여 신속하고 효율적으로 채권을 회수
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-light text-neutral-600">
-                        할 수 있도록 지원합니다.
-                        <br />
-                        <br />
-                        의뢰인은 복잡한 절차에 직접 관여하지 않아도 되고,
-                        전문가가 대신 진행해주니 안심할 수 있습니다.
-                      </span>
-                    </>
-                  }
-                />
-              </div>
-
-              <div className="flex-1" data-aos="fade-up" data-aos-delay={100}>
-                <ServiceMain_Item
-                  icon={<Landmark />}
-                  title="채권추심 관리"
-                  description={
-                    <>
-                      <span className="font-['Pretendard'] text-base leading-normal font-light text-neutral-600">
-                        소송에서 이기거나 합의가 되었더라도, 실제로 돈을
-                        받아내는 과정이 남아 있습니다.
-                        <br />
-                        <br />
-                        채권추심 관리는 판결 이후 상대방에게서{" "}
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-normal text-black">
-                        금전이나 재산을 실제로 회수
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-light text-neutral-600">
-                        할 수 있도록 도와주는 서비스입니다. <br />
-                        <br />
-                        변호사가 직접{" "}
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-normal text-black">
-                        압류, 강제집행, 협상 등 다양한 방법
-                      </span>
-                      <span className="font-['Pretendard'] text-base leading-normal font-light text-neutral-600">
-                        을 통해 의뢰인의 권리를 끝까지 지켜드립니다.
-                        <br />
-                        단순히 소송만이 아니라, 실질적인 결과까지 책임지는 것이
-                        핵심입니다.
-                      </span>
-                    </>
-                  }
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-4 gap-x-8 gap-y-6 lg:grid-cols-4">
-              {subItems.map((it, index) => {
-                return (
-                  <div
-                    key={index}
-                    data-aos="fade-up"
-                    data-aos-delay={index * 10}
-                    className="flex w-full flex-col"
-                  >
-                    <ServiceSub_Item {...it} />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+      <div className="flex w-full max-w-[1200px] flex-col items-center justify-center gap-16">
+        <div className="flex flex-col items-center justify-center gap-4">
+          <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
+            전문 서비스
+          </h2>
+          <p className="text-lg text-gray-600">
+            개인회생과 파산 전 과정에서 필요한 모든 서비스를 전문적으로
+            제공합니다.
+          </p>
         </div>
 
-        <div className="mt-15 hidden w-full lg:flex">
-          <Facility_Desktop />
-        </div>
-        <div className="mt-15 flex w-full lg:hidden">
-          <Facility_Mobile />
+        <div className="grid grid-cols-2 gap-8 max-lg:grid-cols-2 max-md:gap-4 max-sm:grid-cols-2">
+          {items.map((i, index) => {
+            return (
+              <div
+                data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+                key={index}
+                className={`${index % 2 === 0 ? "mt-0" : "mt-12"}`}
+              >
+                <ServiceMainItem
+                  title={i.title}
+                  description={i.desc}
+                  image={i.src}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
-    </section>
+
+      <div className="flex w-full flex-col items-center gap-4 overflow-hidden">
+        <span className="text-3xl font-bold text-gray-800">면책결정 사례</span>
+        <RenderJudgments />
+      </div>
+    </div>
   );
-}
+};

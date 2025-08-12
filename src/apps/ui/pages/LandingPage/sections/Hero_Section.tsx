@@ -6,9 +6,9 @@ import {
 } from "react";
 
 import {
-  Clock4Icon,
-  ScaleIcon,
-  WrenchIcon,
+  BadgeDollarSign,
+  FileText,
+  ThumbsUp,
 } from "lucide-react";
 
 import {
@@ -68,7 +68,6 @@ export default function HeroSection() {
       <section
         id="hero"
         className="z-1 flex min-h-[100vh] flex-col items-center justify-center"
-        //bg-gradient-to-br from-blue-50 via-white to-green-50 py-40
       >
         <div className="container mx-auto px-4">
           <div className="mx-auto flex max-w-4xl flex-col gap-8 text-center">
@@ -76,19 +75,18 @@ export default function HeroSection() {
             <div className="mt-10 lg:mt-12">
               <ul className="text-muted-foreground flex flex-col flex-wrap justify-center gap-3 text-sm sm:flex-row lg:text-base">
                 <li className="flex items-center justify-center gap-2.5 whitespace-nowrap">
-                  <Clock4Icon className="size-5" />
-                  24시간 온라인 상담
+                  <BadgeDollarSign className="size-5" />
+                  비싼 수임료 out
                 </li>
                 <span className="hidden sm:inline">·</span>
                 <li className="flex items-center justify-center gap-2.5 whitespace-nowrap">
-                  <ScaleIcon className="size-5" />
-                  변호사 직접 상담
+                  <ThumbsUp className="size-5" />
+                  우린 싸고, 잘해요~
                 </li>
                 <span className="hidden sm:inline">·</span>
-
                 <li className="flex items-center justify-center gap-2.5 whitespace-nowrap">
-                  <WrenchIcon className="size-5" />
-                  신용회복까지 완벽지원
+                  <FileText className="size-5" />
+                  서비스, 수임료 전격공개
                 </li>
               </ul>
             </div>
@@ -97,10 +95,10 @@ export default function HeroSection() {
             <div className="">
               <h1 className="mb-4 text-4xl font-bold md:text-6xl">
                 <div className="justify-center text-center font-['Pretendard'] text-5xl leading-[60px] font-bold text-black md:text-7xl">
-                  빚에서 벗어나는
+                  살려달라고요??
                 </div>
                 <AuroraText colors={["#6bff6b", "#137a13"]} speed={5}>
-                  새로운 시작
+                  수임료부터 살려드릴게요~
                 </AuroraText>
               </h1>
               <div className="flex flex-col">
@@ -108,7 +106,7 @@ export default function HeroSection() {
                   animation="slideLeft"
                   className="font-light text-gray-500"
                 >
-                  개인회생 · 파산 전문 법무법인 변호사와
+                  개인회생 · 파산 전문 변호사와
                 </TextAnimate>
                 <TextAnimate
                   animation="slideLeft"

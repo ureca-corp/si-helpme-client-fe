@@ -1,3 +1,5 @@
+import { Phone } from "lucide-react";
+
 import {
   BrandLogoWithLabel,
 } from "@/apps/ui/common-components/BrandLogoWithLabel";
@@ -16,18 +18,18 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 right-0 left-0 z-120 flex items-center justify-center border-b border-gray-200 bg-white/95 backdrop-blur-sm">
-      <div className="flex w-full max-w-[1200px] p-6">
+      <div className="flex w-full max-w-[1200px] p-6 max-md:p-2">
         <div className="flex w-full items-center justify-between">
           {/* 로고 */}
           <div
-            className="cursor-pointer"
+            className="h-5 cursor-pointer sm:h-6 md:h-8"
             onClick={() => scrollToSection("hero")}
           >
             <BrandLogoWithLabel />
           </div>
 
           {/* 데스크톱 네비게이션 */}
-          <nav className="hidden items-center space-x-2 md:flex">
+          <nav className="hidden items-center lg:flex">
             <Button
               variant="ghost"
               size="lg"
@@ -71,8 +73,17 @@ export default function Header() {
           </nav>
 
           {/* CTA 버튼들 */}
-          <div className="items-center space-x-3 md:flex">
-            <ConsultationButton onClick={() => scrollToSection("contact")} />
+          <div className="flex items-center gap-3 max-md:gap-2">
+            <div className="flex h-10 cursor-pointer items-center gap-1 rounded-lg border border-gray-200 p-4 max-md:h-10 max-md:w-30 max-md:text-sm">
+              <Phone className="h-4" />
+              <span className="">지금 상담</span>
+            </div>
+
+            <ConsultationButton
+              onClick={() => scrollToSection("contact")}
+              className="h-10 w-24 max-md:h-10 max-md:w-20 max-md:text-sm"
+              textLabel="상담 신청"
+            />
           </div>
         </div>
       </div>
