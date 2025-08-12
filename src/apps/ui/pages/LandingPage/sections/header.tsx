@@ -1,5 +1,11 @@
-import { BrandLogoWithLabel } from "@/apps/ui/common-components/BrandLogoWithLabel";
-import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { Phone } from "lucide-react";
+
+import {
+  BrandLogoWithLabel,
+} from "@/apps/ui/common-components/BrandLogoWithLabel";
+import {
+  ConsultationButton,
+} from "@/apps/ui/domain-components/landing/ConsultationButton";
 import { Button } from "@/shadcn/components/ui/button";
 
 export default function Header() {
@@ -68,15 +74,10 @@ export default function Header() {
 
           {/* CTA 버튼들 */}
           <div className="flex items-center gap-3 max-md:gap-2">
-            {/* <div className="flex cursor-pointer items-center gap-2">
-              <Phone size={16} />
-              <span className="hidden sm:inline">지금 상담</span>
-            </div> */}
-            <ConsultationButton
-              textLabel="전화 연결"
-              onClick={() => {}}
-              className="h-10 w-24 max-md:h-10 max-md:w-20 max-md:text-sm"
-            />
+            <div className="flex h-10 cursor-pointer items-center gap-1 rounded-full border border-gray-200 p-4 max-md:h-10 max-md:w-30 max-md:text-sm">
+              <Phone className="h-4" />
+              <span className="">지금 상담</span>
+            </div>
 
             <ConsultationButton
               onClick={() => scrollToSection("contact")}

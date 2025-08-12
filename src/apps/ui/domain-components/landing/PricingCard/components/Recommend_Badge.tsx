@@ -22,40 +22,39 @@ export const RecommendBadge = ({
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @keyframes badgeBounce {
+          0%,
+          20%,
+          53%,
+          80%,
+          100% {
+            transform: translateY(0);
+          }
+          40%,
+          43% {
+            transform: translateY(-8px);
+          }
+          70% {
+            transform: translateY(-4px);
+          }
+          90% {
+            transform: translateY(-2px);
+          }
+        }
+
+        .badge-wave {
+          animation: badgeBounce 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+          transform-origin: 50% 50%;
+          will-change: transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .badge-wave {
+            animation: none;
+          }
+        }
+      `}</style>
     </div>
   );
 };
-
-<style jsx>{`
-  @keyframes badgeBounce {
-    0%,
-    20%,
-    53%,
-    80%,
-    100% {
-      transform: translateY(0);
-    }
-    40%,
-    43% {
-      transform: translateY(-8px);
-    }
-    70% {
-      transform: translateY(-4px);
-    }
-    90% {
-      transform: translateY(-2px);
-    }
-  }
-
-  .badge-wave {
-    animation: badgeBounce 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-    transform-origin: 50% 50%;
-    will-change: transform;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .badge-wave {
-      animation: none;
-    }
-  }
-`}</style>;

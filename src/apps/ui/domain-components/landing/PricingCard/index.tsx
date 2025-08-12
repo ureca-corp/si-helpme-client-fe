@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Check } from "lucide-react";
+
 import { PlanType } from "@/apps/domain/plan/type";
 import { Button } from "@/shadcn/components/ui/button";
 
@@ -8,6 +10,7 @@ import { RenderPrice } from "./components/Render_Price";
 import { RenderPricingCard_Title } from "./components/Render_Title";
 
 interface ServiceItem {
+  bold?: boolean;
   icon: React.ComponentType<{ className?: string }>;
   title: string;
   description?: string;
@@ -16,7 +19,8 @@ interface ServiceItem {
 export type PricingCardModel = {
   plan: PlanType;
   totalPrice: number;
-  description: string;
+  installmentPrice?: number;
+  recomendTexts: string[];
   services: ServiceItem[];
   otherServices?: ServiceItem[];
   isRecommended?: boolean;
@@ -34,12 +38,13 @@ export default function PricingCard({
   model,
   onClick,
 }: PricingCardProps) {
-  const initialRecommendText = "변호사님 추천";
+  const initialRecommendText = "살려줘닷컴 추천";
 
   const {
     plan,
     totalPrice,
-    description,
+    installmentPrice,
+    recomendTexts,
     services,
     otherServices,
     isRecommended,
@@ -59,25 +64,38 @@ export default function PricingCard({
 
       {/* 카드 컨테이너 */}
       <div
-        className={`h-full w-full self-stretch px-8 py-11 ${config.bgColor} rounded-3xl outline-1 outline-offset-[-1px] ${config.borderColor} flex flex-col items-start justify-start gap-8 md:gap-10 lg:gap-12`}
+        className={`h-full w-full px-8 py-11 ${config.bgColor} rounded-3xl outline-1 outline-offset-[-1px] ${config.borderColor} flex flex-col items-start gap-8 md:gap-10 lg:gap-12`}
       >
         {/* 헤더 섹션 */}
-        <div className="flex flex-col items-start justify-start gap-6 self-stretch md:gap-7 lg:gap-8">
+        <div className="flex w-full flex-col items-start gap-8">
           <div className="flex flex-col items-start justify-start gap-2">
             {/* 플랜 타이틀 */}
             <RenderPricingCard_Title plan={plan} />
 
             {/* 가격 */}
-            <RenderPrice isLump={isLump} totalPrice={totalPrice} />
+            <RenderPrice
+              isLump={isLump}
+              totalPrice={totalPrice}
+              installmentPrice={installmentPrice}
+            />
           </div>
 
           {/* 설명 및 버튼 */}
-          <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
-            <div className="justify-start self-stretch font-['Pretendard'] text-sm leading-tight font-light text-zinc-500">
-              {description}
+          <div className="max-lg:max-h-[] flex h-full max-h-[280px] min-h-[280px] w-full flex-col gap-8 max-lg:min-h-[0]">
+            <div className="flex flex-1 flex-col gap-2">
+              {recomendTexts.map((text, index) => (
+                <div
+                  key={index}
+                  className={`flex w-full items-center gap-4 text-sm font-light ${config.primaryColor}`}
+                >
+                  <Check className={`${config.primaryColor}`} />
+
+                  {text}
+                </div>
+              ))}
             </div>
             <Button
-              className={`inline-flex items-center justify-center gap-2 self-stretch rounded-md px-4 py-2 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] ${config.buttonColor} hover:${config.buttonColor}`}
+              className={`flex w-full items-center justify-center gap-2 rounded-md px-4 py-2 shadow-[0px_1px_2px_0px_rgba(0,0,0,0.05)] ${config.buttonColor} hover:${config.buttonColor}`}
               onClick={onClick}
             >
               <div className="justify-center text-center font-['Pretendard'] text-sm leading-tight font-normal">
@@ -88,29 +106,37 @@ export default function PricingCard({
         </div>
 
         {/* 서비스 구성 */}
-        <div className="flex flex-1 flex-col items-start justify-start gap-6 self-stretch md:gap-7 lg:gap-8">
+        <div className="max-lg:max-h-[] flex h-full max-h-[600px] min-h-[600px] flex-col items-start justify-between gap-6 self-stretch max-lg:min-h-[0] md:gap-7 lg:gap-8">
           <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
             <div className="inline-flex items-center justify-center gap-2.5 self-stretch">
-              <div className="h-0 flex-1 outline-1 outline-offset-[-0.50px] outline-zinc-100"></div>
-              <div className="justify-start font-['Pretendard'] text-xs font-light text-zinc-600">
+              <div
+                className={`h-0 flex-1 outline-1 outline-offset-[-0.50px] ${config.borderColor}`}
+              ></div>
+              <div
+                className={`justify-start font-['Pretendard'] text-xs font-light ${config.primaryColor}`}
+              >
                 서비스 구성
               </div>
-              <div className="h-0 flex-1 outline-1 outline-offset-[-0.50px] outline-zinc-100"></div>
+              <div
+                className={`h-0 flex-1 outline-1 outline-offset-[-0.50px] ${config.borderColor}`}
+              ></div>
             </div>
 
             <div className="flex flex-col items-start justify-start gap-2 self-stretch md:gap-3">
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className="inline-flex items-center justify-start gap-3 self-stretch md:gap-4"
+                  className={`inline-flex items-center justify-start gap-3 self-stretch md:gap-4 ${service.bold ? `font-bold` : ""}`}
                 >
                   {renderIcon(service.icon, config.iconColor)}
                   <div className="inline-flex flex-1 flex-col items-start justify-center gap-0.5">
-                    <div className="justify-start self-stretch font-['Pretendard'] text-sm leading-normal font-normal text-stone-500 md:text-base">
+                    <div
+                      className={`justify-start self-stretch font-['Pretendard'] text-sm leading-normal ${service.bold ? `${config.primaryColor}` : "text-stone-500"} md:text-base`}
+                    >
                       {service.title}
                     </div>
                     {service.description && (
-                      <div className="justify-start self-stretch font-['Pretendard'] text-xs font-normal whitespace-pre-line text-neutral-400">
+                      <div className="justify-start self-stretch font-['Pretendard'] text-xs whitespace-pre-line text-neutral-400">
                         {service.description}
                       </div>
                     )}
@@ -119,39 +145,44 @@ export default function PricingCard({
               ))}
             </div>
           </div>
-
-          {/* 기타 서비스 */}
-          {otherServices && otherServices.length > 0 && (
-            <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
-              <div className="inline-flex items-center justify-center gap-2.5 self-stretch">
-                <div className="h-0 flex-1 outline-1 outline-offset-[-0.50px] outline-zinc-100"></div>
-                <div className="justify-start font-['Pretendard'] text-xs font-light text-zinc-600">
-                  기타 서비스
-                </div>
-                <div className="h-0 flex-1 outline-1 outline-offset-[-0.50px] outline-zinc-100"></div>
-              </div>
-
-              <div
-                className="grid w-full gap-6"
-                style={{
-                  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
-                }}
-              >
-                {otherServices.map((service, serviceIndex) => (
-                  <div
-                    key={serviceIndex}
-                    className="flex min-w-[120px] flex-col items-center justify-center gap-2"
-                  >
-                    {renderIcon(service.icon, config.iconColor)}
-                    <div className="justify-start text-center font-['Pretendard'] text-xs font-normal text-stone-500">
-                      {service.title}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
+        {/* 기타 서비스 */}
+        {otherServices && otherServices.length > 0 && (
+          <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
+            <div className="inline-flex items-center justify-center gap-2.5 self-stretch">
+              <div
+                className={`h-0 flex-1 outline-1 outline-offset-[-0.50px] ${config.borderColor}`}
+              ></div>
+              <div
+                className={`justify-start font-['Pretendard'] text-xs font-light ${config.primaryColor}`}
+              >
+                고객님이 해야 할 내용
+              </div>
+              <div
+                className={`h-0 flex-1 outline-1 outline-offset-[-0.50px] ${config.borderColor}`}
+              ></div>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              {otherServices.map((service, serviceIndex) => (
+                <div
+                  key={serviceIndex}
+                  className="flex items-center justify-start gap-4"
+                >
+                  {renderIcon(service.icon, config.iconColor)}
+                  <div className="justify-start font-['Pretendard'] text-sm font-normal text-stone-500">
+                    {service.title}
+                    {service.description && (
+                      <div className="justify-start self-stretch font-['Pretendard'] text-xs text-neutral-400">
+                        {service.description}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -165,7 +196,7 @@ const renderIcon = (
   const IconComponent = icon;
   return (
     <div className="flex h-6 w-6 items-center justify-center">
-      <IconComponent className={`h-5 w-5 ${color}`} />
+      <IconComponent className={`h-5 w-5 ${color} `} />
     </div>
   );
 };
@@ -176,12 +207,13 @@ const getPlanConfig = (plan: PlanType) => {
       return {
         color: "emerald",
         borderColor: "outline-emerald-300",
-        bgColor: "bg-white",
+        bgColor: "bg-gradient-to-b from-emerald-50 to-white",
         buttonColor: "bg-white text-black border border-zinc-100",
         iconColor: "text-green-500",
         badgeColor: "bg-green-500",
         titleColor: "text-black",
         priceColor: "text-black",
+        primaryColor: "text-green-500",
       };
     case PlanType.STANDARD:
       return {
@@ -193,17 +225,19 @@ const getPlanConfig = (plan: PlanType) => {
         badgeColor: "bg-blue-500",
         titleColor: "text-black",
         priceColor: "text-black",
+        primaryColor: "text-blue-500",
       };
     case PlanType.PRO:
       return {
         color: "black",
         borderColor: "outline-black/50",
-        bgColor: "bg-white",
+        bgColor: "bg-gradient-to-b from-black/5 to-white",
         buttonColor: "bg-black text-white border border-zinc-100",
         iconColor: "text-black/70",
         badgeColor: "bg-black",
         titleColor: "text-black",
         priceColor: "text-black",
+        primaryColor: "text-black",
       };
   }
 };

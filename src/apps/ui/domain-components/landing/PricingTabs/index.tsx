@@ -1,3 +1,5 @@
+import { PLAN_PRICE_INFO } from "@/apps/domain/plan/price";
+
 /**
  * 납부 방식 탭
  * @param isLump 일시납 여부
@@ -25,7 +27,7 @@ export const PricingTabs = ({
               : "text-stone-700 hover:bg-white/70 hover:text-black"
           }`}
         >
-          <div className="justify-center text-center font-['Pretendard']">
+          <div className="justify-center text-center font-['Pretendard'] font-medium">
             일시납
           </div>
         </button>
@@ -38,8 +40,11 @@ export const PricingTabs = ({
               : "text-stone-700 hover:bg-white/70 hover:text-black"
           }`}
         >
-          <div className="justify-center text-center font-['Pretendard']">
-            분납 (최대 7개월)
+          <div className="flex items-center justify-center gap-1 text-center font-['Pretendard'] font-medium">
+            분납
+            <div className="items-center justify-center rounded-[100px] bg-zinc-100 px-1.5 py-0.5 font-light text-stone-500">
+              최대 {PLAN_PRICE_INFO.installmentMonth}개월
+            </div>
           </div>
         </button>
       </div>

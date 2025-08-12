@@ -1,7 +1,20 @@
-import { useRef, useState } from "react";
+import {
+  useRef,
+  useState,
+} from "react";
 
-import { Checkbox } from "@/shadcn/components/ui/checkbox";
+import { Phone } from "lucide-react";
+
+import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
 import { Input } from "@/shadcn/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/shadcn/components/ui/select";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
 import { ConsultationButton } from "../ConsultationButton";
@@ -19,7 +32,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
   const [phone2, setPhone2] = useState("");
   const [phone3, setPhone3] = useState("");
   const [message, setMessage] = useState("");
-  const [time, setTime] = useState("");
+  const [times, setTimes] = useState("");
 
   // 전화번호 입력 필드 refs
   const phone1Ref = useRef<HTMLInputElement>(null);
@@ -49,14 +62,6 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
       if (!value) {
         prevRef?.current?.focus();
       }
-    }
-  };
-
-  const handleTimeChange = (timeId: string) => {
-    if (time === timeId) {
-      setTime("");
-    } else {
-      setTime(timeId);
     }
   };
 
@@ -144,38 +149,39 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
         <div className="justify-center self-stretch font-['Pretendard'] text-sm leading-tight font-normal text-neutral-950">
           통화 가능하신 시간대
         </div>
-        <div className="flex flex-col items-start justify-start gap-3 self-stretch md:flex-row">
-          <div
-            className="flex flex-1 cursor-pointer items-center justify-start gap-3"
-            onClick={() => handleTimeChange("오전 (9-12시)")}
-          >
-            <Checkbox checked={time === "오전 (9-12시)"} />
-            <div className="flex-1 justify-center font-['Pretendard'] text-sm leading-tight font-normal text-neutral-950">
-              오전 (9-12시)
-            </div>
-          </div>
-          <div
-            className="flex flex-1 cursor-pointer items-center justify-start gap-3"
-            onClick={() => handleTimeChange("오후 (12-18시)")}
-          >
-            <Checkbox checked={time === "오후 (12-18시)"} />
-            <div className="flex-1 justify-center font-['Pretendard'] text-sm leading-tight font-normal text-neutral-950">
-              오후 (12-18시)
-            </div>
-          </div>
-          <div
-            className="flex flex-1 cursor-pointer items-center justify-start gap-3"
-            onClick={() => handleTimeChange("저녁 (18-21시)")}
-          >
-            <Checkbox checked={time === "저녁 (18-21시)"} />
-            <div className="flex-1 justify-center font-['Pretendard'] text-sm leading-tight font-normal text-neutral-950">
-              저녁 (18-21시)
-            </div>
-          </div>
-        </div>
+        <Select value={times} onValueChange={setTimes}>
+          <SelectTrigger className="w-full">
+            <SelectValue placeholder="시간을 선택해주세요" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup className="max-h-[200px] overflow-y-auto">
+              {Array.from({ length: 25 }, (_, i) => {
+                const hour = 9 + Math.floor(i / 2);
+                const minute = i % 2 === 0 ? "00" : "30";
+                const timeLabel =
+                  minute === "00" ? `${hour}시` : `${hour}시 ${minute}분`;
+                return (
+                  <SelectItem key={timeLabel} value={timeLabel}>
+                    {timeLabel}
+                  </SelectItem>
+                );
+              })}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
       <div className="flex flex-col items-start justify-start gap-4 self-stretch">
-        <ConsultationButton onClick={onClick} fullWidth />
+        <div className="flex w-full items-center gap-4 max-md:flex-col">
+          <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full border border-gray-200 px-6 py-4 max-md:w-full">
+            <Phone className="h-4" />
+            <span>전화 상담</span>
+          </div>
+          <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full">
+            <KakaoIcon />
+            <span>카톡 상담</span>
+          </div>
+          <ConsultationButton onClick={onClick} fullWidth />
+        </div>
         <div className="flex flex-col items-center justify-start self-stretch">
           <div className="justify-center self-stretch text-center font-['Apple_SD_Gothic_Neo'] text-xs font-normal text-gray-500">
             개인정보는 상담 목적으로만 사용되며, 상담 완료 후 안전하게

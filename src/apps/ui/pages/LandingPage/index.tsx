@@ -4,10 +4,9 @@ import HeroSection from "@/apps/ui/pages/LandingPage/sections/Hero_Section";
 import ContactForm from "./sections/contact-form";
 import { FaqSection } from "./sections/Faq_Section";
 import { Footer3Section } from "./sections/Footer_Section";
-import { JudgmentSection } from "./sections/Judgment_Section";
 import { Location2Section } from "./sections/Location_Section";
 import PricingSection from "./sections/Pricing_Section";
-import { Services2Section } from "./sections/Services2_Section";
+import { ServicesSection } from "./sections/Services_Section";
 
 /**
  * 랜딩 페이지
@@ -17,9 +16,7 @@ export const LandingPage = () => {
     <div className="min-h-screen">
       <Header />
       <HeroSection />
-      {/* <ServicesSection /> */}
-      <Services2Section />
-      <JudgmentSection />
+      <ServicesSection />
       <PricingSection />
       <FaqSection />
       <ContactForm />

@@ -1,4 +1,4 @@
-import { Plus } from "lucide-react";
+import { CustomImage } from "@/apps/ui/common-components/CustomImage";
 
 export type JudgmentCardModel = {
   title: string; // 제목
@@ -23,72 +23,54 @@ export const JudgmentCard = ({
   image,
 }: JudgmentCardModel) => {
   return (
-    <div className="relative min-w-60 rounded-xl border border-gray-100 bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-lg">
-      {/* <CustomImage src={image} alt={"결정문서"} /> */}
+    <div className="min-w-62 rounded-xl border border-gray-100 bg-white p-6 shadow-md transition-shadow duration-300 hover:shadow-lg">
+      <div className="flex flex-col gap-6">
+        {/* 제목 */}
+        <span className="text-lg font-semibold text-gray-800">{title}</span>
 
-      {/* 우상단 플러스 아이콘 */}
-      <div className="absolute top-4 right-4">
-        <Plus className="h-5 w-5 cursor-pointer text-gray-400 transition-colors hover:text-gray-600" />
-      </div>
+        {/* 이미지 */}
+        <div className="h-64 w-full overflow-hidden rounded-2xl border border-gray-100">
+          <CustomImage src={image} alt={"결정문서"} />
+        </div>
 
-      {/* 제목 */}
-      <h3 className="mb-4 pr-8 text-lg font-semibold text-gray-800">{title}</h3>
-
-      {/* 원형 게이지 */}
-      <div className="mb-6 flex justify-center">
-        <div className="relative h-20 w-20">
-          <svg className="h-20 w-20 -rotate-90 transform" viewBox="0 0 36 36">
-            {/* 배경 원 */}
-            <path
-              d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
-              fill="none"
-              stroke="#f3f4f6"
-              strokeWidth="2"
-            />
-            {/* 진행률 원 */}
-            <path
-              d="M18 2.0845
-                a 15.9155 15.9155 0 0 1 0 31.831
-                a 15.9155 15.9155 0 0 1 0 -31.831"
-              fill="none"
-              stroke="#8b5cf6"
-              strokeWidth="2"
-              strokeDasharray={`${reductionRate}, 100`}
-              strokeLinecap="round"
-            />
-          </svg>
-          {/* 중앙 텍스트 */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-sm font-bold text-gray-800">
-              {reductionRate}%
-            </span>
+        {/* 게이지 */}
+        <div className="flex flex-col items-center justify-center">
+          <div className="w-full max-w-[180px]">
+            <div className="mb-1 flex items-center justify-between">
+              <span className="text-sm font-bold text-blue-500">
+                {reductionRate}% 탕감
+              </span>
+              <span className="text-xs font-medium text-gray-500">{court}</span>
+            </div>
+            <div className="h-2 w-full rounded-full bg-gray-200">
+              <div
+                className="h-2 rounded-full bg-blue-500 transition-all duration-300"
+                style={{ width: `${reductionRate}%` }}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* 탕감률 라벨 */}
-      <div className="mb-4 text-center">
-        <span className="text-xs font-medium text-gray-500">탕감률</span>
-      </div>
-
-      {/* 상세 정보 */}
-      <div className="space-y-2">
-        <div className="text-sm">
-          <span className="text-gray-600">{court}</span>
-        </div>
-        <div className="text-sm">
-          <span className="text-gray-500">총 채무액: </span>
-          <span className="font-medium text-gray-800">{totalDebt}</span>
-        </div>
-        <div className="text-sm">
-          <span className="text-gray-500">월 변제금: </span>
-          <span className="font-medium text-gray-800">{monthlyPayment}</span>
-        </div>
-        <div className="text-sm">
-          <span className="text-gray-500">변제 기간: </span>
-          <span className="font-medium text-gray-800">{repaymentPeriod}</span>
+        {/* 상세 정보 */}
+        <div className="flex flex-col">
+          <div className="text-sm">
+            <span className="font-bold">총 채무액: </span>
+            <span className="font-medium text-gray-700 opacity-70">
+              {totalDebt}
+            </span>
+          </div>
+          <div className="text-sm">
+            <span className="font-bold">월 변제금: </span>
+            <span className="font-medium text-gray-700 opacity-70">
+              {monthlyPayment}
+            </span>
+          </div>
+          <div className="text-sm">
+            <span className="font-bold">변제 기간: </span>
+            <span className="font-medium text-gray-700 opacity-70">
+              {repaymentPeriod}
+            </span>
+          </div>
         </div>
       </div>
     </div>

@@ -5,19 +5,22 @@ export const PLAN_PRICE_INFO = {
   // 베이직
   basic: {
     lump: 148,
-    installment: 160,
+    installment: 161,
+    installmentPrice: 23,
   },
 
   // 스탠다드
   standard: {
     lump: 195,
-    installment: 210,
+    installment: 224,
+    installmentPrice: 32,
   },
 
   // 프로
   pro: {
-    lump: 255,
-    installment: 270,
+    lump: 265,
+    installment: 280,
+    installmentPrice: 40,
   },
 
   // 분할 월
