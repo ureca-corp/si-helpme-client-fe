@@ -1,12 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
 
-import { BadgeDollarSign, FileText, ThumbsUp } from "lucide-react";
+import {
+  BadgeDollarSign,
+  FileText,
+  ThumbsUp,
+} from "lucide-react";
 
-import { AuroraBackgroundContainer } from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
-import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
-import { ReliabilityNumberItem } from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
+import {
+  AuroraBackgroundContainer,
+} from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
+import {
+  ConsultationButton,
+} from "@/apps/ui/domain-components/landing/ConsultationButton";
+import {
+  ReliabilityNumberItem,
+} from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { cn } from "@/shadcn/lib/utils";
@@ -68,7 +81,7 @@ export default function HeroSection() {
                 <span className="hidden sm:inline">·</span>
                 <li className="flex items-center justify-center gap-2.5 whitespace-nowrap">
                   <ThumbsUp className="size-5" />
-                  우린 싸고, 잘해요
+                  우린 싸고, 잘해요~
                 </li>
                 <span className="hidden sm:inline">·</span>
                 <li className="flex items-center justify-center gap-2.5 whitespace-nowrap">
@@ -85,7 +98,7 @@ export default function HeroSection() {
                   살려달라고요??
                 </div>
                 <AuroraText colors={["#6bff6b", "#137a13"]} speed={5}>
-                  수임료부터 살려드릴게요
+                  수임료부터 살려드릴게요~
                 </AuroraText>
               </h1>
               <div className="flex flex-col">
