@@ -3,8 +3,8 @@ import { TitleLogo2 } from "@/apps/ui/common-components/TitleLogo2";
 export const Footer3Section = () => {
   const ceoName = "우성명";
   const businessNumber = "321-05-02929";
-  const address =
-    "서울특별시 서초구 서초중앙로24길 16 KM빌딩 8층 (서초동 1692-6)";
+  // 번지수(서초동 1692-6) 삭제
+  const address = "서울특별시 서초구 서초중앙로24길 16 KM빌딩 8층";
   const operatingHours = "평일 오전 9시 ~ 오후 6시 (토요일 및 공휴일 휴무)";
   const phoneNumber = "02-6677-8510";
   const faxNumber = "02-6677-8501";
@@ -36,9 +36,7 @@ export const Footer3Section = () => {
               <br />
               Fax. {faxNumber}
             </div>
-            <div className="justify-center text-center font-['Pretendard'] text-sm leading-tight font-bold text-white/60">
-              홈페이지 바로가기
-            </div>
+            {/* '홈페이지 바로가기' 영역 삭제 */}
           </div>
         </div>
         <div className="h-0 self-stretch outline-1 outline-offset-[-0.50px] outline-white/10"></div>

@@ -110,7 +110,7 @@ export default function PricingCard({
           <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
             <div className="inline-flex items-center justify-center gap-2.5 self-stretch">
               <div
-                className={`to- h-[1px] flex-1 bg-gradient-to-r from-${config.gradientColor}/600 to-${config.gradientColor}`}
+                className={`h-[1px] flex-1 bg-gradient-to-r ${config.fromGradient} ${config.toGradient}`}
               />
               <div
                 className={`justify-start font-['Pretendard'] text-xs font-light ${config.primaryColor}`}
@@ -118,7 +118,7 @@ export default function PricingCard({
                 서비스 구성
               </div>
               <div
-                className={`h-[1px] flex-1 bg-gradient-to-l from-${config.gradientColor}/600 to-${config.gradientColor}`}
+                className={`h-[1px] flex-1 bg-gradient-to-l ${config.fromGradient} ${config.toGradient}`}
               />
             </div>
 
@@ -151,7 +151,7 @@ export default function PricingCard({
           <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
             <div className="inline-flex items-center justify-center gap-2.5 self-stretch">
               <div
-                className={`to- h-[1px] flex-1 bg-gradient-to-r from-${config.gradientColor}/600 to-${config.gradientColor}`}
+                className={`h-[1px] flex-1 bg-gradient-to-r ${config.fromGradient} ${config.toGradient}`}
               />
               <div
                 className={`justify-start font-['Pretendard'] text-xs font-light ${config.primaryColor}`}
@@ -159,7 +159,7 @@ export default function PricingCard({
                 고객님이 해야 할 내용
               </div>
               <div
-                className={`h-[1px] flex-1 bg-gradient-to-l from-${config.gradientColor}/600 to-${config.gradientColor}`}
+                className={`h-[1px] flex-1 bg-gradient-to-l ${config.fromGradient} ${config.toGradient}`}
               />
             </div>
 
@@ -214,7 +214,9 @@ const getPlanConfig = (plan: PlanType) => {
         titleColor: "text-black",
         priceColor: "text-black",
         primaryColor: "text-green-600",
-        gradientColor: "green-600",
+        // gradients need to be literal strings so Tailwind can see them
+        fromGradient: "from-white",
+        toGradient: "to-green-600",
       };
     case PlanType.STANDARD:
       return {
@@ -227,7 +229,8 @@ const getPlanConfig = (plan: PlanType) => {
         titleColor: "text-black",
         priceColor: "text-black",
         primaryColor: "text-blue-500",
-        gradientColor: "blue-500",
+        fromGradient: "from-white",
+        toGradient: "to-blue-500",
       };
     case PlanType.PRO:
       return {
@@ -240,7 +243,8 @@ const getPlanConfig = (plan: PlanType) => {
         titleColor: "text-black",
         priceColor: "text-black",
         primaryColor: "text-black",
-        gradientColor: "black",
+        fromGradient: "from-white",
+        toGradient: "to-black",
       };
   }
 };

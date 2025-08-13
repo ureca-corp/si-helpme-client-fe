@@ -47,7 +47,14 @@ export const MultipleSelector = ({
       return handleRemove(value);
     }
 
-    onSelectionChange([...selectedValues, value]);
+    /// 시간순대로 재배열
+    const sortedValues = [...selectedValues, value].sort((a, b) => {
+      const aIndex = items.indexOf(a);
+      const bIndex = items.indexOf(b);
+      return aIndex - bIndex;
+    });
+
+    onSelectionChange(sortedValues);
   };
 
   const handleRemove = (value: string) => {

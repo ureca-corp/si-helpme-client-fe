@@ -1,6 +1,6 @@
-import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { ArrowRight } from "lucide-react";
 
+import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { cn } from "@/shadcn/lib/utils";
 
 /**
@@ -19,6 +19,11 @@ export const ConsultationButton = ({
   disabled?: boolean;
   className?: React.HTMLAttributes<HTMLButtonElement>["className"];
 }) => {
+  const handleClick = () => {
+    sendNaverConversion("custom003");
+    onClick();
+  };
+
   return (
     <button
       className={cn(
@@ -30,8 +35,7 @@ export const ConsultationButton = ({
         fullWidth && "w-full",
         className,
       )}
-      onClick={onClick}
-      onMouseDown={() => sendNaverConversion("custom003")}
+      onClick={handleClick}
       disabled={disabled}
     >
       <span

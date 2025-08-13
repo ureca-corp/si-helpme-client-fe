@@ -4,14 +4,14 @@
 export const PLAN_PRICE_INFO = {
   // 베이직
   basic: {
-    lump: 148,
+    lump: 150,
     installment: 161,
     installmentPrice: 23,
   },
 
   // 스탠다드
   standard: {
-    lump: 195,
+    lump: 210,
     installment: 224,
     installmentPrice: 32,
   },

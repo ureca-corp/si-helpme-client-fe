@@ -1,12 +1,16 @@
-import { useRef, useState } from "react";
-
-import { Phone } from "lucide-react";
+import {
+  useRef,
+  useState,
+} from "react";
 
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
-import { MultipleSelector } from "@/apps/ui/common-components/Multiple_Selector";
+import {
+  MultipleSelector,
+} from "@/apps/ui/domain-components/landing/Multiple_Selector";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
+import { CallButton } from "../CallButton";
 import { ConsultationButton } from "../ConsultationButton";
 
 export interface ContactFormModel {
@@ -185,15 +189,19 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
       </div>
       <div className="flex flex-col items-start justify-start gap-4 self-stretch">
         <div className="flex w-full items-center gap-4 max-md:flex-col">
-          <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full border border-gray-200 px-6 py-4 max-md:w-full">
-            <Phone className="h-4" />
-            <span>전화 상담</span>
-          </div>
+          <CallButton
+            className="min-w-fit max-md:w-full max-md:justify-center"
+            textLabel="전화 상담"
+          />
           <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full">
             <KakaoIcon />
             <span>카톡 상담</span>
           </div>
-          <ConsultationButton onClick={handleSubmit} fullWidth />
+          <ConsultationButton
+            className="h-10"
+            onClick={handleSubmit}
+            fullWidth
+          />
         </div>
         <div className="flex flex-col items-center justify-start self-stretch">
           <div className="justify-center self-stretch text-center font-['Apple_SD_Gothic_Neo'] text-xs font-normal text-gray-500">

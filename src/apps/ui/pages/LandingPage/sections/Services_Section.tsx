@@ -106,23 +106,9 @@ export const ServicesSection = () => {
             );
           })}
         </div>
-
-        {/* <div className="columns-2 gap-4 sm:columns-3">
-          {items.map((it, index) => (
-            <BlurFade key={index} delay={0.25 + index * 0.05} inView>
-              <div className="mb-4 size-full overflow-hidden rounded-lg">
-                <ServiceMainItem
-                  title={it.title}
-                  description={it.desc}
-                  image={it.src}
-                />
-              </div>
-            </BlurFade>
-          ))}
-        </div> */}
       </div>
 
-      <div className="relative flex w-full max-w-[1000px] flex-col items-center gap-4">
+      <div className="relative flex w-full max-w-[1000px] flex-col items-center gap-10">
         <span className="text-3xl font-bold text-gray-800">면책결정 사례</span>
         <RenderJudgments />
 
