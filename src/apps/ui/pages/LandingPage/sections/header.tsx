@@ -1,8 +1,6 @@
 import { Phone } from "lucide-react";
 
-import {
-  BrandLogoWithLabel,
-} from "@/apps/ui/common-components/BrandLogoWithLabel";
+import { TitleLogo1 } from "@/apps/ui/common-components/TitleLogo1";
 import {
   ConsultationButton,
 } from "@/apps/ui/domain-components/landing/ConsultationButton";
@@ -22,10 +20,10 @@ export default function Header() {
         <div className="flex w-full items-center justify-between">
           {/* 로고 */}
           <div
-            className="h-5 cursor-pointer sm:h-6 md:h-8"
+            className="cursor-pointer"
             onClick={() => scrollToSection("hero")}
           >
-            <BrandLogoWithLabel />
+            <TitleLogo1 className="h-8 w-auto max-md:h-5" />
           </div>
 
           {/* 데스크톱 네비게이션 */}

@@ -21,10 +21,11 @@ export const ConsultationButton = ({
   return (
     <button
       className={cn(
-        `group flex h-12 w-40 items-center justify-center rounded-lg py-2 font-bold whitespace-nowrap`,
+        `group flex h-12 w-40 items-center justify-center rounded-full py-2 font-bold whitespace-nowrap`,
         "transition-colors duration-500 ease-in-out",
-        "bg-gradient-to-r from-blue-500 to-green-500 hover:from-green-500 hover:to-blue-500",
+        "bg-gradient-to-r from-blue-500 to-green-600 hover:from-green-600 hover:to-blue-500",
         "cursor-pointer",
+        disabled && "cursor-not-allowed opacity-50",
         fullWidth && "w-full",
         className,
       )}
@@ -36,42 +37,15 @@ export const ConsultationButton = ({
       >
         {textLabel}
       </span>
-      <div
-        className={cn(
-          "relative flex h-7 w-0 items-center justify-center transition-all duration-300 ease-in-out group-hover:w-7 max-md:hidden",
-        )}
-      >
-        <ArrowRight size={16} className={"size-6 pl-1 text-white"} />
-      </div>
+      {!disabled && (
+        <div
+          className={cn(
+            "relative flex h-7 w-0 items-center justify-center transition-all duration-300 ease-in-out group-hover:w-7 max-md:hidden",
+          )}
+        >
+          <ArrowRight size={16} className={"size-6 pl-1 text-white"} />
+        </div>
+      )}
     </button>
   );
 };
-
-{
-  /* <div className="min-h-12">
-<button
-  className={cn(
-    "group flex h-12 w-40 items-center justify-center rounded-lg py-2 font-bold whitespace-nowrap",
-    "transition-colors duration-500 ease-in-out",
-    "bg-gradient-to-r from-[#26d1fd] to-[#a843fe] hover:from-[#a843fe] hover:to-[#26d1fd]",
-    "cursor-pointer",
-    className
-  )}
-  onClick={handleClick}
->
-  <span
-    className={cn(
-      "text-white transition-colors duration-100 ease-in-out group-hover:text-amber-100"
-    )}
-  >
-    {text}
-  </span>
-  <div
-    className={cn(
-      "relative flex h-7 w-0 items-center justify-center transition-all duration-300 ease-in-out group-hover:w-7"
-    )}
-  >
-    <ArrowRight size={16} className={"size-6 text-white pl-1"} />
-  </div>
-</button> */
-}

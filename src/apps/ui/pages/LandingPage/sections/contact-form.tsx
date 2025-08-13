@@ -6,11 +6,14 @@ import {
   ContactFinishDialog,
 } from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
 import {
+  ContactFormModel,
   ContactForms,
 } from "@/apps/ui/domain-components/landing/Contact_Forms";
 
 export default function ContactForm() {
-  const handleSubmit = async () => {
+  const handleSubmit = async (form: ContactFormModel) => {
+    console.log(form);
+
     // 실제 구현에서는 여기에 폼 제출 로직을 추가
     await new Promise((resolve) => setTimeout(resolve, 100));
     overlay.open(({ isOpen, close }) => (
