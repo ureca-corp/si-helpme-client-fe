@@ -105,7 +105,7 @@ export default function PricingSection() {
         },
         {
           icon: SearchCheck,
-          title: "서류 준비 및 정리 가이드 북 제공",
+          title: "서비스 구성",
         },
       ],
     },
@@ -163,6 +163,7 @@ export default function PricingSection() {
         {
           icon: Lock,
           title: "그 외 본인만 발급할 수 있는 서류",
+          description: "근로계약서, 거주지 임대차계약서 등",
         },
       ],
       isRecommended: true,

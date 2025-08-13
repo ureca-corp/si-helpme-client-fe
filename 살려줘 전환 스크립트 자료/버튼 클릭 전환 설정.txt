@@ -1,0 +1,21 @@
+1 ) 클릭시점 하단에 함수 선언 후 실행 함수를 onmousedown 이벤트 등으로 해당 하는 버튼에 설치
+
+[함수 선언]
+
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type='text/javascript'>
+function NA_CONV(){
+    if(window.wcs){
+    if(!wcs_add) var wcs_add = {};
+    wcs_add["wa"] = "공통키";
+    var _conv = {};
+    	_conv.type = '전환이벤트명';
+    wcs.trans(_conv);
+    }
+}
+</script>
+
+
+2)버튼 태그 내에서 함수 실행
+
+onMouseDown="javascript:try{NA_CONV();}catch(e){}"

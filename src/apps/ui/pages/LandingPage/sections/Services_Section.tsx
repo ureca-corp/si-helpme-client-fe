@@ -37,37 +37,37 @@ export const ServicesSection = () => {
       desc: "담당자를 배정하여 추심대응방법 지원",
     },
     {
-      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/dumy1.png",
       title: "추심대리인 선임",
       desc: "채권추심 대응을 위한 전문 추심대리인 선임 서비스 제공",
     },
     {
-      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/dumy2.png",
       title: "사건관리 전담팀 배정",
       desc: "전담매니저가 모든 절차를 지원",
     },
     {
-      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/dumy3.png",
       title: "실시간 알림",
       desc: "알림을 통해 실시간 사건 진행 현황 확인 가능",
     },
     {
-      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/dumy4.png",
       title: "비대면 진행",
       desc: "전국 어디에서도 비대면 상담 및 진행 가능",
     },
     {
-      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/dumy5.png",
       title: "채무조회 서비스",
       desc: "정확한 채무조회를 통해 모든 채무를 찾아 드립니다.",
     },
     {
-      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/dumy6.png",
       title: "인가결정 이후 관리",
       desc: "인가결정 이후 ~ 면책결정까지 지속적인 관리와 지원 제공",
     },
     {
-      src: "https://images.unsplash.com/photo-1750263160585-241fa75dca79?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      src: "/dumy7.png",
       title: "신용회복 지원",
       desc: "면책결정 이후 신용회복을 위한 체계적인 지원 프로그램 제공",
     },
@@ -89,13 +89,13 @@ export const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 max-lg:grid-cols-2 max-md:gap-4 max-sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-8 overflow-hidden max-md:gap-4">
           {items.map((i, index) => {
             return (
               <div
                 data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
                 key={index}
-                className={`${index % 2 === 0 ? "mt-0" : "mt-12"}`}
+                className={`${index % 2 === 0 ? "mt-0" : "mt-12"} ${index % 2 === 0 ? "" : ""} `}
               >
                 <ServiceMainItem
                   title={i.title}
@@ -108,12 +108,13 @@ export const ServicesSection = () => {
         </div>
       </div>
 
-      <div className="relative flex w-full max-w-[1000px] flex-col items-center gap-4 overflow-hidden">
+      <div className="relative flex w-full max-w-[1000px] flex-col items-center gap-10">
         <span className="text-3xl font-bold text-gray-800">면책결정 사례</span>
         <RenderJudgments />
+
+        <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r" />
+        <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l" />
       </div>
-      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r" />
-      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l" />
     </div>
   );
 };

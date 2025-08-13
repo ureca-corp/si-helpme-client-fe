@@ -3,36 +3,40 @@ import {
   useState,
 } from "react";
 
-import { Phone } from "lucide-react";
-
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
-import { Input } from "@/shadcn/components/ui/input";
 import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/shadcn/components/ui/select";
+  MultipleSelector,
+} from "@/apps/ui/domain-components/landing/Multiple_Selector";
+import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
+import { CallButton } from "../CallButton";
 import { ConsultationButton } from "../ConsultationButton";
 
+export interface ContactFormModel {
+  name: string;
+  phone: string;
+  message: string;
+  times: string[];
+}
+
 interface ContactFormsProps {
-  onClick: () => void;
+  onClick: (form: ContactFormModel) => void;
 }
 
 /**
  * 랜딩 페이지 상담 신청 폼
  */
 export const ContactForms = ({ onClick }: ContactFormsProps) => {
-  const [name, setName] = useState("");
+  const [form, setForm] = useState<ContactFormModel>({
+    name: "",
+    phone: "",
+    message: "",
+    times: [],
+  });
   const [phone1, setPhone1] = useState("010");
   const [phone2, setPhone2] = useState("");
   const [phone3, setPhone3] = useState("");
-  const [message, setMessage] = useState("");
-  const [times, setTimes] = useState("");
 
   // 전화번호 입력 필드 refs
   const phone1Ref = useRef<HTMLInputElement>(null);
@@ -63,7 +67,25 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
         prevRef?.current?.focus();
       }
     }
+
+    setForm({ ...form, phone: value });
   };
+
+  const handleSubmit = () => {
+    onClick({
+      name: form.name,
+      phone: `${phone1}${phone2}${phone3}`,
+      message: form.message,
+      times: form.times,
+    });
+  };
+
+  const timeItems = Array.from({ length: 25 }, (_, i) => {
+    const hour = 9 + Math.floor(i / 2);
+    const minute = i % 2 === 0 ? "00" : "30";
+    const timeLabel = minute === "00" ? `${hour}시` : `${hour}시 ${minute}분`;
+    return timeLabel;
+  });
 
   return (
     <div className="inline-flex w-full max-w-[1200px] flex-col items-start justify-start gap-8 overflow-hidden rounded-2xl bg-white p-6 outline-1 outline-offset-[-1px] outline-neutral-200">
@@ -73,8 +95,8 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
         </div>
 
         <Input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
           placeholder="성함을 입력해주세요."
         />
       </div>
@@ -90,7 +112,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
               onChange={(e) =>
                 handlePhoneChange(
                   e.target.value,
-                  setPhone1,
+                  (value) => setPhone1(value),
                   undefined,
                   phone2Ref,
                   3,
@@ -108,7 +130,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
               onChange={(e) =>
                 handlePhoneChange(
                   e.target.value,
-                  setPhone2,
+                  (value) => setPhone2(value),
                   phone1Ref,
                   phone3Ref,
                   4,
@@ -124,7 +146,13 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
               ref={phone3Ref}
               value={phone3}
               onChange={(e) =>
-                handlePhoneChange(e.target.value, setPhone3, phone2Ref)
+                handlePhoneChange(
+                  e.target.value,
+                  (value) => setPhone3(value),
+                  phone2Ref,
+                  undefined,
+                  4,
+                )
               }
               placeholder=""
               maxLength={4}
@@ -139,8 +167,8 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
         </div>
 
         <Textarea
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          value={form.message}
+          onChange={(e) => setForm({ ...form, message: e.target.value })}
           className="h-24"
           placeholder="궁금하신 내용을 자세히 입력해주시면 상담에 도움이 돼요."
         />
@@ -149,38 +177,31 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
         <div className="justify-center self-stretch font-['Pretendard'] text-sm leading-tight font-normal text-neutral-950">
           통화 가능하신 시간대
         </div>
-        <Select value={times} onValueChange={setTimes}>
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="시간을 선택해주세요" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup className="max-h-[200px] overflow-y-auto">
-              {Array.from({ length: 25 }, (_, i) => {
-                const hour = 9 + Math.floor(i / 2);
-                const minute = i % 2 === 0 ? "00" : "30";
-                const timeLabel =
-                  minute === "00" ? `${hour}시` : `${hour}시 ${minute}분`;
-                return (
-                  <SelectItem key={timeLabel} value={timeLabel}>
-                    {timeLabel}
-                  </SelectItem>
-                );
-              })}
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        <MultipleSelector
+          searchOption
+          items={timeItems}
+          selectedValues={form.times}
+          onSelectionChange={(value) => setForm({ ...form, times: value })}
+          placeholder="시간을 선택해주세요"
+          searchPlaceholder="시간 검색..."
+          emptyMessage="해당하는 시간이 없습니다."
+        />
       </div>
       <div className="flex flex-col items-start justify-start gap-4 self-stretch">
         <div className="flex w-full items-center gap-4 max-md:flex-col">
-          <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full border border-gray-200 px-6 py-4 max-md:w-full">
-            <Phone className="h-4" />
-            <span>전화 상담</span>
-          </div>
+          <CallButton
+            className="min-w-fit max-md:w-full max-md:justify-center"
+            textLabel="전화 상담"
+          />
           <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full">
             <KakaoIcon />
             <span>카톡 상담</span>
           </div>
-          <ConsultationButton onClick={onClick} fullWidth />
+          <ConsultationButton
+            className="h-10"
+            onClick={handleSubmit}
+            fullWidth
+          />
         </div>
         <div className="flex flex-col items-center justify-start self-stretch">
           <div className="justify-center self-stretch text-center font-['Apple_SD_Gothic_Neo'] text-xs font-normal text-gray-500">

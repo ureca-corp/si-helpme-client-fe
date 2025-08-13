@@ -110,16 +110,16 @@ export default function PricingCard({
           <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
             <div className="inline-flex items-center justify-center gap-2.5 self-stretch">
               <div
-                className={`h-0 flex-1 outline-1 outline-offset-[-0.50px] ${config.borderColor}`}
-              ></div>
+                className={`h-[1px] flex-1 bg-gradient-to-r ${config.fromGradient} ${config.toGradient}`}
+              />
               <div
                 className={`justify-start font-['Pretendard'] text-xs font-light ${config.primaryColor}`}
               >
                 서비스 구성
               </div>
               <div
-                className={`h-0 flex-1 outline-1 outline-offset-[-0.50px] ${config.borderColor}`}
-              ></div>
+                className={`h-[1px] flex-1 bg-gradient-to-l ${config.fromGradient} ${config.toGradient}`}
+              />
             </div>
 
             <div className="flex flex-col items-start justify-start gap-2 self-stretch md:gap-3">
@@ -151,16 +151,16 @@ export default function PricingCard({
           <div className="flex flex-col items-start justify-start gap-3 self-stretch md:gap-4">
             <div className="inline-flex items-center justify-center gap-2.5 self-stretch">
               <div
-                className={`h-0 flex-1 outline-1 outline-offset-[-0.50px] ${config.borderColor}`}
-              ></div>
+                className={`h-[1px] flex-1 bg-gradient-to-r ${config.fromGradient} ${config.toGradient}`}
+              />
               <div
                 className={`justify-start font-['Pretendard'] text-xs font-light ${config.primaryColor}`}
               >
                 고객님이 해야 할 내용
               </div>
               <div
-                className={`h-0 flex-1 outline-1 outline-offset-[-0.50px] ${config.borderColor}`}
-              ></div>
+                className={`h-[1px] flex-1 bg-gradient-to-l ${config.fromGradient} ${config.toGradient}`}
+              />
             </div>
 
             <div className="flex flex-col gap-3">
@@ -208,12 +208,15 @@ const getPlanConfig = (plan: PlanType) => {
         color: "emerald",
         borderColor: "outline-emerald-300",
         bgColor: "bg-gradient-to-b from-emerald-50 to-white",
-        buttonColor: "bg-white text-black border border-zinc-100",
-        iconColor: "text-green-500",
-        badgeColor: "bg-green-500",
+        buttonColor: "bg-green-600 text-white border border-zinc-100",
+        iconColor: "text-green-600",
+        badgeColor: "bg-green-600",
         titleColor: "text-black",
         priceColor: "text-black",
-        primaryColor: "text-green-500",
+        primaryColor: "text-green-600",
+        // gradients need to be literal strings so Tailwind can see them
+        fromGradient: "from-white",
+        toGradient: "to-green-600",
       };
     case PlanType.STANDARD:
       return {
@@ -226,6 +229,8 @@ const getPlanConfig = (plan: PlanType) => {
         titleColor: "text-black",
         priceColor: "text-black",
         primaryColor: "text-blue-500",
+        fromGradient: "from-white",
+        toGradient: "to-blue-500",
       };
     case PlanType.PRO:
       return {
@@ -238,6 +243,8 @@ const getPlanConfig = (plan: PlanType) => {
         titleColor: "text-black",
         priceColor: "text-black",
         primaryColor: "text-black",
+        fromGradient: "from-white",
+        toGradient: "to-black",
       };
   }
 };

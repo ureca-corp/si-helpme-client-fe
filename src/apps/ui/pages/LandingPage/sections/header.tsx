@@ -1,8 +1,5 @@
-import { Phone } from "lucide-react";
-
-import {
-  BrandLogoWithLabel,
-} from "@/apps/ui/common-components/BrandLogoWithLabel";
+import { TitleLogo1 } from "@/apps/ui/common-components/TitleLogo1";
+import { CallButton } from "@/apps/ui/domain-components/landing/CallButton";
 import {
   ConsultationButton,
 } from "@/apps/ui/domain-components/landing/ConsultationButton";
@@ -22,10 +19,10 @@ export default function Header() {
         <div className="flex w-full items-center justify-between">
           {/* 로고 */}
           <div
-            className="h-5 cursor-pointer sm:h-6 md:h-8"
+            className="cursor-pointer"
             onClick={() => scrollToSection("hero")}
           >
-            <BrandLogoWithLabel />
+            <TitleLogo1 className="h-8 w-auto max-md:h-5" />
           </div>
 
           {/* 데스크톱 네비게이션 */}
@@ -74,14 +71,11 @@ export default function Header() {
 
           {/* CTA 버튼들 */}
           <div className="flex items-center gap-3 max-md:gap-2">
-            <div className="flex h-10 cursor-pointer items-center gap-1 rounded-lg border border-gray-200 p-4 max-md:h-10 max-md:w-30 max-md:text-sm">
-              <Phone className="h-4" />
-              <span className="">지금 상담</span>
-            </div>
+            <CallButton />
 
             <ConsultationButton
               onClick={() => scrollToSection("contact")}
-              className="h-10 w-24 max-md:h-10 max-md:w-20 max-md:text-sm"
+              className="h-10 w-28 max-md:h-10 max-md:w-20 max-md:text-sm"
               textLabel="상담 신청"
             />
           </div>

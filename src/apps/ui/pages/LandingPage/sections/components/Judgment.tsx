@@ -1,4 +1,4 @@
-import AutoScroll from "embla-carousel-auto-scroll";
+import AutoPlay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 
 import {
@@ -13,20 +13,24 @@ export const RenderJudgments = () => {
       watchDrag: false,
     },
     [
-      AutoScroll({
-        speed: 1.5,
+      AutoPlay({
+        delay: 3000,
       }),
+
+      // AutoScroll({
+      //   speed: 1.5,
+      // }),
     ],
   );
 
   return (
-    <div className="embla w-full overflow-hidden">
+    <div className="embla w-full overflow-hidden pb-1">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container flex">
           {items.map((it, index) => (
             <div
               key={index}
-              className="embla__slide min-w-0 flex-[0_0_auto] pl-4"
+              className="embla__slide min-w-0 flex-[0_0_auto] pl-10"
             >
               <JudgmentCard key={index} {...it} />
             </div>
