@@ -4,9 +4,9 @@ export type JudgmentCardModel = {
   title: string; // 제목
   reductionRate: number; // 탕감률
   court: string; // 법원
-  totalDebt: string; // 총 채무액
-  monthlyPayment: string; // 월 변제금
-  repaymentPeriod: string; // 변제 기간
+  totalDebt?: string; // 총 채무액
+  monthlyPayment?: string; // 월 변제금
+  repaymentPeriod?: string; // 변제 기간
   image: string; // 이미지
 };
 
@@ -29,7 +29,7 @@ export const JudgmentCard = ({
         <span className="text-lg font-semibold text-gray-800">{title}</span>
 
         {/* 이미지 */}
-        <div className="h-64 w-full overflow-hidden rounded-2xl border border-gray-100">
+        <div className="aspect-[0.8] w-full overflow-hidden rounded-2xl border border-gray-100">
           <CustomImage src={image} alt={"결정문서"} />
         </div>
 
@@ -53,24 +53,32 @@ export const JudgmentCard = ({
 
         {/* 상세 정보 */}
         <div className="flex flex-col">
-          <div className="text-sm">
-            <span className="font-bold">총 채무액: </span>
-            <span className="font-medium text-gray-700 opacity-70">
-              {totalDebt}
-            </span>
-          </div>
-          <div className="text-sm">
-            <span className="font-bold">월 변제금: </span>
-            <span className="font-medium text-gray-700 opacity-70">
-              {monthlyPayment}
-            </span>
-          </div>
-          <div className="text-sm">
-            <span className="font-bold">변제 기간: </span>
-            <span className="font-medium text-gray-700 opacity-70">
-              {repaymentPeriod}
-            </span>
-          </div>
+          {totalDebt && (
+            <div className="text-sm">
+              <span className="font-bold">총 채무액: </span>
+              <span className="font-medium text-gray-700 opacity-70">
+                {totalDebt}
+              </span>
+            </div>
+          )}
+
+          {monthlyPayment && (
+            <div className="text-sm">
+              <span className="font-bold">월 변제금: </span>
+              <span className="font-medium text-gray-700 opacity-70">
+                {monthlyPayment}
+              </span>
+            </div>
+          )}
+
+          {repaymentPeriod && (
+            <div className="text-sm">
+              <span className="font-bold">변제 기간: </span>
+              <span className="font-medium text-gray-700 opacity-70">
+                {repaymentPeriod}
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </div>

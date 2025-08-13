@@ -23,7 +23,7 @@ export const RenderJudgments = () => {
     <div className="embla w-full overflow-hidden">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container flex">
-          {firstItems.map((it, index) => (
+          {items.map((it, index) => (
             <div
               key={index}
               className="embla__slide min-w-0 flex-[0_0_auto] pl-4"
@@ -37,15 +37,35 @@ export const RenderJudgments = () => {
   );
 };
 
-const firstItems = Array.from(
-  { length: 10 },
-  (_, index): JudgmentCardModel => ({
-    title: `파산${index + 1}`,
-    court: `OO법원${index + 1}`,
-    reductionRate: index % 2 === 0 ? 0 : 50 + index,
-    totalDebt: `1${index + 1} 억원`,
-    monthlyPayment: `10${index + 1} 만원`,
-    repaymentPeriod: `10${index + 1}일`,
-    image: `/dumy_document.png`,
-  }),
-);
+const items: JudgmentCardModel[] = [
+  {
+    image: "/Judgment1.jpg",
+    title: "개인회생",
+    court: "수원회생법원",
+    reductionRate: 90,
+  },
+  {
+    image: "/Judgment2.jpg",
+    title: "개인회생",
+    court: "춘천지방법원",
+    reductionRate: 85,
+  },
+  {
+    image: "/Judgment3.jpg",
+    title: "개인회생",
+    court: "광주지방법원",
+    reductionRate: 79,
+  },
+  {
+    image: "/Judgment4.jpg",
+    title: "개인회생",
+    court: "서울회생법원",
+    reductionRate: 87,
+  },
+  {
+    image: "/Judgment5.jpg",
+    title: "개인회생",
+    court: "인천지방법원",
+    reductionRate: 85,
+  },
+];
