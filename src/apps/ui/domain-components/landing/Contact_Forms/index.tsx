@@ -1,11 +1,9 @@
-import {
-  useRef,
-  useState,
-} from "react";
+import { useRef, useState } from "react";
 
 import { Phone } from "lucide-react";
 
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
+import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { Input } from "@/shadcn/components/ui/input";
 import {
   Select,
@@ -172,11 +170,17 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
       </div>
       <div className="flex flex-col items-start justify-start gap-4 self-stretch">
         <div className="flex w-full items-center gap-4 max-md:flex-col">
-          <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full border border-gray-200 px-6 py-4 max-md:w-full">
+          <div
+            className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full border border-gray-200 px-6 py-4 max-md:w-full"
+            onMouseDown={() => sendNaverConversion("custom001")}
+          >
             <Phone className="h-4" />
             <span>전화 상담</span>
           </div>
-          <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full">
+          <div
+            className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full"
+            onMouseDown={() => sendNaverConversion("custom002")}
+          >
             <KakaoIcon />
             <span>카톡 상담</span>
           </div>

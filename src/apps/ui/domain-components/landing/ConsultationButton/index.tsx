@@ -1,3 +1,4 @@
+import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { ArrowRight } from "lucide-react";
 
 import { cn } from "@/shadcn/lib/utils";
@@ -29,6 +30,7 @@ export const ConsultationButton = ({
         className,
       )}
       onClick={onClick}
+      onMouseDown={() => sendNaverConversion("custom003")}
       disabled={disabled}
     >
       <span

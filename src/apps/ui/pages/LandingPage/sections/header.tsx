@@ -1,12 +1,9 @@
 import { Phone } from "lucide-react";
 
-import {
-  BrandLogoWithLabel,
-} from "@/apps/ui/common-components/BrandLogoWithLabel";
-import {
-  ConsultationButton,
-} from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { BrandLogoWithLabel } from "@/apps/ui/common-components/BrandLogoWithLabel";
+import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
 import { Button } from "@/shadcn/components/ui/button";
+import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 
 export default function Header() {
   const scrollToSection = (sectionId: string) => {
@@ -74,7 +71,10 @@ export default function Header() {
 
           {/* CTA 버튼들 */}
           <div className="flex items-center gap-3 max-md:gap-2">
-            <div className="flex h-10 cursor-pointer items-center gap-1 rounded-lg border border-gray-200 p-4 max-md:h-10 max-md:w-30 max-md:text-sm">
+            <div
+              className="flex h-10 cursor-pointer items-center gap-1 rounded-lg border border-gray-200 p-4 max-md:h-10 max-md:w-30 max-md:text-sm"
+              onMouseDown={() => sendNaverConversion("custom001")}
+            >
               <Phone className="h-4" />
               <span className="">지금 상담</span>
             </div>

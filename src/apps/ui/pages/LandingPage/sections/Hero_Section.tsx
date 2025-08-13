@@ -1,28 +1,16 @@
 "use client";
 
-import {
-  useEffect,
-  useState,
-} from "react";
+import { useEffect, useState } from "react";
 
-import {
-  BadgeDollarSign,
-  FileText,
-  ThumbsUp,
-} from "lucide-react";
+import { BadgeDollarSign, FileText, ThumbsUp } from "lucide-react";
 
-import {
-  AuroraBackgroundContainer,
-} from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
-import {
-  ConsultationButton,
-} from "@/apps/ui/domain-components/landing/ConsultationButton";
-import {
-  ReliabilityNumberItem,
-} from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
+import { AuroraBackgroundContainer } from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
+import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { ReliabilityNumberItem } from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { cn } from "@/shadcn/lib/utils";
+import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 
 export default function HeroSection() {
   const [value1, setValue1] = useState(123);
@@ -128,6 +116,7 @@ export default function HeroSection() {
                   "cursor-pointer",
                 )}
                 onClick={() => scrollToSection("services")}
+                onMouseDown={() => sendNaverConversion("custom001")}
               >
                 <span
                   className={cn(

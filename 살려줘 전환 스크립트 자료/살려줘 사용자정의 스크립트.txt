@@ -1,0 +1,11 @@
+<!-- NAVER 사용자정의(custom001~010) SCRIPT -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script type="text/javascript">
+    if(window.wcs){
+    if(!wcs_add) var wcs_add = {};
+    wcs_add['wa'] = '해당 사이트의 AccountId 값을 넣어 주시기 부탁 드립니다.';
+    var _conv = {};
+    	_conv.type = 'custom001~custom010';
+    wcs.trans(_conv);
+    }
+</script>
