@@ -20,7 +20,7 @@ export const RenderJudgments = () => {
   );
 
   return (
-    <div className="embla w-full overflow-hidden">
+    <div className="embla w-full overflow-hidden pb-1">
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container flex">
           {items.map((it, index) => (

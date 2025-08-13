@@ -57,7 +57,7 @@ export default function HeroSection() {
         id="hero"
         className="z-1 flex min-h-[100vh] flex-col items-center justify-center"
       >
-        <div className="container mx-auto px-4">
+        <div className="flex w-full px-4">
           <div className="mx-auto flex max-w-4xl flex-col gap-8 text-center">
             {/* 서비스 특징 */}
             <div className="mt-10 lg:mt-12">
@@ -85,10 +85,11 @@ export default function HeroSection() {
                 <div className="justify-center text-center font-['Pretendard'] text-5xl leading-[60px] font-bold text-black md:text-7xl">
                   살려달라고요??
                 </div>
-                <AuroraText colors={["#6bff6b", "#137a13"]} speed={5}>
+                <AuroraText colors={["#6bff6b", "#19A219"]} speed={5}>
                   수임료부터 살려드릴게요~
                 </AuroraText>
               </h1>
+              {/*#6bff6b", "#137a13 */}
               <div className="flex flex-col">
                 <TextAnimate
                   animation="slideLeft"
@@ -110,7 +111,7 @@ export default function HeroSection() {
             <div className="flex justify-center gap-4">
               <button
                 className={cn(
-                  "group flex h-12 w-40 items-center justify-center rounded-lg py-2 font-bold whitespace-nowrap",
+                  "group flex h-12 w-40 items-center justify-center rounded-full py-2 font-bold whitespace-nowrap",
                   "transition-colors duration-500 ease-in-out",
                   "border border-gray-300 bg-white hover:bg-gray-100",
                   "cursor-pointer",
