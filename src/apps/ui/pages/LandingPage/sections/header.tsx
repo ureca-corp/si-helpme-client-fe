@@ -1,9 +1,7 @@
 import { Phone } from "lucide-react";
 
 import { TitleLogo1 } from "@/apps/ui/common-components/TitleLogo1";
-import {
-  ConsultationButton,
-} from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
 import { Button } from "@/shadcn/components/ui/button";
 
 export default function Header() {

@@ -1,14 +1,9 @@
-import {
-  useRef,
-  useState,
-} from "react";
+import { useRef, useState } from "react";
 
 import { Phone } from "lucide-react";
 
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
-import {
-  MultipleSelector,
-} from "@/apps/ui/common-components/Multiple_Selector";
+import { MultipleSelector } from "@/apps/ui/common-components/Multiple_Selector";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
