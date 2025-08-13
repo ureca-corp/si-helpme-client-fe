@@ -108,10 +108,12 @@ export const ServicesSection = () => {
         </div>
       </div>
 
-      <div className="flex w-full flex-col items-center gap-4 overflow-hidden">
+      <div className="relative flex w-full max-w-[1000px] flex-col items-center gap-4 overflow-hidden">
         <span className="text-3xl font-bold text-gray-800">면책결정 사례</span>
         <RenderJudgments />
       </div>
+      <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r" />
+      <div className="from-background pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l" />
     </div>
   );
 };

@@ -9,7 +9,7 @@ import {
 export const FaqSection = () => {
   const titleText = "자주 묻는 질문";
   const descriptionText = "상담 전에 한번 읽어보시면 도움이 되실 거예요.";
-  const image = "/법률사무소 도약.jpg";
+  const image = "/company_main.jpg";
 
   const items = [
     {
