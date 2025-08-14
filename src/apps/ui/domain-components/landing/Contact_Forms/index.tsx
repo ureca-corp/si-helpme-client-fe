@@ -1,12 +1,7 @@
-import {
-  useRef,
-  useState,
-} from "react";
+import { useRef, useState } from "react";
 
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
-import {
-  MultipleSelector,
-} from "@/apps/ui/domain-components/landing/Multiple_Selector";
+import { MultipleSelector } from "@/apps/ui/domain-components/landing/Multiple_Selector";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
@@ -191,7 +186,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
         <div className="flex w-full items-center gap-4 max-md:flex-col">
           <CallButton
             className="min-w-fit max-md:w-full max-md:justify-center"
-            textLabel="전화 상담"
+            textLabel="전화상담"
           />
           <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full">
             <KakaoIcon />

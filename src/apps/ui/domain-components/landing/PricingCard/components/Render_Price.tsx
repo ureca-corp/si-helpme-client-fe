@@ -25,7 +25,7 @@ export const RenderPrice = ({
       <div className="flex flex-col items-start gap-1">
         <div className="flex items-baseline gap-2">
           <div
-            className={`justify-center text-center font-['Pretendard'] text-xl font-bold md:text-4xl lg:text-5xl`}
+            className={`justify-center text-center font-['Pretendard'] text-3xl font-bold md:text-4xl lg:text-5xl`}
           >
             <NumberFlow value={totalPrice} />
           </div>

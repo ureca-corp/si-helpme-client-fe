@@ -3,8 +3,11 @@ import { Phone } from "lucide-react";
 import { cn } from "@/shadcn/lib/utils";
 
 interface CallButtonProps {
-  className?: React.HTMLAttributes<HTMLDivElement>["className"];
+  className?: React.HTMLAttributes<HTMLButtonElement>["className"];
   textLabel?: string;
+  iconVisible?: boolean;
+  disabled?: boolean;
+  fullWidth?: boolean;
 }
 
 /**
@@ -12,22 +15,43 @@ interface CallButtonProps {
  */
 export const CallButton = ({
   className,
-  textLabel = "전화 상담",
+  textLabel = "전화상담",
+  iconVisible = true,
+  disabled = false,
+  fullWidth = false,
 }: CallButtonProps) => {
   const handleClick = () => {
-    window.open("tel:02-6677-8510", "_blank");
+    window.location.href = "tel:02-6677-8510";
   };
 
   return (
-    <div
+    <button
       className={cn(
-        "flex h-10 cursor-pointer items-center gap-1 rounded-full border border-gray-200 p-4 hover:bg-gray-100 max-md:h-10 max-md:w-30 max-md:text-sm",
+        `group flex h-12 w-40 items-center justify-center rounded-full py-2 font-bold whitespace-nowrap`,
+        "transition-colors duration-500 ease-in-out",
+        "bg-gradient-to-r from-blue-500 to-green-600 hover:from-green-600 hover:to-blue-500",
+        "cursor-pointer",
+        disabled && "cursor-not-allowed opacity-50",
+        fullWidth && "w-full",
         className,
       )}
       onClick={handleClick}
+      disabled={disabled}
     >
-      <Phone className="h-4" />
-      <span className="">{textLabel}</span>
-    </div>
+      <span
+        className={cn("text-white transition-colors duration-100 ease-in-out")}
+      >
+        {textLabel}
+      </span>
+      {!disabled && (
+        <div
+          className={cn(
+            "relative flex h-7 w-0 items-center justify-center transition-all duration-300 ease-in-out group-hover:w-7 max-md:hidden",
+          )}
+        >
+          <Phone className={"size-5 pl-1 text-white"} />
+        </div>
+      )}
+    </button>
   );
 };

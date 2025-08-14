@@ -16,7 +16,7 @@ export const CustomImage = ({
 }: CustomImageProps) => {
   return (
     <div className="relative h-full w-full">
-      <Image fill src={src} alt={alt} style={{ objectFit }} />
+      <Image fill src={src} alt={alt} sizes="100%" style={{ objectFit }} />
     </div>
   );
 };

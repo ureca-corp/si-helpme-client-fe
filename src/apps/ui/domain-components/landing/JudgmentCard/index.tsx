@@ -14,12 +14,9 @@ export type JudgmentCardModel = {
  * 법원 판결 사례 카드
  */
 export const JudgmentCard = ({
-  title,
   reductionRate,
   court,
-  totalDebt,
-  monthlyPayment,
-  repaymentPeriod,
+
   image,
 }: JudgmentCardModel) => {
   return (

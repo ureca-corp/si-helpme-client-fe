@@ -2,20 +2,25 @@ import type React from "react";
 
 import { overlay } from "overlay-kit";
 
-import {
-  ContactFinishDialog,
-} from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
+import { useCreateCounsel } from "@/apps/applications/counsel/useCreateCounsel";
+import { ContactFinishDialog } from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
 import {
   ContactFormModel,
   ContactForms,
 } from "@/apps/ui/domain-components/landing/Contact_Forms";
 
 export default function ContactForm() {
+  const { createCounsel } = useCreateCounsel();
+
   const handleSubmit = async (form: ContactFormModel) => {
-    console.log(form);
+    await createCounsel({
+      username: form.name,
+      phone: form.phone,
+      question: form.message,
+      availablecallTime: form.times.join(","),
+    });
 
     // 실제 구현에서는 여기에 폼 제출 로직을 추가
-    await new Promise((resolve) => setTimeout(resolve, 100));
     overlay.open(({ isOpen, close }) => (
       <ContactFinishDialog open={isOpen} onClose={close} />
     ));

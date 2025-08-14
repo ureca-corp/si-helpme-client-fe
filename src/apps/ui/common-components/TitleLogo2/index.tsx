@@ -17,7 +17,7 @@ export const TitleLogo2 = ({
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <g clip-path="url(#clip0_172_8)">
+      <g clipPath="url(#clip0_172_8)">
         <path
           d="M26.95 34.88C36.1897 34.88 43.68 27.1569 43.68 17.63C43.68 8.10309 36.1897 0.380005 26.95 0.380005C17.7102 0.380005 10.22 8.10309 10.22 17.63C10.22 27.1569 17.7102 34.88 26.95 34.88Z"
           fill="#2C81FE"

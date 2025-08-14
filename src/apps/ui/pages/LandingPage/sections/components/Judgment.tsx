@@ -30,7 +30,7 @@ export const RenderJudgments = () => {
           {items.map((it, index) => (
             <div
               key={index}
-              className="embla__slide min-w-0 flex-[0_0_auto] pl-10"
+              className="embla__slide min-w-0 flex-[0_0_auto] px-5"
             >
               <JudgmentCard key={index} {...it} />
             </div>

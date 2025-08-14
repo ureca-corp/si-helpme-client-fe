@@ -250,7 +250,7 @@ export default function PricingSection() {
   return (
     <section id="pricing" className="relative">
       <div className="mx-auto w-full max-w-[1200px] px-4 py-24">
-        <div className="inline-flex w-full max-w-[1200px] flex-col items-center justify-start gap-16">
+        <div className="inline-flex w-full max-w-[1200px] flex-col items-center justify-start gap-8">
           <div className="flex flex-col items-center justify-start gap-4 self-stretch">
             <div className="justify-center self-stretch text-center font-['Pretendard'] text-3xl leading-tight font-bold text-zinc-800 md:text-4xl md:leading-[63px] lg:text-5xl">
               요금제 안내
@@ -260,7 +260,9 @@ export default function PricingSection() {
             </div>
           </div>
 
-          <PricingTabs isLump={isLump} setIsLump={setIsLump} />
+          <div className="sticky top-20 z-20 w-full max-md:top-20">
+            <PricingTabs isLump={isLump} setIsLump={setIsLump} />
+          </div>
 
           <div className="flex flex-col items-center justify-center gap-4 text-center text-sm text-gray-500">
             채권자 10건 까지(1 건 추가시 10만원 추가)

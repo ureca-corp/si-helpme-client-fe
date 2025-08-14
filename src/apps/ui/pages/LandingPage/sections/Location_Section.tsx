@@ -1,11 +1,4 @@
-import {
-  Building,
-  MapPin,
-  Navigation,
-  Phone,
-  Printer,
-  Train,
-} from "lucide-react";
+import { Building, MapPin, Navigation, Phone, Printer } from "lucide-react";
 
 import { NaverMap } from "@/apps/ui/domain-components/landing/Location";
 import {
@@ -65,27 +58,21 @@ export const Location2Section = () => {
             icon={
               <Navigation className="h-5 w-5 text-emerald-600 sm:h-6 sm:w-6" />
             }
-            title="교통 및 주차"
+            title="주차 안내"
             className="h-full"
           >
             <LocationInfoItem
-              icon={<Train />}
-              label="지하철"
-              value="2/3호선 교대역 4번 출구 도보 2분 (32m)"
-            />
-
-            <LocationInfoItem
               icon={<Building />}
               label="주차장"
-              value={`KM타워 내 기계주차장 이용 가능 (없으면 발렛주차 이용 가능)`}
+              value={`KM타워 내 기계주차장 이용 가능 (불가 시 발렛주차 이용 가능)`}
             />
-            <span className="pl-10 text-sm text-gray-500">{`"법률사무소 도약 방문" 말씀해주세요.`}</span>
 
             <LocationInfoItem
               icon={<MapPin />}
               label="발렛주차장 위치"
               value="서울시 서초구 서초중앙로 24길 20 (사보텐)"
             />
+            <span className="pl-10 text-sm text-gray-500">{`"법률사무소 도약 방문" 말씀해주세요.`}</span>
           </LocationInfoContainer>
         </div>
 

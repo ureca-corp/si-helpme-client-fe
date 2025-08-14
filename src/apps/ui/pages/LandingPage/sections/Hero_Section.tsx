@@ -7,10 +7,10 @@ import { BadgeDollarSign, FileText, ThumbsUp } from "lucide-react";
 import { AuroraBackgroundContainer } from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
 import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
 import { ReliabilityNumberItem } from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
+import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { cn } from "@/shadcn/lib/utils";
-import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 
 export default function HeroSection() {
   const [value1, setValue1] = useState(123);
@@ -127,7 +127,10 @@ export default function HeroSection() {
                   서비스가 궁금해요
                 </span>
               </button>
-              <ConsultationButton onClick={() => scrollToSection("contact")} />
+              <ConsultationButton
+                textLabel="요금제가 궁금해요"
+                onClick={() => scrollToSection("pricing")}
+              />
             </div>
 
             {/* 신뢰도 지표 */}

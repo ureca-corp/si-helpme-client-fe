@@ -13,7 +13,7 @@ export const PricingTabs = ({
   setIsLump: (isLump: boolean) => void;
 }) => {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex w-full flex-col items-center gap-2 bg-white py-4">
       <span className="text-sm text-stone-500">
         {"납부 방식을 선택해주세요"}
       </span>
