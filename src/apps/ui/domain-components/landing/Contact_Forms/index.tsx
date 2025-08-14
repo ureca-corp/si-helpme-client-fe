@@ -69,7 +69,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
   const handleSubmit = () => {
     onClick({
       name: form.name,
-      phone: `${phone1}${phone2}${phone3}`,
+      phone: `${phone1}-${phone2}-${phone3}`,
       message: form.message,
       times: form.times,
     });
