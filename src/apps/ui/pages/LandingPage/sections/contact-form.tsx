@@ -17,7 +17,7 @@ export default function ContactForm() {
       username: form.name,
       phone: form.phone,
       question: form.message,
-      availablecallTime: form.times.join(", "),
+      availableCallTime: form.times.join(", "),
     });
 
     // 실제 구현에서는 여기에 폼 제출 로직을 추가
