@@ -12,9 +12,17 @@ export const FaqSection = () => {
   const descriptionText = "상담 전에 한번 읽어보시면 도움이 되실 거예요.";
   const image = "/company_main.jpg";
 
-  const { data } = useSearchFaqs();
+  const { error, isLoading, data } = useSearchFaqs();
 
-  console.log(data);
+  if (isLoading) {
+    return <></>;
+  }
+
+  if (!!error || !data) {
+    return <></>;
+  }
+
+  const faqs = data!.items ?? [];
 
   const items = [
     {
@@ -110,7 +118,7 @@ export const FaqSection = () => {
             </div>
           </div>
           <FaqAccordion type="multiple" className="w-full md:w-[60%]">
-            {items.map((item, index) => (
+            {faqs.map((item, index) => (
               <FaqAccordionItem key={index} value={`item-${index}`}>
                 <FaqAccordionTrigger>{item.question}</FaqAccordionTrigger>
                 <FaqAccordionContent className="text-muted-foreground">

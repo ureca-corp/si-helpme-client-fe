@@ -69,7 +69,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
   const handleSubmit = () => {
     onClick({
       name: form.name,
-      phone: `${phone1}${phone2}${phone3}`,
+      phone: `${phone1}-${phone2}-${phone3}`,
       message: form.message,
       times: form.times,
     });
@@ -184,10 +184,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
       </div>
       <div className="flex flex-col items-start justify-start gap-4 self-stretch">
         <div className="flex w-full items-center gap-4 max-md:flex-col">
-          <CallButton
-            className="min-w-fit max-md:w-full max-md:justify-center"
-            textLabel="전화상담"
-          />
+          <CallButton className="h-10" textLabel="전화상담" />
           <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full">
             <KakaoIcon />
             <span>카톡 상담</span>
