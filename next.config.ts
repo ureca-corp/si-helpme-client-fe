@@ -15,9 +15,15 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/:path*",
-        headers: [
-          { key: "X-Robots-Tag", value: "index, follow" },
-        ],
+        headers: [{ key: "X-Robots-Tag", value: "index, follow" }],
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: `${process.env.NEXT_PUBLIC_MAIN_API_SERVER_URL || "https://admin-mu-rosy.vercel.app"}/api/:path*`,
       },
     ];
   },

@@ -260,7 +260,7 @@ export default function PricingSection() {
             </div>
           </div>
 
-          <div className="sticky top-14 z-20 w-full md:top-20">
+          <div className="sticky top-20 z-20 w-full max-md:top-20">
             <PricingTabs isLump={isLump} setIsLump={setIsLump} />
           </div>
 

@@ -1,3 +1,4 @@
+import { useSearchFaqs } from "@/apps/applications/faq/useSearchFaqs";
 import { CustomImage } from "@/apps/ui/common-components/CustomImage";
 import {
   FaqAccordion,
@@ -10,6 +11,10 @@ export const FaqSection = () => {
   const titleText = "자주 묻는 질문";
   const descriptionText = "상담 전에 한번 읽어보시면 도움이 되실 거예요.";
   const image = "/company_main.jpg";
+
+  const { data } = useSearchFaqs();
+
+  console.log(data);
 
   const items = [
     {
