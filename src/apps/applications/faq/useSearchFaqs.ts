@@ -62,7 +62,9 @@ export const useSearchFaqs = () => {
     queryFn: async () => {
       try {
         const { data: res }: AxiosResponse<ApiResponse<FaqsDto>> =
-          await axios.get("/api/client/faqs", { params });
+          await axios.get("https://admin-mu-rosy.vercel.app/api/client/faqs", {
+            params,
+          });
 
         return plainToInstance(FaqsDto, res.data);
       } catch (error) {

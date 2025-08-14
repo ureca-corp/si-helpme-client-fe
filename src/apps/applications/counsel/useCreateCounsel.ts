@@ -12,7 +12,10 @@ export interface CreateCounselInput {
 export const useCreateCounsel = () => {
   const createCounsel = async (counsel: CreateCounselInput) => {
     try {
-      const res = await axios.post(`/api/client/inquiries`, counsel);
+      const res = await axios.post(
+        `https://admin-mu-rosy.vercel.app/api/client/inquiries`,
+        counsel,
+      );
 
       return res.data;
     } catch (error) {
