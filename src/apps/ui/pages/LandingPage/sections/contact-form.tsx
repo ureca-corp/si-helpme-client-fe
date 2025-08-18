@@ -16,6 +16,12 @@ export default function ContactForm() {
 
   const handleSubmit = async (form: ContactFormModel) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
+    await createCounsel({
+      username: form.name,
+      phone: form.phone,
+      question: form.message,
+      availableCallTime: form.times.join(", "),
+    });
 
     try {
       // await createCounsel({

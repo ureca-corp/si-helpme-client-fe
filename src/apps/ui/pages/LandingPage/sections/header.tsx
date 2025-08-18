@@ -6,11 +6,11 @@ import { ConsultationButton } from "@/apps/ui/domain-components/landing/Consulta
 import { Button } from "@/shadcn/components/ui/button";
 import { DialogTitle } from "@/shadcn/components/ui/dialog";
 import {
-  Drawer,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/shadcn/components/ui/drawer";
-import { SheetClose } from "@/shadcn/components/ui/sheet";
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetTrigger,
+} from "@/shadcn/components/ui/sheet";
 
 export default function Header() {
   const scrollToSection = (sectionId: string) => {
@@ -91,7 +91,7 @@ export default function Header() {
           </div>
 
           {/* 모바일 햄버거 메뉴 */}
-          {/* <div className="flex w-full justify-end gap-3 lg:hidden">
+          <div className="flex w-full justify-end gap-3 lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
                 <button
@@ -154,70 +154,8 @@ export default function Header() {
                 </div>
               </SheetContent>
             </Sheet>
-          </div> */}
+          </div>
         </div>
-        <Drawer>
-          <DrawerTrigger asChild>
-            <button
-              aria-label="메뉴 열기"
-              className="inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-100"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
-          </DrawerTrigger>
-          <DrawerContent>
-            <DialogTitle className="hidden" />
-            <div className="mt-10 flex flex-col gap-3 p-4">
-              <SheetClose asChild>
-                <button
-                  className="py-2 text-left"
-                  onClick={() => scrollToSection("services")}
-                >
-                  서비스
-                </button>
-              </SheetClose>
-              <div className="h-px w-full bg-gray-200" />
-              <SheetClose asChild>
-                <button
-                  className="py-2 text-left"
-                  onClick={() => scrollToSection("pricing")}
-                >
-                  요금제
-                </button>
-              </SheetClose>
-              <div className="h-px w-full bg-gray-200" />
-
-              <SheetClose asChild>
-                <button
-                  className="py-2 text-left"
-                  onClick={() => scrollToSection("faq")}
-                >
-                  FAQ
-                </button>
-              </SheetClose>
-              <div className="h-px w-full bg-gray-200" />
-
-              <SheetClose asChild>
-                <button
-                  className="py-2 text-left"
-                  onClick={() => scrollToSection("contact")}
-                >
-                  상담신청
-                </button>
-              </SheetClose>
-              <div className="h-px w-full bg-gray-200" />
-
-              <SheetClose asChild>
-                <button
-                  className="py-2 text-left"
-                  onClick={() => scrollToSection("location")}
-                >
-                  오시는길
-                </button>
-              </SheetClose>
-            </div>
-          </DrawerContent>
-        </Drawer>
       </div>
 
       <div className="hidden w-full gap-5 max-lg:flex">
