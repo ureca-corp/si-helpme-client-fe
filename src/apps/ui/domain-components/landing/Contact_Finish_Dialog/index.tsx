@@ -19,7 +19,10 @@ export const ContactFinishDialog = ({
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent
         showCloseButton={false}
-        className="flex w-fit flex-col gap-8"
+        className="flex w-full flex-col gap-8"
+        style={{
+          maxWidth: "400px",
+        }}
       >
         <DialogTitle className="hidden" />
 

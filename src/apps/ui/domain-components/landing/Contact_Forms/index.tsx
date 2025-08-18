@@ -1,7 +1,16 @@
-import { useRef, useState } from "react";
+import {
+  useRef,
+  useState,
+} from "react";
+import { flushSync } from "react-dom";
+
+import { overlay } from "overlay-kit";
 
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
-import { MultipleSelector } from "@/apps/ui/domain-components/landing/Multiple_Selector";
+import { LoadingDialog } from "@/apps/ui/common-components/LoadingDialog";
+import {
+  MultipleSelector,
+} from "@/apps/ui/domain-components/landing/Multiple_Selector";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
@@ -16,7 +25,7 @@ export interface ContactFormModel {
 }
 
 interface ContactFormsProps {
-  onClick: (form: ContactFormModel) => void;
+  onClick: (form: ContactFormModel) => Promise<void>;
 }
 
 /**
@@ -29,10 +38,11 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
     message: "",
     times: [],
   });
+  const [isLoading, setIsLoading] = useState(false);
+
   const [phone1, setPhone1] = useState("010");
   const [phone2, setPhone2] = useState("");
   const [phone3, setPhone3] = useState("");
-
   // 전화번호 입력 필드 refs
   const phone1Ref = useRef<HTMLInputElement>(null);
   const phone2Ref = useRef<HTMLInputElement>(null);
@@ -66,13 +76,38 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
     setForm({ ...form, phone: value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (isLoading) {
+      return;
+    }
+    flushSync(() => {
+      setIsLoading(true);
+    });
+
     onClick({
       name: form.name,
       phone: `${phone1}-${phone2}-${phone3}`,
       message: form.message,
       times: form.times,
     });
+
+    overlay.open(({ isOpen, close }) => (
+      <LoadingDialog open={isOpen} onClose={close} />
+    ));
+
+    try {
+      await onClick({
+        name: form.name,
+        phone: `${phone1}-${phone2}-${phone3}`,
+        message: form.message,
+        times: form.times,
+      });
+    } catch (error) {
+      throw error;
+    } finally {
+      overlay.closeAll();
+      setIsLoading(false);
+    }
   };
 
   const timeItems = Array.from({ length: 25 }, (_, i) => {
@@ -103,6 +138,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
           <div className="flex w-full items-center justify-center gap-2">
             <Input
               ref={phone1Ref}
+              type="tel"
               value={phone1}
               onChange={(e) =>
                 handlePhoneChange(
@@ -121,6 +157,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
             </div>
             <Input
               ref={phone2Ref}
+              type="tel"
               value={phone2}
               onChange={(e) =>
                 handlePhoneChange(
@@ -139,6 +176,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
             </div>
             <Input
               ref={phone3Ref}
+              type="tel"
               value={phone3}
               onChange={(e) =>
                 handlePhoneChange(
@@ -184,6 +222,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
       </div>
       <div className="flex flex-col items-start justify-start gap-4 self-stretch">
         <div className="flex w-full items-center gap-4 max-md:flex-col">
+          <CallButton className="h-10 max-md:w-full" textLabel="전화상담" />
           <CallButton className="h-10" textLabel="전화상담" />
           <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full">
             <KakaoIcon />
@@ -191,6 +230,8 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
           </div>
           <ConsultationButton
             className="h-10"
+            disabled={isLoading}
+            textLabel={isLoading ? "상담 신청중..." : "상담 신청하기"}
             onClick={handleSubmit}
             fullWidth
           />
