@@ -15,21 +15,13 @@ export default function ContactForm() {
   const { createCounsel } = useCreateCounsel();
 
   const handleSubmit = async (form: ContactFormModel) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    await createCounsel({
-      username: form.name,
-      phone: form.phone,
-      question: form.message,
-      availableCallTime: form.times.join(", "),
-    });
-
     try {
-      // await createCounsel({
-      //   username: form.name,
-      //   phone: form.phone,
-      //   question: form.message,
-      //   availablecallTime: form.times.join(","),
-      // });
+      await createCounsel({
+        username: form.name,
+        phone: form.phone,
+        question: form.message,
+        availableCallTime: form.times.join(", "),
+      });
       overlay.open(({ isOpen, close }) => (
         <ContactFinishDialog open={isOpen} onClose={close} />
       ));
