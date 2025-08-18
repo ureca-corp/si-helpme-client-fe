@@ -3,7 +3,9 @@ import type React from "react";
 import { overlay } from "overlay-kit";
 
 import { useCreateCounsel } from "@/apps/applications/counsel/useCreateCounsel";
-import { ContactFinishDialog } from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
+import {
+  ContactFinishDialog,
+} from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
 import {
   ContactFormModel,
   ContactForms,
@@ -13,17 +15,22 @@ export default function ContactForm() {
   const { createCounsel } = useCreateCounsel();
 
   const handleSubmit = async (form: ContactFormModel) => {
-    await createCounsel({
-      username: form.name,
-      phone: form.phone,
-      question: form.message,
-      availablecallTime: form.times.join(","),
-    });
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // 실제 구현에서는 여기에 폼 제출 로직을 추가
-    overlay.open(({ isOpen, close }) => (
-      <ContactFinishDialog open={isOpen} onClose={close} />
-    ));
+    try {
+      // await createCounsel({
+      //   username: form.name,
+      //   phone: form.phone,
+      //   question: form.message,
+      //   availablecallTime: form.times.join(","),
+      // });
+      overlay.open(({ isOpen, close }) => (
+        <ContactFinishDialog open={isOpen} onClose={close} />
+      ));
+    } catch (error) {
+      console.error(error);
+      alert("상담 신청에 실패했습니다. 다시 시도해주세요.");
+    }
   };
 
   return (
