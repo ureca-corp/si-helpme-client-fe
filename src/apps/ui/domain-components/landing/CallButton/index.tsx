@@ -15,7 +15,7 @@ interface CallButtonProps {
  */
 export const CallButton = ({
   className,
-  textLabel = "전화상담",
+  textLabel = "전화 상담",
   iconVisible = true,
   disabled = false,
   fullWidth = false,

@@ -1,6 +1,4 @@
-import {
-  ServiceMainItem,
-} from "@/apps/ui/domain-components/landing/Service_Main_Item";
+import { ServiceMainItem } from "@/apps/ui/domain-components/landing/Service_Main_Item";
 
 import { RenderJudgments } from "./components/Judgment";
 
@@ -81,7 +79,7 @@ export const ServicesSection = () => {
       <div className="flex w-full max-w-[1200px] flex-col items-center justify-center gap-16">
         <div className="flex flex-col items-center justify-center gap-4">
           <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
-            전문 서비스
+            살려줘닷컴의 법률서비스
           </h2>
           <p className="text-lg text-gray-600">
             개인회생과 파산 전 과정에서 필요한 모든 서비스를 전문적으로

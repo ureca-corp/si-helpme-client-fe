@@ -1,9 +1,6 @@
 import { useState } from "react";
 
-import {
-  Check,
-  ChevronDown,
-} from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 
 import { Badge } from "@/shadcn/components/ui/badge";
 import {
@@ -97,10 +94,14 @@ export const MultipleSelector = ({
           </div>
         </PopoverTrigger>
 
-        <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
+        <PopoverContent
+          side="top"
+          avoidCollisions={false}
+          className="w-[var(--radix-popover-trigger-width)] p-0"
+        >
           <Command>
             {searchOption && <CommandInput placeholder={searchPlaceholder} />}
-            <CommandList>
+            <CommandList className="max-h-[200px]">
               <CommandEmpty>{emptyMessage}</CommandEmpty>
               <CommandGroup>
                 {items.map((value, index) => (

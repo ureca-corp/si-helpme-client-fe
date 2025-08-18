@@ -4,10 +4,12 @@ import {
   AlarmClockCheck,
   Ban,
   Bell,
+  BookOpen,
   CirclePause,
   CirclePlus,
   DollarSign,
   Gavel,
+  IdCard,
   Info,
   Lock,
   Printer,
@@ -93,6 +95,10 @@ export default function PricingSection() {
           icon: DollarSign,
           title: "변제금 완납까지 관리",
         },
+        {
+          icon: BookOpen,
+          title: "서류준비 및 정리 가이드 북 제공",
+        },
       ],
       otherServices: [
         {
@@ -102,10 +108,6 @@ export default function PricingSection() {
         {
           icon: ScrollText,
           title: "보정서 서류 준비 및 정리",
-        },
-        {
-          icon: SearchCheck,
-          title: "서비스 구성",
         },
       ],
     },
@@ -119,9 +121,9 @@ export default function PricingSection() {
       installmentPrice: PLAN_PRICE_INFO.standard.installmentPrice,
 
       recomendTexts: [
-        "서류를 어떻게 준비해야 할지 막막한 분",
-        "컴퓨터나 공공기관 사이트 이용이 어려운 분",
-        "채무조정 경험이 전혀 없는 초보자",
+        "서류 준비가 어려운 분",
+        "서류 작성과 정리가 힘든 분",
+        "컴퓨터 사용이 어려운 분",
       ],
       services: [
         {
@@ -137,12 +139,12 @@ export default function PricingSection() {
 
         {
           icon: PrinterCheck,
-          title: "준비 서류 발급 대행",
+          title: "신청서 서류 준비 대행",
           description: "정부24, 홈택스, 건강보험공단 등 서류 모두 대신 발급",
         },
         {
           icon: ScrollText,
-          title: "보정 서류 발급 및 정리 대행",
+          title: "보정 서류 준비 및 정리대행",
           description: "법원에서 추가적으로 요구한 서류 발급 및 정리",
         },
       ],
@@ -150,16 +152,17 @@ export default function PricingSection() {
       otherServices: [
         {
           icon: ScrollText,
-          title: "인감증명서 발급",
-        },
-        {
-          icon: ScrollText,
-          title: "신분증 발급",
+          title: "인감증명서, 인감도장 준비",
         },
         {
           icon: Shield,
-          title: "공동인증서 내보내기",
+          title: "공동인증서 준비",
         },
+        {
+          icon: IdCard,
+          title: "신분증 준비",
+        },
+
         {
           icon: Lock,
           title: "그 외 본인만 발급할 수 있는 서류",
@@ -182,7 +185,6 @@ export default function PricingSection() {
         "추심 전화, 문자, 방문 등으로 정신적 압박이 심한 분",
         "지급명령을 받아 이의신청 등 법적 방어가 필요한 분",
         "급여나 통장 등 이미 압류 ⋅ 가압류 되었거나 집행이 임박한 분",
-        "사정변경 (병원비, 부양가족 증가)으로 변제계획 수정이 예상되는 분",
       ],
       services: [
         {
@@ -198,45 +200,44 @@ export default function PricingSection() {
 
         {
           icon: UserStar,
-          title: "채무자 대리인 제도 신청 (최대 3회)",
+          title: "채무자대리인제도신청(최대 2회)",
           description: "추심 전화, 문자, 방문을 법적 절차를 통해 방지",
         },
         {
           icon: ScrollText,
-          title: "지급명령 이의 신청",
+          title: "지급명령 이의신청(최대 2회)",
           description:
             "· 지급명령을 받으셨다면, 14일 내 이의 신청으로 대응\n· 놓치면 곧바로 강제 집행이 시작될 수 있어요",
         },
         {
           icon: Ban,
-          title: "중지명령 + 집행정지 신청 (총 2회)",
+          title: "중지명령+집행정지신청(최대 2회)",
           description: "압류된 급여통장 잔액 등 보호 목적으로 대응",
         },
         {
           icon: CirclePause,
-          title: "압류 해제 신청 (사건 당 최대 2회)",
+          title: "압류해제신청(최대 2회)",
           description:
             "이미 압류된 통장이나 급여를 해제하여 일상생활이 가능하도록 조치",
         },
         {
           icon: CirclePlus,
           title: "변제 계획안 수정 신청 (각 1회)",
-          description:
-            "실직, 질병, 소득 변동 등 상황 변화에 따라 추가 감면 신청\n· 개시 결정 이후 1회\n· 인가 결정 이후 1회",
+          description: "· 개시 결정 이후 1회\n· 인가 결정 이후 1회",
         },
       ],
       otherServices: [
         {
           icon: ScrollText,
-          title: "인감증명서 발급",
-        },
-        {
-          icon: ScrollText,
-          title: "신분증 발급",
+          title: "인감증명서, 인감도장 준비",
         },
         {
           icon: Shield,
-          title: "공동인증서",
+          title: "공동인증서 준비",
+        },
+        {
+          icon: IdCard,
+          title: "신분증 사본 준비",
         },
         {
           icon: Lock,
