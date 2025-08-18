@@ -77,18 +77,22 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
   };
 
   const handleSubmit = async () => {
+    if (
+      !form.name ||
+      !phone1 ||
+      !phone2 ||
+      !phone3 ||
+      !form.message ||
+      !form.times.length
+    ) {
+      return alert("항목들을 입력해주세요.");
+    }
+
     if (isLoading) {
       return;
     }
     flushSync(() => {
       setIsLoading(true);
-    });
-
-    onClick({
-      name: form.name,
-      phone: `${phone1}-${phone2}-${phone3}`,
-      message: form.message,
-      times: form.times,
     });
 
     overlay.open(({ isOpen, close }) => (
@@ -116,6 +120,10 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
     const timeLabel = minute === "00" ? `${hour}시` : `${hour}시 ${minute}분`;
     return timeLabel;
   });
+
+  const handleKakaoClick = () => {
+    window.open("https://open.kakao.com/o/sQ3kwowe", "_blank");
+  };
 
   return (
     <div className="inline-flex w-full max-w-[1200px] flex-col items-start justify-start gap-8 overflow-hidden rounded-2xl bg-white p-6 outline-1 outline-offset-[-1px] outline-neutral-200">
@@ -223,8 +231,10 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
       <div className="flex flex-col items-start justify-start gap-4 self-stretch">
         <div className="flex w-full items-center gap-4 max-md:flex-col">
           <CallButton className="h-10 max-md:w-full" textLabel="전화상담" />
-          <CallButton className="h-10" textLabel="전화상담" />
-          <div className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full">
+          <div
+            className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full"
+            onClick={handleKakaoClick}
+          >
             <KakaoIcon />
             <span>카톡 상담</span>
           </div>
