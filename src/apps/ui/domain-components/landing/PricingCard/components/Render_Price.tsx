@@ -37,7 +37,7 @@ export const RenderPrice = ({
             </span>
             <span className={`font-['Pretendard'] text-xs font-light`}>
               {" "}
-              (부가세 별도)
+              (부가세 포함)
             </span>
           </div>
         </div>
@@ -69,6 +69,10 @@ export const RenderPrice = ({
             className={`font-['Pretendard'] text-lg font-light md:text-xl lg:text-2xl`}
           >
             만원
+          </span>
+          <span className={`font-['Pretendard'] text-xs font-light`}>
+            {" "}
+            (부가세 포함)
           </span>
         </div>
       </div>

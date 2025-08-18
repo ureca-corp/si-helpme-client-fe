@@ -1,16 +1,11 @@
-import {
-  useRef,
-  useState,
-} from "react";
+import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
 import { overlay } from "overlay-kit";
 
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
 import { LoadingDialog } from "@/apps/ui/common-components/LoadingDialog";
-import {
-  MultipleSelector,
-} from "@/apps/ui/domain-components/landing/Multiple_Selector";
+import { MultipleSelector } from "@/apps/ui/domain-components/landing/Multiple_Selector";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
@@ -230,7 +225,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
       </div>
       <div className="flex flex-col items-start justify-start gap-4 self-stretch">
         <div className="flex w-full items-center gap-4 max-md:flex-col">
-          <CallButton className="h-10 max-md:w-full" textLabel="전화상담" />
+          <CallButton className="h-10 max-md:w-full" />
           <div
             className="flex h-10 min-w-fit cursor-pointer flex-nowrap items-center justify-center gap-1 rounded-full bg-yellow-300 px-6 py-4 max-md:w-full"
             onClick={handleKakaoClick}

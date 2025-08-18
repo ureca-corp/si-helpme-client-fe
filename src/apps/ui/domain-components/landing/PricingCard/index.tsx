@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 
 import { PlanType } from "@/apps/domain/plan/type";
 import { Button } from "@/shadcn/components/ui/button";
+import { cn } from "@/shadcn/lib/utils";
 
 import { RecommendBadge } from "./components/Recommend_Badge";
 import { RenderPrice } from "./components/Render_Price";
@@ -126,7 +127,10 @@ export default function PricingCard({
               {services.map((service, index) => (
                 <div
                   key={index}
-                  className={`inline-flex items-center justify-start gap-3 self-stretch md:gap-4 ${service.bold ? `font-bold` : ""}`}
+                  className={cn(
+                    `inline-flex items-center justify-start gap-3 self-stretch md:gap-4`,
+                    `${service.bold ? `font-bold underline ${config.highlightColor} decoration-2 underline-offset-3` : ""}`,
+                  )}
                 >
                   {renderIcon(service.icon, config.iconColor)}
                   <div className="inline-flex flex-1 flex-col items-start justify-center gap-0.5">
@@ -217,6 +221,7 @@ const getPlanConfig = (plan: PlanType) => {
         // gradients need to be literal strings so Tailwind can see them
         fromGradient: "from-white",
         toGradient: "to-green-600",
+        highlightColor: "decoration-green-600",
       };
     case PlanType.STANDARD:
       return {
@@ -231,6 +236,7 @@ const getPlanConfig = (plan: PlanType) => {
         primaryColor: "text-blue-500",
         fromGradient: "from-white",
         toGradient: "to-blue-500",
+        highlightColor: "decoration-blue-500",
       };
     case PlanType.PRO:
       return {
@@ -245,6 +251,7 @@ const getPlanConfig = (plan: PlanType) => {
         primaryColor: "text-black",
         fromGradient: "from-white",
         toGradient: "to-black",
+        highlightColor: "decoration-black",
       };
   }
 };

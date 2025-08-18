@@ -7,8 +7,8 @@ import {
 } from "@/apps/ui/domain-components/landing/Location_Info_Card";
 
 export const Location2Section = () => {
-  const DESTINATION_LAT = 37.49464594474945;
-  const DESTINATION_LNG = 127.0150907325072;
+  const DESTINATION_LAT = 37.494685;
+  const DESTINATION_LNG = 127.015253;
 
   return (
     <section
@@ -72,7 +72,7 @@ export const Location2Section = () => {
               label="발렛주차장 위치"
               value="서울시 서초구 서초중앙로 24길 20 (사보텐)"
             />
-            <span className="pl-10 text-sm text-gray-500">{`"법률사무소 도약 방문" 말씀해주세요.`}</span>
+            <span className="pl-10 text-sm text-gray-500">{`"도약 법률사무소 방문"`}</span>
           </LocationInfoContainer>
         </div>
 

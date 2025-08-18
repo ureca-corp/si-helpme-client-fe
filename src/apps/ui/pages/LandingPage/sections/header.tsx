@@ -78,10 +78,7 @@ export default function Header() {
 
           {/* CTA 버튼들 */}
           <div className="flex items-center gap-3 max-lg:hidden max-md:gap-2">
-            <CallButton
-              className="h-10 w-28 max-md:h-10 max-md:w-24 max-md:text-sm"
-              textLabel="전화상담"
-            />
+            <CallButton className="h-10 w-28 max-md:h-10 max-md:w-24 max-md:text-sm" />
 
             <ConsultationButton
               onClick={() => scrollToSection("contact")}
@@ -159,11 +156,7 @@ export default function Header() {
       </div>
 
       <div className="hidden w-full gap-5 max-lg:flex">
-        <ConsultationButton
-          onClick={() => {}}
-          className="w-full max-md:text-lg"
-          textLabel="전화상담"
-        />
+        <CallButton className="w-full max-md:text-lg" />
 
         <ConsultationButton
           onClick={() => scrollToSection("contact")}
