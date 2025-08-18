@@ -1,7 +1,4 @@
-import { useState } from "react";
-
 import Header from "@/apps/ui/pages/LandingPage/sections/header";
-import { Input } from "@/shadcn/components/ui/input";
 
 import ContactForm from "./sections/contact-form";
 import { FaqSection } from "./sections/Faq_Section";
@@ -15,8 +12,6 @@ import { ServicesSection } from "./sections/Services_Section";
  * 랜딩 페이지
  */
 export const LandingPage = () => {
-  const [value, setValue] = useState("");
-
   return (
     <div className="min-h-screen">
       <Header />
@@ -27,10 +22,6 @@ export const LandingPage = () => {
       <ContactForm />
       <Location2Section />
       <Footer3Section />
-
-      <div className="flex w-full items-center gap-2 p-32">
-        <Input value={value} onChange={(e) => setValue(e.target.value)} />
-      </div>
     </div>
   );
 };
