@@ -1,5 +1,6 @@
 import { Phone } from "lucide-react";
 
+import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { cn } from "@/shadcn/lib/utils";
 
 interface CallButtonProps {
@@ -21,6 +22,7 @@ export const CallButton = ({
   fullWidth = false,
 }: CallButtonProps) => {
   const handleClick = () => {
+    sendNaverConversion("custom001");
     window.location.href = "tel:02-6677-8510";
   };
 

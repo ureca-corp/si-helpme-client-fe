@@ -10,17 +10,17 @@ export const ServicesSection = () => {
       desc: "회생 파산 전문변호사가 직접사건을 관리하여 최적의 결과 도출",
     },
     {
-      src: "/a1.jpg",
+      src: "/office.jpg",
       title: "수임료 개혁",
       desc: "업계의 고비용 수임료를 낮추고 분납시스템을 운영",
     },
     {
-      src: "/a-2.jpg",
+      src: "/c-1.jpg",
       title: "서류발급 및 정리대행",
       desc: "복잡한 서류발급부터 정리까지 모든 과정을 대행",
     },
     {
-      src: "/a-3.jpg",
+      src: "/c-2.jpg",
       title: "빠른 접수",
       desc: "살려줘닷컴의 자동화 기술로 빠른접수 가능(1일~3일이내)",
     },
@@ -77,14 +77,15 @@ export const ServicesSection = () => {
       className="flex w-full flex-col items-center justify-center gap-16 bg-gradient-to-b from-gray-100 to-white px-4 py-24"
     >
       <div className="flex w-full max-w-[1200px] flex-col items-center justify-center gap-16">
-        <div className="flex flex-col items-center justify-center gap-4">
+        <div className="flex flex-col items-center justify-center gap-4 text-center">
           <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
             살려줘닷컴의 법률서비스
           </h2>
-          <p className="text-lg text-gray-600">
+
+          <span className="text-lg leading-relaxed text-gray-600 sm:text-xl">
             개인회생과 파산 전 과정에서 필요한 모든 서비스를 전문적으로
             제공합니다.
-          </p>
+          </span>
         </div>
 
         <div className="grid grid-cols-2 gap-8 overflow-hidden max-md:gap-4">
