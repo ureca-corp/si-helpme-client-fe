@@ -6,6 +6,7 @@ import { overlay } from "overlay-kit";
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
 import { LoadingDialog } from "@/apps/ui/common-components/LoadingDialog";
 import { MultipleSelector } from "@/apps/ui/domain-components/landing/Multiple_Selector";
+import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
@@ -117,6 +118,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
   });
 
   const handleKakaoClick = () => {
+    sendNaverConversion("custom002");
     window.open("https://open.kakao.com/o/sQ3kwowe", "_blank");
   };
 
