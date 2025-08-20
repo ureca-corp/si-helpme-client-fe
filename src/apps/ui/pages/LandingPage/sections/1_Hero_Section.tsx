@@ -6,6 +6,7 @@ import { BadgeDollarSign, FileText, ThumbsUp } from "lucide-react";
 
 import { AuroraBackgroundContainer } from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
 import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { HeroOrbitiongCircles } from "@/apps/ui/domain-components/landing/HeroOrbitiongCircles";
 import { ReliabilityNumberItem } from "@/apps/ui/domain-components/landing/ReliabilityNumber_Item";
 import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { AuroraText } from "@/components/magicui/aurora-text";
@@ -55,9 +56,9 @@ export default function HeroSection() {
     <AuroraBackgroundContainer showRadialGradient>
       <section
         id="hero"
-        className="z-1 flex min-h-[100vh] flex-col items-center justify-center"
+        className="flex h-full min-h-[100vh] w-full flex-col items-center justify-center max-lg:pt-32"
       >
-        <div className="flex w-full px-4">
+        <div className="relative z-3 flex w-full flex-col px-4">
           <div className="mx-auto flex max-w-4xl flex-col gap-8 text-center">
             {/* 서비스 특징 */}
             <div className="mt-10 lg:mt-12">
@@ -152,6 +153,16 @@ export default function HeroSection() {
                 ))}
               </div>
             </div>
+          </div>
+
+          <div
+            className={cn(
+              "absolute top-0 right-32 -z-1",
+              "flex h-full w-full max-w-[600px]",
+              "max-lg:static max-lg:top-auto max-lg:right-auto max-lg:max-w-full",
+            )}
+          >
+            <HeroOrbitiongCircles />
           </div>
         </div>
       </section>

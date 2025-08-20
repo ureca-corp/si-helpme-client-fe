@@ -54,7 +54,7 @@ export const useSearchFaqs = () => {
   const params: SearchFaqsInput = {
     page: 1,
     size: 20,
-    sort: "createdAt:desc",
+    sort: "createdAt:ASC",
   };
 
   return useQuery({
