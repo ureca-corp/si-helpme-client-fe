@@ -29,7 +29,7 @@ export const MainServiceSection = () => {
               "max-md:text-3xl",
             )}
           >
-            혁신 기술로 달라진 회생파산 서비스
+            스마트하게 진화한 회생파산 솔루션
           </span>
 
           <span
@@ -38,7 +38,7 @@ export const MainServiceSection = () => {
               "max-md:text-lg",
             )}
           >
-            전문성은 유지하되, 비용과 시간은 대폭 단축했습니다
+            전문성은 유지하면서 비용 부담과 처리 시간을 대폭 줄였습니다
           </span>
         </div>
 
@@ -53,8 +53,9 @@ export const MainServiceSection = () => {
             title={"수임료를 낮췄습니다"}
             description={
               <div className="flex h-full flex-col justify-between gap-3">
-                AI 문서 자동화와 프로세스 최적화로 운영비를 대폭 절감하여 기존
-                법무법인 대비 40% 저렴한 수임료를 실현했습니다.
+                고객의 경제 상황과 필요에 따라 선택할 수 있는 맞춤형 요금제를
+                운영합니다. 일시납부 가 어려운 분들을 위한 분할납부 옵션으로
+                선택권을 보장하고 부담을 줄였습니다.
                 <RenderItemChip label={"평균 200만원 절약"} />
               </div>
             }
@@ -64,8 +65,9 @@ export const MainServiceSection = () => {
             title={"자동화 기술로 업무 효율을 높였습니다"}
             description={
               <div className="flex h-full flex-col justify-between gap-3">
-                AI가 서류 작성부터 법원 제출까지 자동으로 처리하여 기존 3개월
-                걸리던 업무를 1개월로 단축했습니다.
+                첨단 업무 자동화 기술을 도입하여 인적 오류를 최소화하고 정확성을
+                높였습니다. 표준 화된 프로세스와 체계적인 업무 관리로 일관된
+                서비스 품질을 보장하며 처리 시간을 대 폭 단축했습니다.
                 <RenderItemChip label={"처리시간 70% 단축"} />
               </div>
             }
@@ -73,11 +75,13 @@ export const MainServiceSection = () => {
           />
           <ServiceMain_Item
             icon={<ChartUpAnimation />}
-            title={"최대 감면 알고리즘을 개발했습니다"}
+            title={"최대 감면율을 도출하는 스마트 시스템"}
             description={
               <div className="flex h-full flex-col justify-between gap-3">
-                1만 건 이상의 성공 사례를 학습한 AI 알고리즘이 개인별 최적
-                감면율을 계산하여 최대한의 채무 감면을 실현합니다.
+                수많은 사례 데이터를 학습한 고도화된 알고리즘이 각 고객의 상황을
+                정밀 분석하여 맞 춤형 솔루션을 제공합니다. 개인의 재정 상태와
+                채무 구조를 종합적으로 고려해 더 많이 감면받는 방안을
+                도출합니다.
                 <RenderItemChip label={"평균 감면율 85%"} />
               </div>
             }

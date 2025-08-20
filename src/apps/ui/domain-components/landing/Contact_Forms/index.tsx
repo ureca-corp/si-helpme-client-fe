@@ -248,6 +248,9 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
             개인정보는 상담 목적으로만 사용되며, 상담 완료 후 안전하게
             폐기됩니다.
           </div>
+          <a className="cursor-pointer text-xs text-gray-500 underline">
+            <span>개인정보 보호 정책</span>
+          </a>
         </div>
       </div>
     </div>
