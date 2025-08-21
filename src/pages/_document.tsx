@@ -35,7 +35,7 @@ export default function Document() {
         <script
           type="text/javascript"
           src="//wcs.naver.net/wcslog.js"
-          async
+          defer
         ></script>
         <script
           dangerouslySetInnerHTML={{
