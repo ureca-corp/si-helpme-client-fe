@@ -17,6 +17,7 @@ import {
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { OverlayProvider } from "overlay-kit";
+import Script from "next/script";
 
 const qc = new QueryClient();
 
@@ -49,6 +50,9 @@ export default function App({ Component, pageProps }: AppProps) {
       </QueryClientProvider>
       <Analytics />
       <SpeedInsights />
+
+      {/* Naver WCS common script */}
+      <Script src="//wcs.naver.net/wcslog.js" strategy="afterInteractive" />
     </>
   );
 }
