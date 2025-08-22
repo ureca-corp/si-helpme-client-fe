@@ -1,6 +1,8 @@
+import { Button } from "@/shadcn/components/ui/button";
 import {
   Dialog,
   DialogContent,
+  DialogFooter,
   DialogTitle,
 } from "@/shadcn/components/ui/dialog";
 import { ScrollArea } from "@/shadcn/components/ui/scroll-area";
@@ -123,6 +125,15 @@ export const TermsDialog = ({ open, onClose }: TermsDialogProps) => {
             </pre>
           </div>
         </ScrollArea>
+
+        <DialogFooter className="flex gap-3">
+          {/* <Button variant="outline" onClick={onClose} className="flex-1">
+            거부
+          </Button> */}
+          <Button onClick={onClose} className="flex-1">
+            확인
+          </Button>
+        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
