@@ -1,14 +1,12 @@
 import { ReactNode } from "react";
 
 import { BorderBeam } from "@/components/magicui/border-beam";
-import { cn } from "@/shadcn/lib/utils";
 
 interface ServicceMain_ItemProps {
   title: string;
   icon: ReactNode;
   description: ReactNode;
   delay?: number;
-  chipLabel: string;
 }
 
 /**
@@ -22,17 +20,12 @@ export const ServiceMain_Item = ({
   description,
   icon,
   delay = 0,
-  chipLabel,
 }: ServicceMain_ItemProps) => {
   return (
     <div className="relative flex w-full flex-col items-start justify-start gap-8 self-stretch overflow-hidden rounded-2xl bg-white p-6 shadow-[4px_4px_10px_0px_rgba(0,0,0,0.04)] outline-1 outline-offset-[-1px] outline-zinc-100">
       <div className="flex flex-col items-center justify-start gap-4 self-stretch">
-        <RenderItemChip label={chipLabel} />
-
-        <div className="flex h-20 w-20 items-center justify-center gap-2.5">
-          <div className="h-6 w-6 scale-340 overflow-hidden text-green-600">
-            {icon}
-          </div>
+        <div className="flex items-center justify-start gap-2.5 rounded-[100px] bg-green-500/10 p-3">
+          <div className="h-6 w-6 overflow-hidden text-green-600">{icon}</div>
         </div>
 
         <div className="flex-1 justify-center text-center font-['Pretendard'] text-2xl leading-9 font-bold text-neutral-700">
@@ -48,21 +41,6 @@ export const ServiceMain_Item = ({
         colorFrom="#2B7FFF"
         colorTo="#00C950"
       />
-    </div>
-  );
-};
-
-const RenderItemChip = ({ label }: { label: string }) => {
-  return (
-    <div
-      className={cn(
-        "flex items-center justify-center px-4 py-2",
-        "w-fit",
-        "rounded-full bg-green-200/50",
-        "text-sm font-semibold text-green-700",
-      )}
-    >
-      {label}
     </div>
   );
 };

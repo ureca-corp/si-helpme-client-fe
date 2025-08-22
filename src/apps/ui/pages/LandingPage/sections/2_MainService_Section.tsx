@@ -50,25 +50,25 @@ export const MainServiceSection = () => {
         >
           <ServiceMain_Item
             icon={<PriceDownAnimation />}
-            title={"수임료를 획기적으로 절약했습니다"}
-            chipLabel={"평균 200만 원 절약"}
+            title={"수임료를 낮췄습니다"}
             description={
               <div className="flex h-full flex-col justify-between gap-3">
                 고객의 경제 상황과 필요에 따라 선택할 수 있는 맞춤형 요금제를
-                운영합니다. 일시납부가 어려운 분들을 위한 분할 납부 옵션으로
+                운영합니다. 일시납부 가 어려운 분들을 위한 분할납부 옵션으로
                 선택권을 보장하고 부담을 줄였습니다.
+                <RenderItemChip label={"평균 200만원 절약"} />
               </div>
             }
           />
           <ServiceMain_Item
             icon={<AutomationGearAnimation />}
             title={"자동화 기술로 업무 효율을 높였습니다"}
-            chipLabel={"처리 시간 70% 단축"}
             description={
               <div className="flex h-full flex-col justify-between gap-3">
                 첨단 업무 자동화 기술을 도입하여 인적 오류를 최소화하고 정확성을
-                높였습니다. 표준화된 프로세스와 체계적인 업무 관리로 일관된
-                서비스 품질을 보장하며 처리 시간을 대폭 단축했습니다.
+                높였습니다. 표준 화된 프로세스와 체계적인 업무 관리로 일관된
+                서비스 품질을 보장하며 처리 시간을 대 폭 단축했습니다.
+                <RenderItemChip label={"처리시간 70% 단축"} />
               </div>
             }
             delay={5}
@@ -76,13 +76,13 @@ export const MainServiceSection = () => {
           <ServiceMain_Item
             icon={<ChartUpAnimation />}
             title={"최대 감면율을 도출하는 스마트 시스템"}
-            chipLabel={"평균 감면율 85%"}
             description={
               <div className="flex h-full flex-col justify-between gap-3">
                 수많은 사례 데이터를 학습한 고도화된 알고리즘이 각 고객의 상황을
-                정밀 분석하여 맞춤형 솔루션을 제공합니다. 개인의 재정 상태와
+                정밀 분석하여 맞 춤형 솔루션을 제공합니다. 개인의 재정 상태와
                 채무 구조를 종합적으로 고려해 더 많이 감면받는 방안을
                 도출합니다.
+                <RenderItemChip label={"평균 감면율 85%"} />
               </div>
             }
             delay={10}
@@ -123,6 +123,21 @@ export const MainServiceSection = () => {
           />
         </div>
       </div>
+    </div>
+  );
+};
+
+const RenderItemChip = ({ label }: { label: string }) => {
+  return (
+    <div
+      className={cn(
+        "flex items-center justify-center px-4 py-2",
+        "w-fit",
+        "rounded-full bg-green-200/50",
+        "text-sm font-semibold text-green-700",
+      )}
+    >
+      {label}
     </div>
   );
 };
