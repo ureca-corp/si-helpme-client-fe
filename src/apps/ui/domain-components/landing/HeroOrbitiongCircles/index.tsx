@@ -19,21 +19,20 @@ export const HeroOrbitiongCircles = () => {
         )}
       >
         <OrbitingCircles iconSize={70} radius={230}>
-          <Icons.whatsapp />
-          <Icons.notion />
-          <Icons.openai />
-          <Icons.googleDrive />
-          <Icons.whatsapp />
+          <span className="text-6xl">💸</span>
+          <span className="text-6xl">🎓</span>
+          <span className="text-6xl">💰</span>
+          <span className="text-6xl">🪙</span>
         </OrbitingCircles>
         {/* <div className="flex items-center justify-center rounded-full border border-gray-200 bg-white p-4 shadow-lg"> */}
         <HeroOrbitiongCircles_CenterItem></HeroOrbitiongCircles_CenterItem>
         {/* <Gavel size={70} /> */}
         {/* </div> */}
         <OrbitingCircles iconSize={50} radius={130} reverse speed={2}>
-          <Icons.whatsapp />
-          <Icons.notion />
-          <Icons.openai />
-          <Icons.googleDrive />
+          <span className="text-6xl">💼</span>
+          <span className="text-6xl">✨</span>
+          <span className="text-6xl">📓</span>
+          <span className="text-6xl">💡</span>
         </OrbitingCircles>
       </div>
 

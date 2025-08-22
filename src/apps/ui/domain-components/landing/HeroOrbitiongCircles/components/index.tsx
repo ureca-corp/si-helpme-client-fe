@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
-import { Gavel } from "lucide-react";
 
 export const HeroOrbitiongCircles_CenterItem = () => {
   return (
-    <div className="relative flex items-center justify-center p-4">
+    <div className="relative flex h-24 w-24 items-center justify-center p-4">
       {/* 배경 원형 */}
       <motion.div
         className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-100 to-purple-200"
@@ -28,19 +27,7 @@ export const HeroOrbitiongCircles_CenterItem = () => {
         }}
       />
 
-      <motion.div
-        className="z-10"
-        initial={{ scale: 1 }}
-        animate={{ scale: [1, 1.2, 1] }}
-        transition={{
-          duration: 2,
-          // delay: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <Gavel size={60} className="text-gray-800" />
-      </motion.div>
+      <span className="z-10 text-5xl">🏦</span>
     </div>
   );
 };
