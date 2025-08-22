@@ -1,17 +1,23 @@
-import { useRef, useState } from "react";
+import {
+  useRef,
+  useState,
+} from "react";
 import { flushSync } from "react-dom";
 
 import { overlay } from "overlay-kit";
 
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
 import { LoadingDialog } from "@/apps/ui/common-components/LoadingDialog";
-import { MultipleSelector } from "@/apps/ui/domain-components/landing/Multiple_Selector";
+import {
+  MultipleSelector,
+} from "@/apps/ui/domain-components/landing/Multiple_Selector";
 import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
 import { CallButton } from "../CallButton";
 import { ConsultationButton } from "../ConsultationButton";
+import { TermsDialog } from "./components/TermsDialog";
 
 export interface ContactFormModel {
   name: string;
@@ -117,9 +123,21 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
     return timeLabel;
   });
 
+  /**
+   * 카톡 상담 클릭 이벤트
+   */
   const handleKakaoClick = () => {
     sendNaverConversion("custom002");
     window.open("https://open.kakao.com/o/sQ3kwowe", "_blank");
+  };
+
+  /**
+   * 개인정보 처리방침 약관 동의 다이얼로그 표시
+   */
+  const handleTermsClick = () => {
+    overlay.open(({ isOpen, close }) => (
+      <TermsDialog open={isOpen} onClose={close} />
+    ));
   };
 
   return (
@@ -248,6 +266,12 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
             개인정보는 상담 목적으로만 사용되며, 상담 완료 후 안전하게
             폐기됩니다.
           </div>
+          <span
+            className="cursor-pointer text-xs text-gray-500 underline"
+            onClick={handleTermsClick}
+          >
+            개인정보 보호 정책
+          </span>
         </div>
       </div>
     </div>
