@@ -3,6 +3,8 @@ import { Gavel } from "lucide-react";
 import { OrbitingCircles } from "@/components/magicui/orbiting-circles";
 import { cn } from "@/shadcn/lib/utils";
 
+import { HeroOrbitiongCircles_CenterItem } from "./components";
+
 /**
  * 히어로 섹션에 사용되는 원형 아이콘 컴포넌트
  */
@@ -16,17 +18,18 @@ export const HeroOrbitiongCircles = () => {
           "max-lg:hidden",
         )}
       >
-        <OrbitingCircles iconSize={80} radius={250}>
+        <OrbitingCircles iconSize={70} radius={230}>
           <Icons.whatsapp />
           <Icons.notion />
           <Icons.openai />
           <Icons.googleDrive />
           <Icons.whatsapp />
         </OrbitingCircles>
-        <div className="flex items-center justify-center rounded-full border border-gray-200 bg-white p-4 shadow-lg">
-          <Gavel size={80} />
-        </div>
-        <OrbitingCircles iconSize={60} radius={150} reverse speed={2}>
+        {/* <div className="flex items-center justify-center rounded-full border border-gray-200 bg-white p-4 shadow-lg"> */}
+        <HeroOrbitiongCircles_CenterItem></HeroOrbitiongCircles_CenterItem>
+        {/* <Gavel size={70} /> */}
+        {/* </div> */}
+        <OrbitingCircles iconSize={50} radius={130} reverse speed={2}>
           <Icons.whatsapp />
           <Icons.notion />
           <Icons.openai />
@@ -37,7 +40,8 @@ export const HeroOrbitiongCircles = () => {
       {/* 모바일 버전 */}
       <div
         className={cn(
-          "relative flex h-full min-h-[500px] w-full flex-col items-center justify-center",
+          "relative flex h-full min-h-[400px] w-full flex-col items-center justify-center",
+          "overflow-hidden",
           "hidden max-lg:flex",
         )}
       >

@@ -2,7 +2,9 @@ import { Menu } from "lucide-react";
 
 import { TitleLogo1 } from "@/apps/ui/common-components/TitleLogo1";
 import { CallButton } from "@/apps/ui/domain-components/landing/CallButton";
-import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
+import {
+  ConsultationButton,
+} from "@/apps/ui/domain-components/landing/ConsultationButton";
 import { Button } from "@/shadcn/components/ui/button";
 import { DialogTitle } from "@/shadcn/components/ui/dialog";
 import {
@@ -16,7 +18,9 @@ export default function Header() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
     }
   };
 
@@ -34,6 +38,15 @@ export default function Header() {
 
           {/* 데스크톱 네비게이션 */}
           <nav className="hidden items-center lg:flex">
+            <Button
+              variant="ghost"
+              size="lg"
+              onClick={() => scrollToSection("technology")}
+              className="text-gray-507 font-light transition-colors hover:font-semibold hover:text-gray-900"
+            >
+              기술
+            </Button>
+
             <Button
               variant="ghost"
               size="lg"
@@ -101,6 +114,15 @@ export default function Header() {
               <SheetContent side="right" className="z-120 w-[280px] p-4">
                 <DialogTitle className="hidden" />
                 <div className="mt-10 flex flex-col gap-3">
+                  <SheetClose asChild>
+                    <button
+                      className="py-2 text-left"
+                      onClick={() => scrollToSection("technology")}
+                    >
+                      기술
+                    </button>
+                  </SheetClose>
+                  <div className="h-px w-full bg-gray-200" />
                   <SheetClose asChild>
                     <button
                       className="py-2 text-left"

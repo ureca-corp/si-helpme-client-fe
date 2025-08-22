@@ -1,4 +1,6 @@
-import { ServiceMainItem } from "@/apps/ui/domain-components/landing/Service_Main_Item";
+import {
+  ServiceMainItem,
+} from "@/apps/ui/domain-components/landing/Service_Main_Item";
 
 import { RenderJudgments } from "./components/Judgment";
 
@@ -94,7 +96,7 @@ export const ServicesSection = () => {
               <div
                 data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
                 key={index}
-                className={`${index % 2 === 0 ? "mt-0" : "mt-12"} ${index % 2 === 0 ? "" : ""} `}
+                className={`${index % 2 === 0 ? "mt-0" : "mt-12"}`}
               >
                 <ServiceMainItem
                   title={i.title}
