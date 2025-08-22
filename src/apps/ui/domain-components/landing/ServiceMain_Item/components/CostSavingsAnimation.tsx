@@ -6,7 +6,7 @@ export const CostSavingsAnimation = () => {
   return (
     <div className="flex w-52 flex-col items-center gap-1">
       {/* 진행률 바 배경 */}
-      <div className="h-2 w-full rounded-full bg-gray-400">
+      <div className="h-4 w-full rounded-full bg-gray-400">
         {/* 진행률 바 채움 */}
         <motion.div
           className="h-full rounded-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500"
