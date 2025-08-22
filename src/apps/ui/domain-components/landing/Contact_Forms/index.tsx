@@ -136,7 +136,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
    */
   const handleTermsClick = () => {
     overlay.open(({ isOpen, close }) => (
-      <TermsDialog open={isOpen} onClose={close} onAgree={() => close()} />
+      <TermsDialog open={isOpen} onClose={close} />
     ));
   };
 
