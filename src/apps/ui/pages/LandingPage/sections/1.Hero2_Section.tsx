@@ -24,6 +24,7 @@ export const Hero2_Section = () => {
   return (
     <AuroraBackgroundContainer showRadialGradient>
       <div
+        id="hero"
         className={cn(
           "flex h-full min-h-[100vh] w-full justify-center px-4 py-40",
         )}
@@ -103,7 +104,7 @@ export const Hero2_Section = () => {
             </p>
 
             <div className="mt-4 flex items-center gap-2">
-              <ConsultationButton onClick={() => {}} />
+              <ConsultationButton onClick={() => scrollToSection("contact")} />
 
               <button
                 className={cn(
