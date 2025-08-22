@@ -31,12 +31,6 @@ export default function Document() {
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
-        {/* Naver WCS common script */}
-        <script
-          type="text/javascript"
-          src="//wcs.naver.net/wcslog.js"
-          defer
-        ></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
