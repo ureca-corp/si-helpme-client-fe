@@ -6,7 +6,6 @@ import {
   Bell,
   BookOpen,
   CirclePause,
-  CirclePlus,
   DollarSign,
   Gavel,
   IdCard,
@@ -219,11 +218,6 @@ export default function PricingSection() {
           title: "압류해제신청(최대 2회)",
           description:
             "이미 압류된 통장이나 급여를 해제하여 일상생활이 가능하도록 조치",
-        },
-        {
-          icon: CirclePlus,
-          title: "변제 계획안 수정 신청 (각 1회)",
-          description: "· 개시 결정 이후 1회\n· 인가 결정 이후 1회",
         },
       ],
       otherServices: [

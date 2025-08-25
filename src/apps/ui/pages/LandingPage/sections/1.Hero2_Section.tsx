@@ -1,12 +1,6 @@
-import {
-  AuroraBackgroundContainer,
-} from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
-import {
-  ConsultationButton,
-} from "@/apps/ui/domain-components/landing/ConsultationButton";
-import {
-  HeroOrbitiongCircles,
-} from "@/apps/ui/domain-components/landing/HeroOrbitiongCircles";
+import { AuroraBackgroundContainer } from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
+import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { HeroOrbitiongCircles } from "@/apps/ui/domain-components/landing/HeroOrbitiongCircles";
 import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { TextAnimate } from "@/components/magicui/text-animate";
@@ -86,7 +80,7 @@ export const Hero2_Section = () => {
                 )}
                 animation="slideLeft"
               >
-                {"똑똑한 기술, 따뜻한 마음\n"}
+                {"똑똑한 기술, 맞춤형 케어\n"}
               </TextAnimate>
 
               <AuroraText speed={5}>{"AI 솔루션"}</AuroraText>
@@ -113,14 +107,14 @@ export const Hero2_Section = () => {
                   "border border-gray-300 bg-white hover:bg-gray-100",
                   "cursor-pointer",
                 )}
-                onClick={() => scrollToSection("services")}
+                onClick={() => scrollToSection("pricing")}
               >
                 <span
                   className={cn(
                     "font-normal text-black transition-colors duration-100 ease-in-out",
                   )}
                 >
-                  서비스가 궁금해요
+                  요금제가 궁금해요
                 </span>
               </button>
             </div>

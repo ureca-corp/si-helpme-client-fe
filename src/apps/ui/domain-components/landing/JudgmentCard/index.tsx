@@ -31,7 +31,7 @@ export const JudgmentCard = ({
         <div className="flex w-full flex-col items-center justify-between gap-2">
           <div className="flex w-full items-center justify-between">
             <span className="text-sm font-bold text-blue-500">
-              {reductionRate}% 탕감
+              {reductionRate}% 총 채무, 총 변제, 감면율
             </span>
 
             <span className="text-xs font-medium text-gray-500">{court}</span>

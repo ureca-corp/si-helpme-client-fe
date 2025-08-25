@@ -1,16 +1,11 @@
-import {
-  useRef,
-  useState,
-} from "react";
+import { useRef, useState } from "react";
 import { flushSync } from "react-dom";
 
 import { overlay } from "overlay-kit";
 
 import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
 import { LoadingDialog } from "@/apps/ui/common-components/LoadingDialog";
-import {
-  MultipleSelector,
-} from "@/apps/ui/domain-components/landing/Multiple_Selector";
+import { MultipleSelector } from "@/apps/ui/domain-components/landing/Multiple_Selector";
 import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
@@ -234,7 +229,6 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
           통화 가능하신 시간대
         </div>
         <MultipleSelector
-          searchOption
           items={timeItems}
           selectedValues={form.times}
           onSelectionChange={(value) => setForm({ ...form, times: value })}

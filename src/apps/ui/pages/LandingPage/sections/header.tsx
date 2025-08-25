@@ -2,9 +2,7 @@ import { Menu } from "lucide-react";
 
 import { TitleLogo1 } from "@/apps/ui/common-components/TitleLogo1";
 import { CallButton } from "@/apps/ui/domain-components/landing/CallButton";
-import {
-  ConsultationButton,
-} from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
 import { Button } from "@/shadcn/components/ui/button";
 import { DialogTitle } from "@/shadcn/components/ui/dialog";
 import {
@@ -42,7 +40,7 @@ export default function Header() {
               variant="ghost"
               size="lg"
               onClick={() => scrollToSection("technology")}
-              className="text-gray-507 font-light transition-colors hover:font-semibold hover:text-gray-900"
+              className="font-light text-gray-700 transition-colors hover:font-semibold hover:text-gray-900"
             >
               기술
             </Button>
@@ -51,7 +49,7 @@ export default function Header() {
               variant="ghost"
               size="lg"
               onClick={() => scrollToSection("services")}
-              className="text-gray-507 font-light transition-colors hover:font-semibold hover:text-gray-900"
+              className="font-light text-gray-700 transition-colors hover:font-semibold hover:text-gray-900"
             >
               서비스
             </Button>
@@ -59,7 +57,7 @@ export default function Header() {
               variant="ghost"
               size="lg"
               onClick={() => scrollToSection("pricing")}
-              className="text-gray-507 font-light transition-colors hover:font-semibold hover:text-gray-900"
+              className="font-light text-gray-700 transition-colors hover:font-semibold hover:text-gray-900"
             >
               요금제
             </Button>
@@ -69,13 +67,13 @@ export default function Header() {
               onClick={() => scrollToSection("faq")}
               className="font-light text-gray-700 transition-colors hover:font-semibold hover:text-gray-900"
             >
-              FAQ
+              질문
             </Button>
             <Button
               variant="ghost"
               size="lg"
               onClick={() => scrollToSection("contact")}
-              className="text-gray-507 font-light transition-colors hover:font-semibold hover:text-gray-900"
+              className="font-light text-gray-700 transition-colors hover:font-semibold hover:text-gray-900"
             >
               상담신청
             </Button>
@@ -147,7 +145,7 @@ export default function Header() {
                       className="py-2 text-left"
                       onClick={() => scrollToSection("faq")}
                     >
-                      FAQ
+                      질문
                     </button>
                   </SheetClose>
                   <div className="h-px w-full bg-gray-200" />

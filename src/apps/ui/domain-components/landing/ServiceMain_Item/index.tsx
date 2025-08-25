@@ -44,7 +44,7 @@ export const ServiceMain_Item = ({
           {title}
         </div>
       </div>
-      <div className="justify-center self-stretch text-center">
+      <div className="justify-center self-stretch whitespace-pre-wrap">
         {description}
       </div>
       <BorderBeam
