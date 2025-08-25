@@ -27,7 +27,7 @@ export const HeroOrbitiongCircles_CenterItem = () => {
         }}
       />
 
-      <span className="z-10 text-5xl">🏦</span>
+      <span className="z-10 text-5xl">🏛️</span>
     </div>
   );
 };
