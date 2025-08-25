@@ -98,6 +98,9 @@ export const MultipleSelector = ({
           side="top"
           avoidCollisions={false}
           className="w-[var(--radix-popover-trigger-width)] p-0"
+          onOpenAutoFocus={(e) => {
+            e.preventDefault();
+          }}
         >
           <Command>
             {searchOption && <CommandInput placeholder={searchPlaceholder} />}

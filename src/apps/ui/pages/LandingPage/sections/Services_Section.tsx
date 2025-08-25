@@ -1,6 +1,4 @@
-import {
-  ServiceMainItem,
-} from "@/apps/ui/domain-components/landing/Service_Main_Item";
+import { ServiceMainItem } from "@/apps/ui/domain-components/landing/Service_Main_Item";
 
 import { RenderJudgments } from "./components/Judgment";
 
@@ -81,7 +79,7 @@ export const ServicesSection = () => {
       <div className="flex w-full max-w-[1200px] flex-col items-center justify-center gap-16">
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
-            살려줘닷컴의 법률서비스
+            <span className="bg-purple-200">살려줘닷컴</span>의 법률서비스
           </h2>
 
           <span className="text-lg leading-relaxed text-gray-600 sm:text-xl">
@@ -110,7 +108,7 @@ export const ServicesSection = () => {
       </div>
 
       <div className="relative flex w-full max-w-[1000px] flex-col items-center gap-10">
-        <span className="text-3xl font-bold text-gray-800">면책결정 사례</span>
+        <span className="text-3xl font-bold text-gray-800">법원결정 사례</span>
         <RenderJudgments />
 
         <div className="from-background pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r" />

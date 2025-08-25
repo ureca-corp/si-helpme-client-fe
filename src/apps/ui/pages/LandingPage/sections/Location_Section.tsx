@@ -72,7 +72,6 @@ export const Location2Section = () => {
               label="발렛주차장 위치"
               value="서울시 서초구 서초중앙로 24길 20 (사보텐)"
             />
-            <span className="pl-10 text-sm text-gray-500">{`"도약 법률사무소 방문"`}</span>
           </LocationInfoContainer>
         </div>
 

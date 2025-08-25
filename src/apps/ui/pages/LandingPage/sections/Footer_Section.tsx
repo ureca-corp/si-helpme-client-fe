@@ -45,10 +45,6 @@ export const Footer3Section = () => {
             © 2025 도약법률사무소. All rights reserved. 본 사이트의 모든
             콘텐츠는 저작권법의 보호를 받습니다.
           </div>
-          <div className="justify-center self-stretch text-center font-['Pretendard'] text-sm leading-tight font-light text-white/60">
-            법률상담은 개별 사안에 따라 결과가 달라질 수 있으며, 상담 내용은
-            법적 조언이 아닌 일반적인 정보 제공입니다.
-          </div>
         </div>
       </div>
     </div>
