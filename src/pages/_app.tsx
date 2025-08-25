@@ -53,6 +53,17 @@ export default function App({ Component, pageProps }: AppProps) {
 
       {/* Naver WCS common script */}
       <Script src="//wcs.naver.net/wcslog.js" strategy="afterInteractive" />
+      <Script
+        id="naver-wcs-script"
+        dangerouslySetInnerHTML={{
+          __html: `
+if (!window.wcs_add) window.wcs_add = {};
+window.wcs_add["wa"] = "s_5a3318c599a1";
+if (!window._nasa) window._nasa = {};
+if (window.wcs && typeof wcs_do === 'function') { window.wcs.inflow(); wcs_do(); }
+          `,
+        }}
+      />
     </>
   );
 }

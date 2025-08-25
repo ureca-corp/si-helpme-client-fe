@@ -31,16 +31,6 @@ export default function Document() {
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-if (!window.wcs_add) window.wcs_add = {};
-window.wcs_add["wa"] = "s_5a3318c599a1";
-if (!window._nasa) window._nasa = {};
-if (window.wcs && typeof wcs_do === 'function') { window.wcs.inflow(); wcs_do(); }
-`,
-          }}
-        />
       </Head>
       <body className="antialiased">
         <Main />
