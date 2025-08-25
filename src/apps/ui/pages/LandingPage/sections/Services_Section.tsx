@@ -79,7 +79,7 @@ export const ServicesSection = () => {
       <div className="flex w-full max-w-[1200px] flex-col items-center justify-center gap-16">
         <div className="flex flex-col items-center justify-center gap-4 text-center">
           <h2 className="text-3xl font-bold text-gray-800 md:text-4xl">
-            <span className="bg-gray-300">살려줘닷컴</span>의 법률서비스
+            <span className="bg-purple-200">살려줘닷컴</span>의 법률서비스
           </h2>
 
           <span className="text-lg leading-relaxed text-gray-600 sm:text-xl">
