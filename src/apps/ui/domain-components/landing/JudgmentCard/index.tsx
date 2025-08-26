@@ -5,8 +5,8 @@ export type JudgmentCardModel = {
   reductionRate: number; // 탕감률
   court: string; // 법원
   totalDebt?: string; // 총 채무액
-  monthlyPayment?: string; // 월 변제금
-  repaymentPeriod?: string; // 변제 기간
+  reductionAmount?: string; // 감면 받은 금액
+  loanPurpose?: string; // 대출금 사용처
   image: string; // 이미지
 };
 
@@ -16,7 +16,9 @@ export type JudgmentCardModel = {
 export const JudgmentCard = ({
   reductionRate,
   court,
-
+  totalDebt,
+  reductionAmount,
+  loanPurpose,
   image,
 }: JudgmentCardModel) => {
   return (
@@ -31,7 +33,7 @@ export const JudgmentCard = ({
         <div className="flex w-full flex-col items-center justify-between gap-2">
           <div className="flex w-full items-center justify-between">
             <span className="text-sm font-bold text-blue-500">
-              {reductionRate}% 탕감
+              {reductionRate}% 감면
             </span>
 
             <span className="text-xs font-medium text-gray-500">{court}</span>
@@ -41,6 +43,28 @@ export const JudgmentCard = ({
               className="h-2 rounded-full bg-blue-500 transition-all duration-300"
               style={{ width: `${reductionRate}%` }}
             />
+          </div>
+        </div>
+
+        {/* 상세 정보 */}
+        <div className="flex flex-col">
+          <div className="text-sm">
+            <span className="font-bold">총 채무금액: </span>
+            <span className="font-medium text-gray-700 opacity-70">
+              {totalDebt}
+            </span>
+          </div>
+          <div className="text-sm">
+            <span className="font-bold">감면 받은 금액: </span>
+            <span className="font-medium text-gray-700 opacity-70">
+              {reductionAmount}
+            </span>
+          </div>
+          <div className="text-sm">
+            <span className="font-bold">대출금 사용처: </span>
+            <span className="font-medium text-gray-700 opacity-70">
+              {loanPurpose}
+            </span>
           </div>
         </div>
       </div>

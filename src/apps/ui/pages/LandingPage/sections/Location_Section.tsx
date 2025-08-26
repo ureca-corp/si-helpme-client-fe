@@ -1,4 +1,10 @@
-import { Building, MapPin, Navigation, Phone, Printer } from "lucide-react";
+import {
+  Building,
+  MapPin,
+  Navigation,
+  Phone,
+  Printer,
+} from "lucide-react";
 
 import { NaverMap } from "@/apps/ui/domain-components/landing/Location";
 import {
@@ -38,17 +44,17 @@ export const Location2Section = () => {
           >
             <LocationInfoItem
               icon={<MapPin />}
-              label="주소"
+              title="주소"
               value="서울 서초구 서초중앙로24길 KM타워 8층"
             />
             <LocationInfoItem
               icon={<Phone />}
-              label="전화"
+              title="전화"
               value="02-6677-8510"
             />
             <LocationInfoItem
               icon={<Printer />}
-              label="팩스"
+              title="팩스"
               value="02-6677-8501"
             />
           </LocationInfoContainer>
@@ -63,14 +69,16 @@ export const Location2Section = () => {
           >
             <LocationInfoItem
               icon={<Building />}
-              label="주차장"
-              value={`KM타워 내 기계주차장 이용 가능 (불가 시 발렛주차 이용 가능)`}
+              title={"주차장"}
+              value={`KM타워 내 기계주차장 이용 가능 `}
+              etc={`(불가 시 발렛주차 이용 가능)`}
             />
 
             <LocationInfoItem
               icon={<MapPin />}
-              label="발렛주차장 위치"
-              value="서울시 서초구 서초중앙로 24길 20 (사보텐)"
+              title={"발렛주차장 위치"}
+              value={"서울시 서초구 서초중앙로 24길 20 "}
+              etc={`(사보텐)`}
             />
           </LocationInfoContainer>
         </div>
