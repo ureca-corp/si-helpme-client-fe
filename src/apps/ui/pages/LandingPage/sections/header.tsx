@@ -1,8 +1,10 @@
 import { Menu } from "lucide-react";
 
-import { TitleLogo1 } from "@/apps/ui/common-components/TitleLogo1";
+import { BrandLogoSvg } from "@/apps/ui/common-components/BrandLogoSvg";
 import { CallButton } from "@/apps/ui/domain-components/landing/CallButton";
-import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
+import {
+  ConsultationButton,
+} from "@/apps/ui/domain-components/landing/ConsultationButton";
 import { Button } from "@/shadcn/components/ui/button";
 import { DialogTitle } from "@/shadcn/components/ui/dialog";
 import {
@@ -31,7 +33,8 @@ export default function Header() {
             className="cursor-pointer"
             onClick={() => scrollToSection("hero")}
           >
-            <TitleLogo1 className="h-8 w-auto max-md:h-6" />
+            <BrandLogoSvg className="h-8 w-auto max-md:h-6" />
+            {/* <TitleLogo1 className="h-8 w-auto max-md:h-6" /> */}
           </div>
 
           {/* 데스크톱 네비게이션 */}

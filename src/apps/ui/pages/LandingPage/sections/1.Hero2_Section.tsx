@@ -1,6 +1,12 @@
-import { AuroraBackgroundContainer } from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
-import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
-import { HeroOrbitiongCircles } from "@/apps/ui/domain-components/landing/HeroOrbitiongCircles";
+import {
+  AuroraBackgroundContainer,
+} from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
+import {
+  ConsultationButton,
+} from "@/apps/ui/domain-components/landing/ConsultationButton";
+import {
+  HeroOrbitiongCircles,
+} from "@/apps/ui/domain-components/landing/HeroOrbitiongCircles";
 import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { TextAnimate } from "@/components/magicui/text-animate";
@@ -98,7 +104,10 @@ export const Hero2_Section = () => {
             </p>
 
             <div className="mt-4 flex items-center gap-2">
-              <ConsultationButton onClick={() => scrollToSection("contact")} />
+              <ConsultationButton
+                textLabel={"서비스가 궁금해요"}
+                onClick={() => scrollToSection("contact")}
+              />
 
               <button
                 className={cn(

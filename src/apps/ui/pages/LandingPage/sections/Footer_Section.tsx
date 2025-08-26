@@ -1,4 +1,4 @@
-import { TitleLogo2 } from "@/apps/ui/common-components/TitleLogo2";
+import { BrandLogoSvg } from "@/apps/ui/common-components/BrandLogoSvg";
 
 export const Footer3Section = () => {
   const ceoName = "우성명";
@@ -17,7 +17,7 @@ export const Footer3Section = () => {
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               {/* <BrandLogoWithLabel color="white" /> */}
 
-              <TitleLogo2 />
+              <BrandLogoSvg color="#fff" />
             </div>
             <div className="justify-center font-['Pretendard'] text-sm leading-tight font-light text-white/60">
               대표변호사: {ceoName}
