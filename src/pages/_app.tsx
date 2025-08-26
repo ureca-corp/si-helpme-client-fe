@@ -52,15 +52,22 @@ export default function App({ Component, pageProps }: AppProps) {
       <SpeedInsights />
 
       {/* Naver WCS common script */}
-      <Script src="//wcs.naver.net/wcslog.js" strategy="afterInteractive" />
+      <Script src="//wcs.naver.net/wcslog.js" />
       <Script
+        type="text/javascript"
         id="naver-wcs-script"
         dangerouslySetInnerHTML={{
           __html: `
-if (!window.wcs_add) window.wcs_add = {};
-window.wcs_add["wa"] = "s_5a3318c599a1";
-if (!window._nasa) window._nasa = {};
-if (window.wcs && typeof wcs_do === 'function') { window.wcs.inflow(); wcs_do(); }
+document.addEventListener('DOMContentLoaded', function() {
+  var _nasa={}; //초기화구문
+  if (!window.wcs_add.wa) window.wcs_add = { wa: "s_5a3318c599a1"};
+  if (!_nasa) var _nasa={};
+  if(window.wcs){
+        wcs.inflow("xn--hn2bp0nf8g.com");
+        wcs_do(_nasa);
+        var _nasa={}; //초기화구문
+  }
+});
           `,
         }}
       />
