@@ -1,9 +1,8 @@
+import { ArrowRight } from "lucide-react";
+
 import {
   AuroraBackgroundContainer,
 } from "@/apps/ui/domain-components/landing/AuroraBackgroundContainer";
-import {
-  ConsultationButton,
-} from "@/apps/ui/domain-components/landing/ConsultationButton";
 import {
   HeroOrbitiongCircles,
 } from "@/apps/ui/domain-components/landing/HeroOrbitiongCircles";
@@ -104,10 +103,30 @@ export const Hero2_Section = () => {
             </p>
 
             <div className="mt-4 flex items-center gap-2">
-              <ConsultationButton
-                textLabel={"서비스가 궁금해요"}
-                onClick={() => scrollToSection("contact")}
-              />
+              <button
+                className={cn(
+                  `group flex h-12 w-40 items-center justify-center rounded-full py-2 font-bold whitespace-nowrap`,
+                  "transition-colors duration-500 ease-in-out",
+                  "bg-gradient-to-r from-blue-500 to-green-600 hover:from-green-600 hover:to-blue-500",
+                  "cursor-pointer",
+                )}
+                onClick={() => scrollToSection("services")}
+              >
+                <span
+                  className={cn(
+                    "text-white transition-colors duration-100 ease-in-out",
+                  )}
+                >
+                  {"서비스가 궁금해요"}
+                </span>
+                <div
+                  className={cn(
+                    "relative flex h-7 w-0 items-center justify-center transition-all duration-300 ease-in-out group-hover:w-7 max-md:hidden",
+                  )}
+                >
+                  <ArrowRight size={16} className={"size-6 pl-1 text-white"} />
+                </div>
+              </button>
 
               <button
                 className={cn(
