@@ -1,4 +1,5 @@
 import { Head, Html, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -31,6 +32,25 @@ export default function Document() {
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
+        <Script
+          src="//wcs.naver.net/wcslog.js"
+          strategy="beforeInteractive"
+        ></Script>
+        <Script strategy="lazyOnload" id="naver-wcs-script">
+          {`
+document.addEventListener('DOMContentLoaded', function() {
+  var _nasa={}; //초기화구문
+  if (!window.wcs_add.wa) window.wcs_add = { wa: "s_5a3318c599a1"};
+  if (!_nasa) var _nasa={};
+  if(window.wcs){
+        wcs.inflow("xn--hn2bp0nf8g.com");
+        wcs_do(_nasa);
+        var _nasa={}; //초기화구문
+  }
+});
+}
+  `}
+        </Script>
       </Head>
       <body className="antialiased">
         <Main />
