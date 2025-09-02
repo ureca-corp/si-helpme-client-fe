@@ -2,9 +2,7 @@ import { Menu } from "lucide-react";
 
 import { BrandLogoSvg } from "@/apps/ui/common-components/BrandLogoSvg";
 import { CallButton } from "@/apps/ui/domain-components/landing/CallButton";
-import {
-  ConsultationButton,
-} from "@/apps/ui/domain-components/landing/ConsultationButton";
+import { ConsultationButton } from "@/apps/ui/domain-components/landing/ConsultationButton";
 import { Button } from "@/shadcn/components/ui/button";
 import { DialogTitle } from "@/shadcn/components/ui/dialog";
 import {
@@ -33,7 +31,7 @@ export default function Header() {
             className="cursor-pointer"
             onClick={() => scrollToSection("hero")}
           >
-            <BrandLogoSvg className="h-8 w-auto max-md:h-6" />
+            <BrandLogoSvg className="h-10 w-auto max-md:h-8" />
             {/* <TitleLogo1 className="h-8 w-auto max-md:h-6" /> */}
           </div>
 

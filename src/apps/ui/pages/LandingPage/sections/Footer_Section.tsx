@@ -17,7 +17,7 @@ export const Footer3Section = () => {
             <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               {/* <BrandLogoWithLabel color="white" /> */}
 
-              <BrandLogoSvg color="#fff" />
+              <BrandLogoSvg color={"#ffffff"} />
             </div>
             <div className="justify-center font-['Pretendard'] text-sm leading-tight font-light text-white/60">
               대표변호사: {ceoName}
