@@ -244,12 +244,13 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
         />
       </div>
 
-      <div className="flex w-full flex-col">
+      <div className="flex w-full flex-col items-center">
         <div
           className="flex w-fit cursor-pointer items-center gap-2"
           onClick={() => setIsTermsAgreed(!isTermsAgreed)}
         >
           <Checkbox
+            className="border-2 border-black"
             checked={isTermsAgreed}
             onCheckedChange={() => setIsTermsAgreed(!isTermsAgreed)}
           />
