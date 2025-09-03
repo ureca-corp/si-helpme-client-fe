@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
         var _nasa={}; //초기화구문
   }
 });
-}
   `}
         </Script>
       </Head>
