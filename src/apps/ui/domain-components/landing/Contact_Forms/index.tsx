@@ -7,6 +7,7 @@ import { KakaoIcon } from "@/apps/ui/common-components/KakaoIcon";
 import { LoadingDialog } from "@/apps/ui/common-components/LoadingDialog";
 import { MultipleSelector } from "@/apps/ui/domain-components/landing/Multiple_Selector";
 import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
+import { Checkbox } from "@/shadcn/components/ui/checkbox";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
@@ -36,6 +37,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
     times: [],
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isTermsAgreed, setIsTermsAgreed] = useState(false);
 
   const [phone1, setPhone1] = useState("010");
   const [phone2, setPhone2] = useState("");
@@ -74,6 +76,10 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
   };
 
   const handleSubmit = async () => {
+    if (!isTermsAgreed) {
+      return alert("개인정보 처리방침에 동의해주세요.");
+    }
+
     if (
       !form.name ||
       !phone1 ||
@@ -237,6 +243,21 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
           emptyMessage="해당하는 시간이 없습니다."
         />
       </div>
+
+      <div className="flex w-full flex-col">
+        <div
+          className="flex w-fit cursor-pointer items-center gap-2"
+          onClick={() => setIsTermsAgreed(!isTermsAgreed)}
+        >
+          <Checkbox
+            checked={isTermsAgreed}
+            onCheckedChange={() => setIsTermsAgreed(!isTermsAgreed)}
+          />
+          <span>
+            {"상기 입력한 개인정보를 수집 및 처리하는 데에 동의합니다."}
+          </span>
+        </div>
+      </div>
       <div className="flex flex-col items-start justify-start gap-4 self-stretch">
         <div className="flex w-full items-center gap-4 max-md:flex-col">
           <CallButton className="h-10 max-md:w-full" />
@@ -260,11 +281,12 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
             개인정보는 상담 목적으로만 사용되며, 상담 완료 후 안전하게
             폐기됩니다.
           </div>
+
           <span
             className="cursor-pointer text-xs text-gray-500 underline"
             onClick={handleTermsClick}
           >
-            개인정보 보호 정책
+            {"(개인정보처리방침 보기)"}
           </span>
         </div>
       </div>
