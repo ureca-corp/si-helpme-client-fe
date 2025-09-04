@@ -36,24 +36,20 @@ export default function Document() {
           src="//wcs.naver.net/wcslog.js"
           strategy="beforeInteractive"
         ></Script>
+        <Script id="naver-wcs-script" strategy="afterInteractive">
+          {`
+            if (window.wcs) {
+              window.wcs_add = { wa: "s_5a3318c599a1" };
+              var _nasa = {};
+              wcs.inflow("xn--hn2bp0nf8g.com");
+              wcs_do(_nasa);
+            }
+          `}
+        </Script>
       </Head>
       <body className="antialiased">
         <Main />
         <NextScript />
-        <Script strategy="lazyOnload" id="naver-wcs-script">
-          {`
-document.addEventListener('DOMContentLoaded', function() {
-  var _nasa={}; //초기화구문
-  if (!window.wcs_add.wa) window.wcs_add = { wa: "s_5a3318c599a1"};
-  if (!_nasa) var _nasa={};
-  if(window.wcs){
-        wcs.inflow("xn--hn2bp0nf8g.com");
-        wcs_do(_nasa);
-        var _nasa={}; //초기화구문
-  }
-});
-  `}
-        </Script>
       </body>
     </Html>
   );
