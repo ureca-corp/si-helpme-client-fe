@@ -36,6 +36,10 @@ export default function Document() {
           src="//wcs.naver.net/wcslog.js"
           strategy="beforeInteractive"
         ></Script>
+      </Head>
+      <body className="antialiased">
+        <Main />
+        <NextScript />
         <Script strategy="lazyOnload" id="naver-wcs-script">
           {`
 document.addEventListener('DOMContentLoaded', function() {
@@ -50,10 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
   `}
         </Script>
-      </Head>
-      <body className="antialiased">
-        <Main />
-        <NextScript />
       </body>
     </Html>
   );
