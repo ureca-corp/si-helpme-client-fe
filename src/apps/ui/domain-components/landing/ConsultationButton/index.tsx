@@ -1,8 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
-import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { cn } from "@/shadcn/lib/utils";
-import { sendSchedule } from "@/apps/ui/lib/gtm";
 
 /**
  * 랜딩페이지 상담 버튼
@@ -21,8 +19,6 @@ export const ConsultationButton = ({
   className?: React.HTMLAttributes<HTMLButtonElement>["className"];
 }) => {
   const handleClick = () => {
-    sendNaverConversion("custom003");
-    sendSchedule();
     onClick();
   };
 
