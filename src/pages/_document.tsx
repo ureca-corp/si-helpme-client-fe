@@ -48,6 +48,14 @@ export default function Document() {
         </Script>
       </Head>
       <body className="antialiased">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-P3HSBWVW"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <Main />
         <NextScript />
       </body>
