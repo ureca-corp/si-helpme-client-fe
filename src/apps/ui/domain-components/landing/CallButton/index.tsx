@@ -2,6 +2,7 @@ import { Phone } from "lucide-react";
 
 import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { cn } from "@/shadcn/lib/utils";
+import { sendContact } from "@/apps/ui/lib/gtm";
 
 interface CallButtonProps {
   className?: React.HTMLAttributes<HTMLButtonElement>["className"];
@@ -22,6 +23,7 @@ export const CallButton = ({
 }: CallButtonProps) => {
   const handleClick = () => {
     sendNaverConversion("custom001");
+    sendContact();
     window.location.href = "tel:02-6677-8510";
   };
 

@@ -8,6 +8,7 @@ import { LoadingDialog } from "@/apps/ui/common-components/LoadingDialog";
 import { MultipleSelector } from "@/apps/ui/domain-components/landing/Multiple_Selector";
 import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 import { Checkbox } from "@/shadcn/components/ui/checkbox";
+import { sendLead } from "@/apps/ui/lib/gtm";
 import { Input } from "@/shadcn/components/ui/input";
 import { Textarea } from "@/shadcn/components/ui/textarea";
 
@@ -129,6 +130,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
    */
   const handleKakaoClick = () => {
     sendNaverConversion("custom002");
+    sendLead();
     window.open("https://open.kakao.com/o/sQ3kwowe", "_blank");
   };
 
