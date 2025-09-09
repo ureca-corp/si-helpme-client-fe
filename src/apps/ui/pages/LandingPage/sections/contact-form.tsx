@@ -3,13 +3,13 @@ import type React from "react";
 import { overlay } from "overlay-kit";
 
 import { useCreateCounsel } from "@/apps/applications/counsel/useCreateCounsel";
-import {
-  ContactFinishDialog,
-} from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
+import { ContactFinishDialog } from "@/apps/ui/domain-components/landing/Contact_Finish_Dialog";
 import {
   ContactFormModel,
   ContactForms,
 } from "@/apps/ui/domain-components/landing/Contact_Forms";
+import { sendSchedule } from "@/apps/ui/lib/gtm";
+import { sendNaverConversion } from "@/apps/ui/lib/naver-wcs";
 
 export default function ContactForm() {
   const { createCounsel } = useCreateCounsel();
@@ -22,6 +22,8 @@ export default function ContactForm() {
         question: form.message,
         availableCallTime: form.times.join(", "),
       });
+      sendNaverConversion("custom003");
+      sendSchedule();
       overlay.open(({ isOpen, close }) => (
         <ContactFinishDialog open={isOpen} onClose={close} />
       ));
