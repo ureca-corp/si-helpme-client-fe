@@ -131,7 +131,7 @@ export const ContactForms = ({ onClick }: ContactFormsProps) => {
   const handleKakaoClick = () => {
     sendNaverConversion("custom002");
     sendLead();
-    window.open("https://open.kakao.com/o/sQ3kwowe", "_blank");
+    window.open("https://open.kakao.com/o/s0EFqVNh", "_blank");
   };
 
   /**
