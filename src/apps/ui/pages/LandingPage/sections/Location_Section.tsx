@@ -1,10 +1,4 @@
-import {
-  Building,
-  MapPin,
-  Navigation,
-  Phone,
-  Printer,
-} from "lucide-react";
+import { Building, MapPin, Navigation, Phone, Printer } from "lucide-react";
 
 import { NaverMap } from "@/apps/ui/domain-components/landing/Location";
 import {
@@ -45,7 +39,7 @@ export const Location2Section = () => {
             <LocationInfoItem
               icon={<MapPin />}
               title="주소"
-              value="서울 서초구 서초중앙로24길 KM타워 8층"
+              value="서울시 서초구 서초중앙로24길 16, KM타워 8층"
             />
             <LocationInfoItem
               icon={<Phone />}

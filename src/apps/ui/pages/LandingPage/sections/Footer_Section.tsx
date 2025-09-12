@@ -4,7 +4,7 @@ export const Footer3Section = () => {
   const ceoName = "우성명";
   const businessNumber = "321-05-02929";
   // 번지수(서초동 1692-6) 삭제
-  const address = "서울특별시 서초구 서초중앙로24길 16 KM빌딩 8층";
+  const address = "서울시 서초구 서초중앙로24길 16, KM타워 8층";
   const operatingHours = "평일 오전 9시 ~ 오후 6시 (토요일 및 공휴일 휴무)";
   const phoneNumber = "02-6677-8510";
   const faxNumber = "02-6677-8501";
