@@ -31,11 +31,11 @@ export default function Home() {
 
   // return test;
 
-  const SITE_NAME = "법률사무소 도약";
+  const SITE_NAME = "살려줘닷컴";
   const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://example.com";
-  const TITLE = "법률사무소 도약 | 공감과 실력으로 함께하는 법률 파트너";
+  const TITLE = "살려줘닷컴 | 공감과 실력으로 함께하는 법률 파트너";
   const DESCRIPTION =
-    "법률사무소 도약은 민형사, 기업자문, 가사·상속 등 다양한 분야에서 맞춤형 법률 서비스를 제공합니다. 초기 상담부터 해결까지 신속하고 꼼꼼하게 함께합니다.";
+    "살려줘닷컴은 민형사, 기업자문, 가사·상속 등 다양한 분야에서 맞춤형 법률 서비스를 제공합니다. 초기 상담부터 해결까지 신속하고 꼼꼼하게 함께합니다.";
   const OG_IMAGE = `${SITE_URL}/법률사무소로고.png`;
 
   const structuredData = {
